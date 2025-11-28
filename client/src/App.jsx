@@ -4,9 +4,11 @@ import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import Home from '@/pages/Home';
 import Events from '@/pages/Events';
-import Members from '@/pages/Members';
+import About from '@/pages/About';
+import Clusters from '@/pages/Clusters';
 import Leaderboard from '@/pages/Leaderboard';
 import Login from '@/pages/Login';
+import Signup from '@/pages/Signup';
 import NotFound from '@/pages/NotFound';
 
 export default function App() {
@@ -21,9 +23,12 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/events" element={<Events />} />
-              <Route path="/members" element={<Members />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/members" element={<About />} />
+              <Route path="/clusters" element={<Clusters />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

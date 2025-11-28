@@ -311,13 +311,13 @@ export default function Members() {
             <div className="space-y-12">
 
               {/* Chairperson - Centered */}
-              {filteredMembers.filter(m => m.role === 'Chairperson').map((member) => (
-                <div key={member.id} className="flex justify-center">
-                  <div className="w-full max-w-md animate-slide-up" style={{ animationDelay: '0s', opacity: 0, animationFillMode: 'forwards' }}>
+              <div className="flex justify-center">
+                {filteredMembers.filter(m => m.role === 'Chairperson').map((member) => (
+                  <div key={member.id} className="w-full max-w-sm animate-slide-up" style={{ animationDelay: '0s', opacity: 0, animationFillMode: 'forwards' }}>
                     <MemberCard {...member} />
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
 
               {/* Core Committee */}
               {(() => {
@@ -335,13 +335,13 @@ export default function Members() {
                     </h2>
                     <div className={
                       viewMode === 'grid'
-                        ? 'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4'
+                        ? 'flex flex-wrap justify-center gap-6'
                         : 'space-y-4'
                     }>
                       {coreCommittee.map((member, index) => (
                         <div
                           key={member.id}
-                          className="animate-slide-up"
+                          className="animate-slide-up w-full sm:w-72"
                           style={{ animationDelay: `${(index + 1) * 0.1}s`, opacity: 0, animationFillMode: 'forwards' }}
                         >
                           <MemberCardFlip {...member} />
@@ -365,13 +365,13 @@ export default function Members() {
                     </h2>
                     <div className={
                       viewMode === 'grid'
-                        ? 'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4'
+                        ? 'flex flex-wrap justify-center gap-6'
                         : 'space-y-4'
                     }>
                       {teamLeads.map((member, index) => (
                         <div
                           key={member.id}
-                          className="animate-slide-up"
+                          className="animate-slide-up w-full sm:w-72"
                           style={{ animationDelay: `${(index + 5) * 0.05}s`, opacity: 0, animationFillMode: 'forwards' }}
                         >
                           <MemberCardFlip {...member} />
@@ -390,9 +390,9 @@ export default function Members() {
                     <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                       Development Team
                     </h2>
-                    <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4' : 'space-y-4'}>
+                    <div className={viewMode === 'grid' ? 'flex flex-wrap justify-center gap-6' : 'space-y-4'}>
                       {devTeam.map((member, index) => (
-                        <div key={member.id} className="animate-slide-up" style={{ animationDelay: `${index * 0.05}s`, opacity: 0, animationFillMode: 'forwards' }}>
+                        <div key={member.id} className="animate-slide-up w-full sm:w-72" style={{ animationDelay: `${index * 0.05}s`, opacity: 0, animationFillMode: 'forwards' }}>
                           <MemberCardFlip {...member} />
                         </div>
                       ))}
@@ -409,9 +409,9 @@ export default function Members() {
                     <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                       AI Team
                     </h2>
-                    <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4' : 'space-y-4'}>
+                    <div className={viewMode === 'grid' ? 'flex flex-wrap justify-center gap-6' : 'space-y-4'}>
                       {aiTeam.map((member, index) => (
-                        <div key={member.id} className="animate-slide-up" style={{ animationDelay: `${index * 0.05}s`, opacity: 0, animationFillMode: 'forwards' }}>
+                        <div key={member.id} className="animate-slide-up w-full sm:w-72" style={{ animationDelay: `${index * 0.05}s`, opacity: 0, animationFillMode: 'forwards' }}>
                           <MemberCardFlip {...member} />
                         </div>
                       ))}
@@ -428,9 +428,9 @@ export default function Members() {
                     <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                       Emerging Tech Team
                     </h2>
-                    <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4' : 'space-y-4'}>
+                    <div className={viewMode === 'grid' ? 'flex flex-wrap justify-center gap-6' : 'space-y-4'}>
                       {emergingTech.map((member, index) => (
-                        <div key={member.id} className="animate-slide-up" style={{ animationDelay: `${index * 0.05}s`, opacity: 0, animationFillMode: 'forwards' }}>
+                        <div key={member.id} className="animate-slide-up w-full sm:w-72" style={{ animationDelay: `${index * 0.05}s`, opacity: 0, animationFillMode: 'forwards' }}>
                           <MemberCardFlip {...member} />
                         </div>
                       ))}
@@ -447,9 +447,9 @@ export default function Members() {
                     <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                       Competition Management Team
                     </h2>
-                    <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4' : 'space-y-4'}>
+                    <div className={viewMode === 'grid' ? 'flex flex-wrap justify-center gap-6' : 'space-y-4'}>
                       {compTeam.map((member, index) => (
-                        <div key={member.id} className="animate-slide-up" style={{ animationDelay: `${index * 0.05}s`, opacity: 0, animationFillMode: 'forwards' }}>
+                        <div key={member.id} className="animate-slide-up w-full sm:w-72" style={{ animationDelay: `${index * 0.05}s`, opacity: 0, animationFillMode: 'forwards' }}>
                           <MemberCardFlip {...member} />
                         </div>
                       ))}
@@ -466,9 +466,9 @@ export default function Members() {
                     <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                       PR Team
                     </h2>
-                    <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4' : 'space-y-4'}>
+                    <div className={viewMode === 'grid' ? 'flex flex-wrap justify-center gap-6' : 'space-y-4'}>
                       {prTeam.map((member, index) => (
-                        <div key={member.id} className="animate-slide-up" style={{ animationDelay: `${index * 0.05}s`, opacity: 0, animationFillMode: 'forwards' }}>
+                        <div key={member.id} className="animate-slide-up w-full sm:w-72" style={{ animationDelay: `${index * 0.05}s`, opacity: 0, animationFillMode: 'forwards' }}>
                           <MemberCardFlip {...member} />
                         </div>
                       ))}
@@ -485,9 +485,9 @@ export default function Members() {
                     <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                       Programming Team
                     </h2>
-                    <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4' : 'space-y-4'}>
+                    <div className={viewMode === 'grid' ? 'flex flex-wrap justify-center gap-6' : 'space-y-4'}>
                       {progTeam.map((member, index) => (
-                        <div key={member.id} className="animate-slide-up" style={{ animationDelay: `${index * 0.05}s`, opacity: 0, animationFillMode: 'forwards' }}>
+                        <div key={member.id} className="animate-slide-up w-full sm:w-72" style={{ animationDelay: `${index * 0.05}s`, opacity: 0, animationFillMode: 'forwards' }}>
                           <MemberCardFlip {...member} />
                         </div>
                       ))}
@@ -504,9 +504,9 @@ export default function Members() {
                     <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                       Media & Design Team
                     </h2>
-                    <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4' : 'space-y-4'}>
+                    <div className={viewMode === 'grid' ? 'flex flex-wrap justify-center gap-6' : 'space-y-4'}>
                       {mediaTeam.map((member, index) => (
-                        <div key={member.id} className="animate-slide-up" style={{ animationDelay: `${index * 0.05}s`, opacity: 0, animationFillMode: 'forwards' }}>
+                        <div key={member.id} className="animate-slide-up w-full sm:w-72" style={{ animationDelay: `${index * 0.05}s`, opacity: 0, animationFillMode: 'forwards' }}>
                           <MemberCardFlip {...member} />
                         </div>
                       ))}

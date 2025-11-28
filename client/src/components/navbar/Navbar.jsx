@@ -13,7 +13,8 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Events', path: '/events' },
-    { name: 'Members', path: '/members' },
+    { name: 'About Us', path: '/about' },
+    { name: 'Clusters', path: '/clusters' },
     { name: 'Leaderboard', path: '/leaderboard' },
   ];
 
@@ -40,7 +41,7 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            
+
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
@@ -92,19 +93,16 @@ export default function Navbar() {
               aria-label="Toggle menu"
             >
               <span
-                className={`w-6 h-0.5 bg-gray-900 dark:bg-white transition-all duration-300 ${
-                  isOpen ? 'rotate-45 translate-y-2.5' : ''
-                }`}
+                className={`w-6 h-0.5 bg-gray-900 dark:bg-white transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2.5' : ''
+                  }`}
               ></span>
               <span
-                className={`w-6 h-0.5 bg-gray-900 dark:bg-white transition-all duration-300 ${
-                  isOpen ? 'opacity-0' : ''
-                }`}
+                className={`w-6 h-0.5 bg-gray-900 dark:bg-white transition-all duration-300 ${isOpen ? 'opacity-0' : ''
+                  }`}
               ></span>
               <span
-                className={`w-6 h-0.5 bg-gray-900 dark:bg-white transition-all duration-300 ${
-                  isOpen ? '-rotate-45 -translate-y-2.5' : ''
-                }`}
+                className={`w-6 h-0.5 bg-gray-900 dark:bg-white transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2.5' : ''
+                  }`}
               ></span>
             </button>
           </div>
