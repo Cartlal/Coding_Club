@@ -16,7 +16,7 @@ export const mockMembers = [
     skills: ['Leadership', 'React', 'Node.js', 'Management'],
     joinDate: '2022-08-15',
     bio: 'Leading ArcStack with passion for innovation and technology',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ export const mockMembers = [
     skills: ['Management', 'Python', 'Web Development'],
     joinDate: '2023-08-15',
     bio: 'Supporting club operations and driving technical excellence',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 3,
@@ -40,7 +40,7 @@ export const mockMembers = [
     skills: ['Organization', 'JavaScript', 'Full Stack'],
     joinDate: '2022-08-15',
     bio: 'Managing club activities and coordinating events',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 4,
@@ -52,7 +52,7 @@ export const mockMembers = [
     skills: ['Coordination', 'React', 'Backend'],
     joinDate: '2023-08-15',
     bio: 'Assisting in club management and technical initiatives',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 5,
@@ -64,7 +64,7 @@ export const mockMembers = [
     skills: ['Finance', 'Management', 'Web Development'],
     joinDate: '2022-08-15',
     bio: 'Managing club finances and budgeting',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 6,
@@ -76,7 +76,7 @@ export const mockMembers = [
     skills: ['Finance', 'Accounting', 'Python'],
     joinDate: '2023-08-15',
     bio: 'Co-managing financial operations',
-    image: null,
+    image: '/test-profile.svg',
   },
 
   // Functional Team Leads & Co-Leads
@@ -90,7 +90,7 @@ export const mockMembers = [
     skills: ['Full Stack', 'React', 'Node.js', 'MongoDB'],
     joinDate: '2023-08-15',
     bio: 'Leading development team and building scalable applications',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 8,
@@ -102,7 +102,7 @@ export const mockMembers = [
     skills: ['Machine Learning', 'Python', 'TensorFlow', 'AI'],
     joinDate: '2023-08-15',
     bio: 'Leading AI initiatives and ML projects',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 9,
@@ -114,7 +114,7 @@ export const mockMembers = [
     skills: ['Deep Learning', 'Python', 'Data Science'],
     joinDate: '2022-08-15',
     bio: 'Supporting AI team with advanced ML expertise',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 10,
@@ -126,7 +126,7 @@ export const mockMembers = [
     skills: ['Blockchain', 'IoT', 'Cloud Computing'],
     joinDate: '2023-08-15',
     bio: 'Exploring cutting-edge technologies and innovations',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 11,
@@ -138,7 +138,7 @@ export const mockMembers = [
     skills: ['AR/VR', 'Web3', 'Cloud'],
     joinDate: '2023-08-15',
     bio: 'Co-leading emerging tech research and development',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 12,
@@ -150,7 +150,7 @@ export const mockMembers = [
     skills: ['Competitive Programming', 'Algorithms', 'DSA'],
     joinDate: '2023-08-15',
     bio: 'Managing coding competitions and hackathons',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 13,
@@ -162,7 +162,7 @@ export const mockMembers = [
     skills: ['Public Relations', 'Communication', 'Marketing'],
     joinDate: '2023-08-15',
     bio: 'Managing public relations and outreach',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 14,
@@ -174,7 +174,7 @@ export const mockMembers = [
     skills: ['Social Media', 'Content Creation', 'Marketing'],
     joinDate: '2024-08-15',
     bio: 'Supporting PR activities and social media management',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 15,
@@ -186,7 +186,7 @@ export const mockMembers = [
     skills: ['C++', 'Python', 'Algorithms', 'Problem Solving'],
     joinDate: '2023-08-15',
     bio: 'Leading programming team and competitive coding',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 16,
@@ -198,7 +198,7 @@ export const mockMembers = [
     skills: ['Java', 'DSA', 'Competitive Programming'],
     joinDate: '2023-08-15',
     bio: 'Co-leading programming initiatives and training',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 17,
@@ -210,7 +210,7 @@ export const mockMembers = [
     skills: ['UI/UX Design', 'Figma', 'Graphic Design', 'Video Editing'],
     joinDate: '2023-08-15',
     bio: 'Leading design team and creating visual content',
-    image: null,
+    image: '/test-profile.svg',
   },
 
   // Development Team Members
@@ -224,7 +224,7 @@ export const mockMembers = [
     skills: ['React', 'JavaScript', 'Web Development'],
     joinDate: '2024-08-15',
     bio: 'Building modern web applications',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 19,
@@ -236,7 +236,7 @@ export const mockMembers = [
     skills: ['Node.js', 'Backend', 'APIs'],
     joinDate: '2024-08-15',
     bio: 'Backend development enthusiast',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 20,
@@ -248,7 +248,7 @@ export const mockMembers = [
     skills: ['Frontend', 'CSS', 'JavaScript'],
     joinDate: '2024-08-15',
     bio: 'Creating beautiful user interfaces',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 21,
@@ -260,7 +260,7 @@ export const mockMembers = [
     skills: ['HTML', 'CSS', 'JavaScript'],
     joinDate: '2024-08-15',
     bio: 'Learning web development',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 22,
@@ -272,7 +272,7 @@ export const mockMembers = [
     skills: ['React', 'Frontend'],
     joinDate: '2024-08-15',
     bio: 'Frontend development learner',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 23,
@@ -284,7 +284,7 @@ export const mockMembers = [
     skills: ['JavaScript', 'Web Development'],
     joinDate: '2024-08-15',
     bio: 'Aspiring full stack developer',
-    image: null,
+    image: '/test-profile.svg',
   },
 
   // AI Team Members
@@ -298,7 +298,7 @@ export const mockMembers = [
     skills: ['Machine Learning', 'Python', 'TensorFlow'],
     joinDate: '2023-08-15',
     bio: 'AI and ML enthusiast',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 25,
@@ -310,7 +310,7 @@ export const mockMembers = [
     skills: ['Deep Learning', 'Python', 'Neural Networks'],
     joinDate: '2024-08-15',
     bio: 'Exploring deep learning',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 26,
@@ -322,7 +322,7 @@ export const mockMembers = [
     skills: ['Machine Learning', 'Data Science', 'Python'],
     joinDate: '2024-08-15',
     bio: 'Data science and ML practitioner',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 27,
@@ -334,7 +334,7 @@ export const mockMembers = [
     skills: ['AI', 'Python', 'Machine Learning'],
     joinDate: '2024-08-15',
     bio: 'AI research enthusiast',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 28,
@@ -346,7 +346,7 @@ export const mockMembers = [
     skills: ['Python', 'Machine Learning'],
     joinDate: '2024-08-15',
     bio: 'Learning AI and ML',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 29,
@@ -358,7 +358,7 @@ export const mockMembers = [
     skills: ['Python', 'Data Analysis'],
     joinDate: '2024-08-15',
     bio: 'Data analysis and AI learner',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 30,
@@ -370,7 +370,7 @@ export const mockMembers = [
     skills: ['Python', 'Machine Learning'],
     joinDate: '2024-08-15',
     bio: 'Aspiring ML engineer',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 31,
@@ -382,7 +382,7 @@ export const mockMembers = [
     skills: ['Python', 'AI'],
     joinDate: '2024-08-15',
     bio: 'AI enthusiast',
-    image: null,
+    image: '/test-profile.svg',
   },
 
   // Emerging Tech Members
@@ -396,7 +396,7 @@ export const mockMembers = [
     skills: ['Blockchain', 'Web3'],
     joinDate: '2024-08-15',
     bio: 'Blockchain technology explorer',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 33,
@@ -408,7 +408,7 @@ export const mockMembers = [
     skills: ['IoT', 'Cloud Computing'],
     joinDate: '2024-08-15',
     bio: 'IoT and cloud enthusiast',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 34,
@@ -420,7 +420,7 @@ export const mockMembers = [
     skills: ['AR/VR', 'Emerging Tech'],
     joinDate: '2024-08-15',
     bio: 'Exploring AR/VR technologies',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 35,
@@ -432,7 +432,7 @@ export const mockMembers = [
     skills: ['Cloud', 'DevOps'],
     joinDate: '2024-08-15',
     bio: 'Cloud computing learner',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 36,
@@ -444,7 +444,7 @@ export const mockMembers = [
     skills: ['Blockchain', 'Web3'],
     joinDate: '2024-08-15',
     bio: 'Web3 technology enthusiast',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 37,
@@ -456,7 +456,7 @@ export const mockMembers = [
     skills: ['IoT', 'Emerging Tech'],
     joinDate: '2024-08-15',
     bio: 'Emerging technologies explorer',
-    image: null,
+    image: '/test-profile.svg',
   },
 
   // Competition Management Members
@@ -470,7 +470,7 @@ export const mockMembers = [
     skills: ['Competitive Programming', 'Algorithms', 'DSA'],
     joinDate: '2023-08-15',
     bio: 'Competitive programming expert',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 39,
@@ -482,7 +482,7 @@ export const mockMembers = [
     skills: ['Problem Solving', 'Algorithms'],
     joinDate: '2024-08-15',
     bio: 'Problem solving enthusiast',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 40,
@@ -494,7 +494,7 @@ export const mockMembers = [
     skills: ['Competitive Programming', 'DSA'],
     joinDate: '2024-08-15',
     bio: 'Learning competitive programming',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 41,
@@ -506,7 +506,7 @@ export const mockMembers = [
     skills: ['Algorithms', 'Problem Solving'],
     joinDate: '2023-08-15',
     bio: 'Algorithm design enthusiast',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 42,
@@ -518,7 +518,7 @@ export const mockMembers = [
     skills: ['DSA', 'Competitive Programming'],
     joinDate: '2024-08-15',
     bio: 'DSA learner',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 43,
@@ -530,7 +530,7 @@ export const mockMembers = [
     skills: ['Problem Solving', 'Algorithms'],
     joinDate: '2024-08-15',
     bio: 'Competitive coding enthusiast',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 44,
@@ -542,7 +542,7 @@ export const mockMembers = [
     skills: ['Algorithms', 'DSA'],
     joinDate: '2024-08-15',
     bio: 'Algorithm enthusiast',
-    image: null,
+    image: '/test-profile.svg',
   },
 
   // PR Team Members
@@ -556,7 +556,7 @@ export const mockMembers = [
     skills: ['Communication', 'Social Media', 'Marketing'],
     joinDate: '2024-08-15',
     bio: 'Social media and PR specialist',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 46,
@@ -568,7 +568,7 @@ export const mockMembers = [
     skills: ['Public Relations', 'Content Creation'],
     joinDate: '2024-08-15',
     bio: 'Content creator and PR enthusiast',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 47,
@@ -580,7 +580,7 @@ export const mockMembers = [
     skills: ['Communication', 'Marketing'],
     joinDate: '2024-08-15',
     bio: 'Marketing and communication learner',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 48,
@@ -592,7 +592,7 @@ export const mockMembers = [
     skills: ['Public Relations', 'Social Media'],
     joinDate: '2024-08-15',
     bio: 'PR and social media enthusiast',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 49,
@@ -604,7 +604,7 @@ export const mockMembers = [
     skills: ['Marketing', 'Communication'],
     joinDate: '2023-08-15',
     bio: 'Marketing specialist',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 50,
@@ -616,7 +616,7 @@ export const mockMembers = [
     skills: ['Content Creation', 'Social Media'],
     joinDate: '2024-08-15',
     bio: 'Content and social media specialist',
-    image: null,
+    image: '/test-profile.svg',
   },
 
   // Programming Team Members
@@ -630,7 +630,7 @@ export const mockMembers = [
     skills: ['C++', 'Python', 'Algorithms'],
     joinDate: '2023-08-15',
     bio: 'Competitive programmer',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 52,
@@ -642,7 +642,7 @@ export const mockMembers = [
     skills: ['Java', 'DSA', 'Problem Solving'],
     joinDate: '2023-08-15',
     bio: 'DSA and problem solving expert',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 53,
@@ -654,7 +654,7 @@ export const mockMembers = [
     skills: ['C++', 'Algorithms', 'Competitive Programming'],
     joinDate: '2023-08-15',
     bio: 'Algorithm design specialist',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 54,
@@ -666,7 +666,7 @@ export const mockMembers = [
     skills: ['Python', 'DSA'],
     joinDate: '2024-08-15',
     bio: 'DSA enthusiast',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 55,
@@ -678,7 +678,7 @@ export const mockMembers = [
     skills: ['C++', 'Problem Solving'],
     joinDate: '2024-08-15',
     bio: 'Problem solving learner',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 56,
@@ -690,7 +690,7 @@ export const mockMembers = [
     skills: ['Java', 'Algorithms'],
     joinDate: '2024-08-15',
     bio: 'Algorithm enthusiast',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 57,
@@ -702,7 +702,7 @@ export const mockMembers = [
     skills: ['Python', 'DSA'],
     joinDate: '2024-08-15',
     bio: 'Competitive programming learner',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 58,
@@ -714,7 +714,7 @@ export const mockMembers = [
     skills: ['C++', 'Problem Solving'],
     joinDate: '2024-08-15',
     bio: 'Learning competitive programming',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 59,
@@ -726,7 +726,7 @@ export const mockMembers = [
     skills: ['Python', 'Algorithms'],
     joinDate: '2024-08-15',
     bio: 'Algorithm learner',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 60,
@@ -738,7 +738,7 @@ export const mockMembers = [
     skills: ['C++', 'DSA'],
     joinDate: '2024-08-15',
     bio: 'DSA learner',
-    image: null,
+    image: '/test-profile.svg',
   },
 
   // Media & Design Members
@@ -752,7 +752,7 @@ export const mockMembers = [
     skills: ['Graphic Design', 'Photoshop', 'Illustrator'],
     joinDate: '2024-08-15',
     bio: 'Graphic design enthusiast',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 62,
@@ -764,7 +764,7 @@ export const mockMembers = [
     skills: ['UI/UX', 'Figma'],
     joinDate: '2024-08-15',
     bio: 'UI/UX design learner',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 63,
@@ -776,7 +776,7 @@ export const mockMembers = [
     skills: ['Video Editing', 'Design'],
     joinDate: '2024-08-15',
     bio: 'Video editing specialist',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 64,
@@ -788,7 +788,7 @@ export const mockMembers = [
     skills: ['Graphic Design', 'Canva'],
     joinDate: '2024-08-15',
     bio: 'Design enthusiast',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 65,
@@ -800,7 +800,7 @@ export const mockMembers = [
     skills: ['UI/UX', 'Design'],
     joinDate: '2024-08-15',
     bio: 'UI/UX learner',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 66,
@@ -812,7 +812,7 @@ export const mockMembers = [
     skills: ['Graphic Design', 'Video Editing'],
     joinDate: '2023-08-15',
     bio: 'Creative designer',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 67,
@@ -824,7 +824,7 @@ export const mockMembers = [
     skills: ['UI/UX', 'Figma', 'Design'],
     joinDate: '2023-08-15',
     bio: 'UI/UX designer',
-    image: null,
+    image: '/test-profile.svg',
   },
   {
     id: 68,
@@ -836,7 +836,7 @@ export const mockMembers = [
     skills: ['Graphic Design', 'Branding'],
     joinDate: '2023-08-15',
     bio: 'Brand and graphic designer',
-    image: null,
+    image: '/test-profile.svg',
   },
 ];
 

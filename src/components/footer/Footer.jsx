@@ -11,14 +11,14 @@ export default function Footer() {
       { name: 'Leaderboard', path: '/leaderboard' },
     ],
     Resources: [
-      { name: 'Documentation', path: '#' },
-      { name: 'Blog', path: '#' },
-      { name: 'FAQ', path: '#' },
+      { name: 'Documentation', path: '/coming-soon' },
+      { name: 'Blog', path: '/coming-soon' },
+      { name: 'FAQ', path: '/coming-soon' },
     ],
     Connect: [
-      { name: 'GitHub', path: '#' },
-      { name: 'Discord', path: '#' },
-      { name: 'Email', path: '#' },
+      { name: 'GitHub', path: '/coming-soon' },
+      { name: 'Discord', path: '/coming-soon' },
+      { name: 'Email', path: '/coming-soon' },
     ],
   };
 
@@ -29,10 +29,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand Section */}
           <div className="col-span-1">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="text-2xl font-bold text-primary">CC</div>
-              <span className="text-lg font-semibold text-white">
-                Coding Club
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white/10 p-1">
+                <img src="/arcstack_logo.png" alt="Logo" className="w-8 h-8 object-contain" />
+              </div>
+              <span className="text-xl font-bold text-white">
+                ArcStack
               </span>
             </div>
             <p className="text-sm text-gray-400">
@@ -68,18 +70,18 @@ export default function Footer() {
               &copy; {currentYear} Coding Club at KLE. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a
-                href="#"
+              <Link
+                to="/coming-soon"
                 className="text-gray-400 hover:text-primary transition-colors duration-200"
               >
                 Privacy Policy
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/coming-soon"
                 className="text-gray-400 hover:text-primary transition-colors duration-200"
               >
                 Terms of Service
-              </a>
+              </Link>
             </div>
           </div>
         </div>

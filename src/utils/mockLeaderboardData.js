@@ -1,237 +1,132 @@
-/**
- * Mock Leaderboard Data
- * Temporary data for development and testing
- */
-
-export const mockStudentRankings = [
+export const mockLeaderboard = [
   {
     id: 1,
     rank: 1,
-    name: 'Alice Chen',
-    branch: 'Computer Science',
-    year: 4,
-    points: 2450,
-    achievements: 15,
-    contests: 12,
-    level: 'Expert',
+    name: 'Aditya Sharma',
+    points: 2500,
+    year: '3',
+    department: 'CSE',
+    division: 'A',
+    cluster: 'Development',
+    events: ['HackTheFuture 2025', 'Web Dev Bootcamp'],
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Aditya',
+    badges: ['🏆', '⚡', '💻'],
   },
   {
     id: 2,
     rank: 2,
-    name: 'Bob Martinez',
-    branch: 'Computer Science',
-    year: 3,
-    points: 2180,
-    achievements: 12,
-    contests: 10,
-    level: 'Advanced',
+    name: 'Riya Patel',
+    points: 2350,
+    year: '3',
+    department: 'CSE',
+    division: 'B',
+    cluster: 'AI',
+    events: ['AI & ML Symposium', 'HackTheFuture 2025'],
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Riya',
+    badges: ['🥈', '🧠'],
   },
   {
     id: 3,
     rank: 3,
-    name: 'Carol Singh',
-    branch: 'Information Technology',
-    year: 2,
-    points: 1950,
-    achievements: 11,
-    contests: 9,
-    level: 'Advanced',
+    name: 'Karthik N',
+    points: 2200,
+    year: '2',
+    department: 'ECE',
+    division: 'A',
+    cluster: 'Programming',
+    events: ['Competitive Programming 101'],
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Karthik',
+    badges: ['🥉', '🚀'],
   },
   {
     id: 4,
     rank: 4,
-    name: 'David Lee',
-    branch: 'Computer Science',
-    year: 4,
-    points: 1720,
-    achievements: 9,
-    contests: 8,
-    level: 'Intermediate',
+    name: 'Sneha Gupta',
+    points: 2100,
+    year: '4',
+    department: 'CSE',
+    division: 'C',
+    cluster: 'Emerging Tech',
+    events: ['Intro to Cloud Computing', 'Tech Talk'],
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sneha',
+    badges: ['☁️'],
   },
   {
     id: 5,
     rank: 5,
-    name: 'Emma Wilson',
-    branch: 'Data Science',
-    year: 3,
-    points: 1520,
-    achievements: 8,
-    contests: 7,
-    level: 'Intermediate',
+    name: 'Rahul Verma',
+    points: 1950,
+    year: '2',
+    department: 'ISE',
+    division: 'A',
+    cluster: 'Development',
+    events: ['Web Dev Bootcamp'],
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Rahul',
+    badges: ['👨‍💻'],
   },
   {
     id: 6,
     rank: 6,
-    name: 'Frank Johnson',
-    branch: 'Computer Science',
-    year: 2,
-    points: 1380,
-    achievements: 7,
-    contests: 6,
-    level: 'Intermediate',
+    name: 'Priya Singh',
+    points: 1800,
+    year: '3',
+    department: 'CSE',
+    division: 'B',
+    cluster: 'Media & Design',
+    events: ['UI/UX Design Workshop'],
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Priya',
+    badges: ['🎨'],
   },
   {
     id: 7,
     rank: 7,
-    name: 'Grace Park',
-    branch: 'Information Technology',
-    year: 3,
-    points: 1290,
-    achievements: 6,
-    contests: 6,
-    level: 'Beginner',
+    name: 'Amit Kumar',
+    points: 1750,
+    year: '1',
+    department: 'CSE',
+    division: 'D',
+    cluster: 'Programming',
+    events: ['Competitive Programming 101'],
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Amit',
+    badges: ['⚡'],
   },
   {
     id: 8,
     rank: 8,
-    name: 'Henry Zhang',
-    branch: 'Computer Science',
-    year: 4,
-    points: 1150,
-    achievements: 5,
-    contests: 5,
-    level: 'Beginner',
+    name: 'Neha Roy',
+    points: 1600,
+    year: '2',
+    department: 'ECE',
+    division: 'B',
+    cluster: 'PR',
+    events: ['HackTheFuture 2025'],
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Neha',
+    badges: ['📢'],
   },
   {
     id: 9,
     rank: 9,
-    name: 'Iris Brown',
-    branch: 'Data Science',
-    year: 2,
-    points: 980,
-    achievements: 4,
-    contests: 4,
-    level: 'Beginner',
+    name: 'Vikram Singh',
+    points: 1550,
+    year: '3',
+    department: 'CSE',
+    division: 'A',
+    cluster: 'Competition',
+    events: ['HackTheFuture 2025'],
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Vikram',
+    badges: ['🎯'],
   },
   {
     id: 10,
     rank: 10,
-    name: 'Jack Davis',
-    branch: 'Information Technology',
-    year: 3,
-    points: 850,
-    achievements: 3,
-    contests: 3,
-    level: 'Beginner',
+    name: 'Anjali Rao',
+    points: 1400,
+    year: '4',
+    department: 'ISE',
+    division: 'A',
+    cluster: 'AI',
+    events: ['AI & ML Symposium'],
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anjali',
+    badges: ['🤖'],
   },
 ];
-
-export const mockBranchRankings = [
-  {
-    id: 1,
-    rank: 1,
-    branch: 'Computer Science',
-    totalMembers: 45,
-    totalPoints: 28500,
-    averagePoints: 633,
-    achievements: 120,
-    contests: 95,
-    level: 'Expert',
-  },
-  {
-    id: 2,
-    rank: 2,
-    branch: 'Information Technology',
-    totalMembers: 38,
-    totalPoints: 22100,
-    averagePoints: 582,
-    achievements: 95,
-    contests: 75,
-    level: 'Advanced',
-  },
-  {
-    id: 3,
-    rank: 3,
-    branch: 'Data Science',
-    totalMembers: 28,
-    totalPoints: 18200,
-    averagePoints: 650,
-    achievements: 85,
-    contests: 62,
-    level: 'Advanced',
-  },
-];
-
-export const mockYearWiseRankings = [
-  {
-    id: 1,
-    rank: 1,
-    year: 4,
-    totalMembers: 52,
-    totalPoints: 25800,
-    averagePoints: 496,
-    achievements: 105,
-    contests: 82,
-    level: 'Expert',
-  },
-  {
-    id: 2,
-    rank: 2,
-    year: 3,
-    totalMembers: 48,
-    totalPoints: 23400,
-    averagePoints: 488,
-    achievements: 98,
-    contests: 78,
-    level: 'Advanced',
-  },
-  {
-    id: 3,
-    rank: 3,
-    year: 2,
-    totalMembers: 45,
-    totalPoints: 19600,
-    averagePoints: 436,
-    achievements: 82,
-    contests: 65,
-    level: 'Intermediate',
-  },
-];
-
-/**
- * Get top students
- * @param {number} limit - Number of top students to return
- * @returns {Array} Top students sorted by points
- */
-export function getTopStudents(limit = 10) {
-  return mockStudentRankings.slice(0, limit);
-}
-
-/**
- * Get branch rankings
- * @returns {Array} Branch rankings sorted by points
- */
-export function getBranchRankings() {
-  return mockBranchRankings;
-}
-
-/**
- * Get year-wise rankings
- * @returns {Array} Year rankings sorted by points
- */
-export function getYearWiseRankings() {
-  return mockYearWiseRankings;
-}
-
-/**
- * Search student by name or rank
- * @param {string} query - Search query
- * @returns {Array} Matching students
- */
-export function searchStudent(query) {
-  const lowerQuery = query.toLowerCase();
-  return mockStudentRankings.filter(
-    (student) =>
-      student.name.toLowerCase().includes(lowerQuery) ||
-      student.branch.toLowerCase().includes(lowerQuery)
-  );
-}
-
-/**
- * Get student by ID
- * @param {number} id - Student ID
- * @returns {Object} Student object or null
- */
-export function getStudentById(id) {
-  return mockStudentRankings.find((student) => student.id === id) || null;
-}
