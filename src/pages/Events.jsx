@@ -19,8 +19,10 @@ export default function Events() {
       <div className="relative max-w-7xl mx-auto px-4 pt-32 pb-20">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-            Events & Workshops
+          <h1 className="text-6xl md:text-8xl font-black mb-8 leading-tight animate-slide-up">
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent drop-shadow-2xl">
+              Events & Workshops
+            </span>
           </h1>
           <p className="text-xl text-cyan-100/70 max-w-2xl mx-auto">
             Discover opportunities to learn, compete, and grow with our community
@@ -28,29 +30,29 @@ export default function Events() {
         </div>
 
         {/* View Toggle */}
-          <div className="flex justify-center mb-12">
-            <div className="bg-slate-900/50 backdrop-blur-xl border border-cyan-500/30 p-1 rounded-xl flex gap-2">
-              <Link
-                to="/events"
-                className={`px-6 py-2 rounded-lg font-bold transition-all duration-300 ${activeTab === 'club-wise'
-                  ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg'
-                  : 'text-cyan-100/60 hover:text-white hover:bg-white/5'
-                  }`}
-              >
-                Club-wise View
-              </Link>
+        <div className="flex justify-center mb-12">
+          <div className="bg-slate-900/50 backdrop-blur-xl border border-cyan-500/30 p-1 rounded-xl flex gap-2">
+            <Link
+              to="/events"
+              className={`px-6 py-2 rounded-lg font-bold transition-all duration-300 ${activeTab === 'club-wise'
+                ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg'
+                : 'text-cyan-100/60 hover:text-white hover:bg-white/5'
+                }`}
+            >
+              Club-wise View
+            </Link>
 
-              <Link
-                to="/event-timeline"
-                className={`px-6 py-2 rounded-lg font-bold transition-all duration-300 ${activeTab === 'timeline'
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-600 text-white shadow-lg'
-                  : 'text-cyan-100/60 hover:text-white hover:bg-white/5'
-                  }`}
-              >
-                Timeline View
-              </Link>
-            </div>
+            <Link
+              to="/event-timeline"
+              className={`px-6 py-2 rounded-lg font-bold transition-all duration-300 ${activeTab === 'timeline'
+                ? 'bg-gradient-to-r from-purple-500 to-pink-600 text-white shadow-lg'
+                : 'text-cyan-100/60 hover:text-white hover:bg-white/5'
+                }`}
+            >
+              Timeline View
+            </Link>
           </div>
+        </div>
 
         {/* Content */}
         <div className="min-h-[600px]">

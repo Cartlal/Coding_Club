@@ -15,8 +15,10 @@ export default function Clusters() {
             <div className="relative max-w-7xl mx-auto px-4 pt-32 pb-20">
                 {/* Header */}
                 <div className="text-center mb-20">
-                    <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-                        Our Clusters
+                    <h1 className="text-6xl md:text-8xl font-black mb-8 leading-tight animate-slide-up">
+                        <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent drop-shadow-2xl">
+                            Our Clusters
+                        </span>
                     </h1>
                     <p className="text-xl text-cyan-100/70 max-w-3xl mx-auto">
                         Specialized domains where innovation happens. Explore our diverse technical and creative clusters.
