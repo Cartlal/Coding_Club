@@ -13,7 +13,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white flex items-center justify-center p-4 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white flex items-center justify-center pt-32 pb-4 px-4 overflow-hidden">
       {/* Background Particles */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
@@ -64,7 +64,7 @@ export default function Login() {
                   <input type="checkbox" className="rounded bg-slate-800 border-slate-700 text-cyan-500 focus:ring-cyan-500" />
                   <span className="text-slate-400">Remember me</span>
                 </label>
-                <a href="#" className="text-cyan-400 hover:text-cyan-300 transition-colors">Forgot Password?</a>
+                <Link to="/coming-soon" className="text-cyan-400 hover:text-cyan-300 transition-colors">Forgot Password?</Link>
               </div>
 
               <button

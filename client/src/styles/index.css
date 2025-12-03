@@ -9,8 +9,13 @@
   }
 
   body {
-    @apply bg-white text-gray-900 font-sans;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    @apply bg-slate-950 text-white font-sans min-h-screen;
+    background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+    --tw-gradient-from: #020617 var(--tw-gradient-from-position);
+    --tw-gradient-to: rgb(2 6 23 / 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), #0f172a var(--tw-gradient-via-position), var(--tw-gradient-to);
+    --tw-gradient-via-position: 50%;
+    --tw-gradient-to: #020617 var(--tw-gradient-to-position);
   }
 
   h1,
@@ -41,7 +46,7 @@
   }
 
   .card {
-    @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200;
+    @apply bg-slate-900/50 backdrop-blur-sm border border-white/10 rounded-lg shadow-md hover:shadow-lg transition-all duration-200;
   }
 }
 
