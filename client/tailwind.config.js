@@ -7,6 +7,7 @@ export default {
         primary: '#3b82f6', // blue-500
         secondary: '#1e40af', // blue-800
         accent: '#06b6d4', // cyan-500
+        'pitch-dark': '#000000', // pure black background
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
