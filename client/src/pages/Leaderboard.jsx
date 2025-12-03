@@ -46,10 +46,12 @@ export default function Leaderboard() {
         <div className="absolute top-0 left-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 animate-pulse" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 py-20">
+      <div className="relative max-w-7xl mx-auto px-4 pt-32 pb-20">
         <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 bg-clip-text text-transparent">
-            Leaderboard
+          <h1 className="text-6xl md:text-8xl font-black mb-8 leading-tight animate-slide-up">
+            <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 bg-clip-text text-transparent drop-shadow-2xl">
+              Leaderboard
+            </span>
           </h1>
           <p className="text-xl text-slate-400">
             Celebrating our top performers and contributors
@@ -73,7 +75,7 @@ export default function Leaderboard() {
                 <select
                   value={filters[filter.key]}
                   onChange={(e) => setFilters(prev => ({ ...prev, [filter.key]: e.target.value }))}
-                  className="w-full px-4 py-2 rounded-lg bg-slate-900/80 border border-slate-700 text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all"
+                  className="w-full px-4 py-2 rounded-lg bg-slate-900/80 border border-slate-700 text-white focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none transition-all"
                 >
                   {filter.options.map(opt => (
                     <option key={opt} value={opt}>{opt}</option>

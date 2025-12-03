@@ -12,11 +12,13 @@ export default function Clusters() {
                 <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
             </div>
 
-            <div className="relative max-w-7xl mx-auto px-4 py-20">
+            <div className="relative max-w-7xl mx-auto px-4 pt-32 pb-20">
                 {/* Header */}
                 <div className="text-center mb-20">
-                    <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-                        Our Clusters
+                    <h1 className="text-6xl md:text-8xl font-black mb-8 leading-tight animate-slide-up">
+                        <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent drop-shadow-2xl">
+                            Our Clusters
+                        </span>
                     </h1>
                     <p className="text-xl text-cyan-100/70 max-w-3xl mx-auto">
                         Specialized domains where innovation happens. Explore our diverse technical and creative clusters.
@@ -31,8 +33,8 @@ export default function Clusters() {
                                 key={cluster.id}
                                 onClick={() => setActiveCluster(cluster.id)}
                                 className={`w-full text-left p-4 rounded-xl transition-all duration-300 border group ${activeCluster === cluster.id
-                                        ? `bg-gradient-to-r ${cluster.gradient} border-transparent shadow-lg transform scale-105`
-                                        : `bg-slate-800/30 border-slate-700/50 hover:bg-slate-800/50 hover:border-${cluster.text.split('-')[1]}-500/50`
+                                    ? `bg-gradient-to-r ${cluster.gradient} border-transparent shadow-lg transform scale-105`
+                                    : `bg-slate-800/30 border-slate-700/50 hover:bg-slate-800/50 hover:border-${cluster.text.split('-')[1]}-500/50`
                                     }`}
                             >
                                 <div className="flex items-center gap-4">

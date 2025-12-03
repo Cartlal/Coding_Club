@@ -1,137 +1,110 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useTheme } from '@/context/ThemeContext';
+import { useState, useEffect } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+    const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+    const navLinks = [
+        { name: 'Home', path: '/' },
+        { name: 'Events', path: '/events' },
+        { name: 'About Us', path: '/about' },
+        { name: 'Clusters', path: '/clusters' },
+        { name: 'Leaderboard', path: '/leaderboard' },
+    ];
 
-  const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Events', path: '/events' },
-    { name: 'About Us', path: '/about' },
-    { name: 'Clusters', path: '/clusters' },
-    { name: 'Leaderboard', path: '/leaderboard' },
-  ];
+    // Close mobile menu when the route changes
+    useEffect(() => {
+        setIsOpen(false);
+    }, [location.pathname]);
 
-  return (
-    <nav className="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold text-primary">CC</div>
-            <span className="hidden sm:inline text-lg font-semibold text-gray-900 dark:text-white transition-colors duration-300">
-              Coding Club
-            </span>
-          </Link>
+    return (
+        <div className="fixed inset-x-0 top-4 z-50 flex justify-center pointer-events-none">
+            <header className="w-full max-w-4xl px-4 pointer-events-auto">
+                <nav className="rounded-full px-4 py-2 flex items-center justify-between shadow-lg border border-white/10 bg-slate-900/50 backdrop-blur-md">
+                    <div className="flex items-center gap-2">
+                        <Link to="/" className="flex items-center gap-2">
+                            <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white/10 p-1">
+                                <img src="/arcstack_logo.png" alt="Logo" className="w-8 h-8 object-contain" />
+                            </div>
+                            <span className="hidden sm:inline text-lg font-bold text-white">ArcStack</span>
+                        </Link>
+                    </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8 items-center">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium transition-colors duration-200"
-              >
-                {link.name}
-              </Link>
-            ))}
+                    <div className="hidden md:flex items-center gap-6">
+                        {navLinks.map((link) => (
+                            <NavLink
+                                key={link.path}
+                                to={link.path}
+                                className={({ isActive }) =>
+                                    `text-sm font-medium transition-all duration-200 ${isActive
+                                        ? 'bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent font-bold'
+                                        : 'text-white/80 hover:text-white'
+                                    }`
+                                }
+                            >
+                                {link.name}
+                            </NavLink>
+                        ))}
+                    </div>
 
-            {/* Theme Toggle Button */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary"
-              title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-            >
-              {theme === 'light' ? (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.293 2.293a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zm2.828 4.828a1 1 0 011.414-1.414l.707.707a1 1 0 11-1.414 1.414l-.707-.707zm0 2.828a1 1 0 011.414 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707zm2.828 2.829a1 1 0 011.414-1.415l.707.707a1 1 0 11-1.414 1.414l-.707-.707zm-8.486 2.828a1 1 0 011.414 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707zM5.707 5.707a1 1 0 010 1.414L5 7.121a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zm-2.828 4.828a1 1 0 011.414-1.414l.707.707a1 1 0 11-1.414 1.414l-.707-.707zm0 2.828a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707zM3 10a1 1 0 011-1h1a1 1 0 110 2H4a1 1 0 01-1-1zm16 0a1 1 0 011-1h1a1 1 0 110 2h-1a1 1 0 01-1-1zm-5-5a1 1 0 100-2 1 1 0 000 2zM10 17a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
-                </svg>
-              )}
-            </button>
+                    <div className="flex items-center gap-3">
+                        <Link
+                            to="/login"
+                            className="hidden md:inline-block px-5 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 text-sm shadow-md"
+                        >
+                            Login
+                        </Link>
 
-            <Link
-              to="/login"
-              className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
-            >
-              Login
-            </Link>
-          </div>
+                        {/* Mobile menu button */}
+                        <button
+                            onClick={() => setIsOpen((s) => !s)}
+                            className="md:hidden flex items-center justify-center w-11 h-11 rounded-lg bg-white/6"
+                            aria-label="Toggle navigation"
+                            aria-expanded={isOpen}
+                        >
+                            <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                {isOpen ? (
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                ) : (
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                                )}
+                            </svg>
+                        </button>
+                    </div>
+                </nav>
 
-          {/* Mobile Menu Button and Theme Toggle */}
-          <div className="md:hidden flex items-center gap-2">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary"
-              title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-            >
-              {theme === 'light' ? (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.293 2.293a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zm2.828 4.828a1 1 0 011.414-1.414l.707.707a1 1 0 11-1.414 1.414l-.707-.707zm0 2.828a1 1 0 011.414 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707zm2.828 2.829a1 1 0 011.414-1.415l.707.707a1 1 0 11-1.414 1.414l-.707-.707zm-8.486 2.828a1 1 0 011.414 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707zM5.707 5.707a1 1 0 010 1.414L5 7.121a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zm-2.828 4.828a1 1 0 011.414-1.414l.707.707a1 1 0 11-1.414 1.414l-.707-.707zm0 2.828a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707zM3 10a1 1 0 011-1h1a1 1 0 110 2H4a1 1 0 01-1-1zm16 0a1 1 0 011-1h1a1 1 0 110 2h-1a1 1 0 01-1-1zm-5-5a1 1 0 100-2 1 1 0 000 2zM10 17a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
-                </svg>
-              )}
-            </button>
+                {/* Mobile menu */}
+                <div className={`mt-3 md:hidden ${isOpen ? 'block' : 'hidden'}`}>
+                    <div className="rounded-2xl shadow-md overflow-hidden bg-gradient-to-r from-primary/25 to-secondary/25 backdrop-blur-md border border-white/10 text-white">
+                        <div className="flex flex-col p-3">
+                            {navLinks.map((link) => (
+                                <NavLink
+                                    key={link.path}
+                                    to={link.path}
+                                    onClick={() => setIsOpen(false)}
+                                    className={({ isActive }) =>
+                                        `block px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 ${isActive
+                                            ? 'bg-white/10 text-cyan-400 font-bold'
+                                            : 'text-white/90 hover:bg-white/5'
+                                        }`
+                                    }
+                                >
+                                    {link.name}
+                                </NavLink>
+                            ))}
 
-            <button
-              onClick={toggleMenu}
-              className="flex flex-col space-y-1.5 focus:outline-none"
-              aria-label="Toggle menu"
-            >
-              <span
-                className={`w-6 h-0.5 bg-gray-900 dark:bg-white transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2.5' : ''
-                  }`}
-              ></span>
-              <span
-                className={`w-6 h-0.5 bg-gray-900 dark:bg-white transition-all duration-300 ${isOpen ? 'opacity-0' : ''
-                  }`}
-              ></span>
-              <span
-                className={`w-6 h-0.5 bg-gray-900 dark:bg-white transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2.5' : ''
-                  }`}
-              ></span>
-            </button>
-          </div>
+                            <Link
+                                to="/login"
+                                onClick={() => setIsOpen(false)}
+                                className="mt-2 px-4 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl text-center shadow-lg"
+                            >
+                                Login
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </header>
         </div>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden pb-4 space-y-2 animate-slideDown">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary rounded-lg transition-colors duration-200"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <Link
-              to="/login"
-              className="block px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 text-center"
-              onClick={() => setIsOpen(false)}
-            >
-              Login
-            </Link>
-          </div>
-        )}
-      </div>
-    </nav>
-  );
+    );
 }
-

@@ -82,7 +82,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
+      <section className="relative min-h-screen flex items-center justify-center px-4 pt-32 pb-20">
         {/* 3D Floating Geometric Shapes */}
         <div className="absolute inset-0 overflow-hidden">
           <div
@@ -101,12 +101,7 @@ export default function Home() {
         </div>
 
         <div className="relative max-w-7xl mx-auto text-center z-10">
-          {/* Badge */}
-          <div className="mb-8 animate-fade-in">
-            <span className="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-600/20 border border-cyan-500/30 backdrop-blur-xl text-cyan-300 font-semibold text-sm">
-              Welcome to Coding Club
-            </span>
-          </div>
+          {/* Badge removed per request */}
 
           {/* Main Heading with 3D Effect */}
           <h1 className="text-6xl md:text-8xl font-black mb-8 leading-tight animate-slide-up">
