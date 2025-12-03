@@ -15,11 +15,11 @@ import ComingSoon from '@/pages/ComingSoon';
 export default function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen pt-16 transition-colors duration-300">
+      <div className="flex flex-col min-h-screen pt-16 transition-colors duration-300 bg-pitch-dark">
         <Navbar />
 
         {/* Main Content */}
-        <main className="flex-grow">
+        <main className="flex-grow bg-pitch-dark">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/events" element={<Events />} />
