@@ -5,7 +5,7 @@ export default function Clusters() {
     const [activeCluster, setActiveCluster] = useState(mockClusters[0].id);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden">
+        <div className="min-h-screen bg-pitch-dark text-white overflow-hidden">
             {/* Background Particles */}
             <div className="fixed inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />

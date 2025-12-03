@@ -52,7 +52,7 @@ export default function Members() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
+    <div className="min-h-screen bg-pitch-dark relative overflow-hidden">
 
       {/* Animated Particle Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

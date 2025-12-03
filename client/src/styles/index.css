@@ -9,13 +9,8 @@
   }
 
   body {
-    @apply bg-slate-950 text-white font-sans min-h-screen;
-    background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
-    --tw-gradient-from: #020617 var(--tw-gradient-from-position);
-    --tw-gradient-to: rgb(2 6 23 / 0) var(--tw-gradient-to-position);
-    --tw-gradient-stops: var(--tw-gradient-from), #0f172a var(--tw-gradient-via-position), var(--tw-gradient-to);
-    --tw-gradient-via-position: 50%;
-    --tw-gradient-to: #020617 var(--tw-gradient-to-position);
+    @apply text-white font-sans min-h-screen;
+    background-color: #000000;
   }
 
   h1,
