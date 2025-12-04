@@ -58,37 +58,9 @@ export default function Leaderboard() {
           </p>
         </div>
 
-        {/* Filters */}
-        <div className="mb-12 p-6 rounded-2xl bg-slate-800/50 backdrop-blur-xl border border-white/10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {[
-              { label: 'Year', key: 'year', options: uniqueYears },
-              { label: 'Department', key: 'department', options: uniqueDepartments },
-              { label: 'Division', key: 'division', options: uniqueDivisions },
-              { label: 'Cluster', key: 'cluster', options: uniqueClusters },
-              { label: 'Event', key: 'event', options: uniqueEvents },
-            ].map((filter) => (
-              <div key={filter.key} className="space-y-2">
-                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                  {filter.label}
-                </label>
-                <select
-                  value={filters[filter.key]}
-                  onChange={(e) => setFilters(prev => ({ ...prev, [filter.key]: e.target.value }))}
-                  className="w-full px-4 py-2 rounded-lg bg-slate-900/80 border border-slate-700 text-white focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none transition-all"
-                >
-                  {filter.options.map(opt => (
-                    <option key={opt} value={opt}>{opt}</option>
-                  ))}
-                </select>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Podium Section (Only if filters allow showing top 3) */}
         {top3.length > 0 && (
-          <div className="flex flex-wrap justify-center items-end gap-8 mb-20 min-h-[300px]">
+          <div className="flex flex-wrap justify-center items-end gap-8 mb-20 mt-32 min-h-[300px]">
             {/* 2nd Place */}
             {top3[1] && (
               <div className="relative group w-64 order-1 md:order-none">
@@ -142,6 +114,35 @@ export default function Leaderboard() {
             )}
           </div>
         )}
+
+        {/* Filters */}
+        <div className="mb-12 p-6 rounded-2xl bg-slate-800/50 backdrop-blur-xl border border-white/10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {[
+              { label: 'Year', key: 'year', options: uniqueYears },
+              { label: 'Department', key: 'department', options: uniqueDepartments },
+              { label: 'Division', key: 'division', options: uniqueDivisions },
+              { label: 'Cluster', key: 'cluster', options: uniqueClusters },
+              { label: 'Event', key: 'event', options: uniqueEvents },
+            ].map((filter) => (
+              <div key={filter.key} className="space-y-2">
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                  {filter.label}
+                </label>
+                <select
+                  value={filters[filter.key]}
+                  onChange={(e) => setFilters(prev => ({ ...prev, [filter.key]: e.target.value }))}
+                  className="w-full px-4 py-2 rounded-lg bg-slate-900/80 border border-slate-700 text-white focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none transition-all"
+                >
+                  {filter.options.map(opt => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+              </div>
+            ))}
+          </div>
+        </div>
+
 
         {/* Leaderboard Table */}
         <div className="bg-slate-800/30 backdrop-blur-xl rounded-2xl border border-white/5 overflow-hidden">

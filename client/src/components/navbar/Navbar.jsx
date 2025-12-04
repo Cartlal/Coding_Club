@@ -27,7 +27,7 @@ export default function Navbar() {
                             <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white/10 p-1">
                                 <img src="/arcstack_logo.png" alt="Logo" className="w-8 h-8 object-contain" />
                             </div>
-                            <span className="hidden sm:inline text-lg font-bold text-white">ArcStack</span>
+                            <span className="text-lg font-bold text-white">ArcStack</span>
                         </Link>
                     </div>
 

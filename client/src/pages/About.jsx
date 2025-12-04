@@ -1,9 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { mockMembers } from '@/utils/mockMemberData';
 import MemberCardFlip from '@/components/member/MemberCardFlip';
 
 export default function About() {
+    const location = useLocation();
     const [activeTab, setActiveTab] = useState('club'); // 'college', 'club', 'members'
+
+    // Handle URL hash navigation
+    useEffect(() => {
+        if (location.hash === '#members') {
+            setActiveTab('members');
+        }
+    }, [location]);
 
     // Group members by cluster
     const clusters = {
