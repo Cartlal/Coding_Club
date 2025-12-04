@@ -123,7 +123,6 @@ export default function Leaderboard() {
           </div>
         </div>
 
-<<<<<<< HEAD
         {/* Filters */}
         <div className="mb-12 p-6 rounded-2xl bg-slate-800/50 backdrop-blur-xl border border-white/10">
           <div className={`grid gap-4 ${leaderboardType === 'participant' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-5' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'}`}>
@@ -154,8 +153,6 @@ export default function Leaderboard() {
           </div>
         </div>
 
-=======
->>>>>>> 839737eecfb573d0a8a5d9a78e419d8f36811307
         {/* Podium Section (Only if filters allow showing top 3) */}
         {top3.length > 0 && (
           <div className="flex flex-wrap justify-center items-end gap-8 mb-20 mt-32 min-h-[300px]">

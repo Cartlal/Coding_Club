@@ -7,9 +7,9 @@ export default function StatsCards() {
   const sectionRef = useRef(null);
 
   const stats = [
-    { number: 500, label: 'Active Members', icon: <FaUsers className="w-8 h-8" /> },
-    { number: 50, label: 'Events Annually', icon: <FaCalendarDays className="w-8 h-8" /> },
-    { number: 15, label: 'Years Strong', icon: <FaTrophy className="w-8 h-8" /> },
+    { number: 70, label: 'Active Members', icon: <FaUsers className="w-8 h-8" /> },
+    { number: 10, label: 'Events Annually', icon: <FaCalendarDays className="w-8 h-8" /> },
+    { number: 8, label: 'Clusters', icon: <FaTrophy className="w-8 h-8" /> },
   ];
 
   useEffect(() => {
