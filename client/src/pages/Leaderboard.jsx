@@ -3,6 +3,7 @@ import { mockLeaderboard } from '@/utils/mockLeaderboardData';
 import { mockEvents } from '@/utils/mockEventData';
 
 export default function Leaderboard() {
+  const [leaderboardType, setLeaderboardType] = useState('participant'); // 'participant' or 'class'
   const [filters, setFilters] = useState({
     year: 'All',
     department: 'All',
@@ -18,6 +19,41 @@ export default function Leaderboard() {
   const uniqueClusters = ['All', ...new Set(mockLeaderboard.map(p => p.cluster))].sort();
   const uniqueEvents = ['All', ...mockEvents.map(e => e.title)];
 
+  // Compute class-wise leaderboard (grouped by year, department, division)
+  const classWiseLeaderboard = useMemo(() => {
+    const grouped = {};
+    mockLeaderboard.forEach(player => {
+      const className = `${player.year}${player.year === '1' ? 'st' : player.year === '2' ? 'nd' : player.year === '3' ? 'rd' : 'th'} Year ${player.department} ${player.division}`;
+      if (!grouped[className]) {
+        grouped[className] = {
+          className,
+          year: player.year,
+          department: player.department,
+          division: player.division,
+          points: 0,
+          members: [],
+        };
+      }
+      grouped[className].points += player.points;
+      grouped[className].members.push(player);
+    });
+    
+    return Object.values(grouped).sort((a, b) => b.points - a.points).map((cls, idx) => ({
+      ...cls,
+      rank: idx + 1,
+    }));
+  }, []);
+
+  const filteredClassWiseData = useMemo(() => {
+    return classWiseLeaderboard.filter(cls => {
+      return (
+        (filters.year === 'All' || cls.year === filters.year) &&
+        (filters.department === 'All' || cls.department === filters.department) &&
+        (filters.division === 'All' || cls.division === filters.division)
+      );
+    });
+  }, [filters]);
+
   const filteredData = useMemo(() => {
     return mockLeaderboard.filter(player => {
       return (
@@ -30,11 +66,16 @@ export default function Leaderboard() {
     }).sort((a, b) => b.points - a.points); // Ensure sorted by points
   }, [filters]);
 
-  // Re-calculate ranks based on filtered data
-  const rankedData = filteredData.map((player, index) => ({
-    ...player,
-    rank: index + 1
-  }));
+  // Select data based on leaderboard type
+  const displayData = leaderboardType === 'participant' ? filteredData : filteredClassWiseData;
+
+  // Re-calculate ranks based on filtered data (for participant leaderboard)
+  const rankedData = leaderboardType === 'participant' 
+    ? filteredData.map((player, index) => ({
+        ...player,
+        rank: index + 1
+      }))
+    : filteredClassWiseData;
 
   const top3 = rankedData.slice(0, 3);
   const rest = rankedData.slice(3);
@@ -53,20 +94,46 @@ export default function Leaderboard() {
               Leaderboard
             </span>
           </h1>
-          <p className="text-xl text-slate-400">
+          <p className="text-xl text-slate-400 mb-6">
             Celebrating our top performers and contributors
           </p>
+          
+          {/* Leaderboard Type Toggle */}
+          <div className="flex justify-center gap-4">
+            <button
+              onClick={() => setLeaderboardType('participant')}
+              className={`px-6 py-2 rounded-lg font-bold transition-all ${
+                leaderboardType === 'participant'
+                  ? 'bg-orange-500 text-white shadow-lg'
+                  : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50'
+              }`}
+            >
+              Participant Leaderboard
+            </button>
+            <button
+              onClick={() => setLeaderboardType('class')}
+              className={`px-6 py-2 rounded-lg font-bold transition-all ${
+                leaderboardType === 'class'
+                  ? 'bg-orange-500 text-white shadow-lg'
+                  : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50'
+              }`}
+            >
+              Class-wise Leaderboard
+            </button>
+          </div>
         </div>
 
         {/* Filters */}
         <div className="mb-12 p-6 rounded-2xl bg-slate-800/50 backdrop-blur-xl border border-white/10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className={`grid gap-4 ${leaderboardType === 'participant' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-5' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'}`}>
             {[
               { label: 'Year', key: 'year', options: uniqueYears },
               { label: 'Department', key: 'department', options: uniqueDepartments },
               { label: 'Division', key: 'division', options: uniqueDivisions },
-              { label: 'Cluster', key: 'cluster', options: uniqueClusters },
-              { label: 'Event', key: 'event', options: uniqueEvents },
+              ...(leaderboardType === 'participant' ? [
+                { label: 'Cluster', key: 'cluster', options: uniqueClusters },
+                { label: 'Event', key: 'event', options: uniqueEvents },
+              ] : [])
             ].map((filter) => (
               <div key={filter.key} className="space-y-2">
                 <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
@@ -150,52 +217,77 @@ export default function Leaderboard() {
               <thead>
                 <tr className="bg-slate-900/50 text-slate-400 text-sm uppercase tracking-wider">
                   <th className="p-6 font-bold">Rank</th>
-                  <th className="p-6 font-bold">Participant</th>
+                  <th className="p-6 font-bold">{leaderboardType === 'participant' ? 'Participant' : 'Class'}</th>
                   <th className="p-6 font-bold">Points</th>
-                  <th className="p-6 font-bold hidden md:table-cell">Details</th>
-                  <th className="p-6 font-bold hidden lg:table-cell">Cluster</th>
+                  {leaderboardType === 'participant' && (
+                    <th className="p-6 font-bold hidden md:table-cell">Details</th>
+                  )}
+                  {leaderboardType === 'class' && (
+                    <th className="p-6 font-bold hidden md:table-cell">Members</th>
+                  )}
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
-                {rest.map((player) => (
-                  <tr key={player.id} className="hover:bg-white/5 transition-colors">
-                    <td className="p-6">
-                      <span className="font-mono font-bold text-slate-500">#{player.rank}</span>
-                    </td>
-                    <td className="p-6">
-                      <div className="flex items-center gap-4">
-                        <img src={player.avatar} alt={player.name} className="w-10 h-10 rounded-full bg-slate-700" />
-                        <div>
-                          <div className="font-bold text-white">{player.name}</div>
-                          <div className="text-xs text-slate-400 md:hidden">
-                            {player.year} Year • {player.department}
+                {leaderboardType === 'participant' ? (
+                  rest.map((player) => (
+                    <tr key={player.id} className="hover:bg-white/5 transition-colors">
+                      <td className="p-6">
+                        <span className="font-mono font-bold text-slate-500">#{player.rank}</span>
+                      </td>
+                      <td className="p-6">
+                        <div className="flex items-center gap-4">
+                          <img src={player.avatar} alt={player.name} className="w-10 h-10 rounded-full bg-slate-700" />
+                          <div>
+                            <div className="font-bold text-white">{player.name}</div>
+                            <div className="text-xs text-slate-400 md:hidden">
+                              {player.year} Year • {player.department}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </td>
-                    <td className="p-6">
-                      <div className="font-mono font-bold text-cyan-400">{player.points}</div>
-                    </td>
-                    <td className="p-6 hidden md:table-cell">
-                      <div className="text-sm text-slate-300">
-                        <span className="px-2 py-1 rounded bg-slate-700/50 mr-2">Year {player.year}</span>
-                        <span className="px-2 py-1 rounded bg-slate-700/50">{player.department} - {player.division}</span>
-                      </div>
-                    </td>
-                    <td className="p-6 hidden lg:table-cell">
-                      <span className="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-sm border border-cyan-500/20">
-                        {player.cluster}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
+                      </td>
+                      <td className="p-6">
+                        <div className="font-mono font-bold text-cyan-400">{player.points}</div>
+                      </td>
+                      <td className="p-6 hidden md:table-cell">
+                        <div className="text-sm text-slate-300">
+                          <span className="px-2 py-1 rounded bg-slate-700/50 mr-2">Year {player.year}</span>
+                          <span className="px-2 py-1 rounded bg-slate-700/50">{player.department} - {player.division}</span>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  filteredClassWiseData.map((cls) => (
+                    <tr key={cls.className} className="hover:bg-white/5 transition-colors">
+                      <td className="p-6">
+                        <span className="font-mono font-bold text-slate-500">#{cls.rank}</span>
+                      </td>
+                      <td className="p-6">
+                        <div>
+                          <div className="font-bold text-white">{cls.className}</div>
+                          <div className="text-xs text-slate-400 md:hidden">
+                            {cls.members.length} members
+                          </div>
+                        </div>
+                      </td>
+                      <td className="p-6">
+                        <div className="font-mono font-bold text-cyan-400">{cls.points}</div>
+                      </td>
+                      <td className="p-6 hidden md:table-cell">
+                        <div className="text-sm text-slate-300">
+                          {cls.members.length} members
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
 
           {rankedData.length === 0 && (
             <div className="p-12 text-center text-slate-400">
-              No participants found matching the selected filters.
+              No {leaderboardType === 'participant' ? 'participants' : 'classes'} found matching the selected filters.
             </div>
           )}
         </div>

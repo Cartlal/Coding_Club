@@ -152,7 +152,7 @@ export default function CTASection() {
             
             {/* Footer Note */}
             <div className="mt-10 pt-6 border-t border-slate-700/50 transform transition-all duration-700 delay-700 opacity-0 animate-fade-up">
-              <div className="relative">
+              <div className="relative inline-block">
                 <p className="text-sm text-slate-500 font-mono tracking-wide animate-typewriter">
                   <span className="text-cyan-400/60 mr-2">$</span> 
                   <span className="text-slate-400">Be a part of KLE Tech's coding community!</span>

@@ -2,14 +2,14 @@ import { useState, useMemo } from 'react';
 import EventCard from '@/components/event/EventCard';
 import { mockEvents } from '@/utils/mockEventData';
 
-export default function EventsList() {
+export default function EventsList({ events = mockEvents }) {
     const [selectedClub, setSelectedClub] = useState('All');
     const clubs = ['All', 'Development', 'AI', 'Emerging Tech', 'Competition', 'Programming', 'Media & Design'];
 
     const filteredEvents = useMemo(() => {
-        if (selectedClub === 'All') return mockEvents;
-        return mockEvents.filter(event => event.club === selectedClub);
-    }, [selectedClub]);
+        if (selectedClub === 'All') return events;
+        return events.filter(event => event.club === selectedClub);
+    }, [selectedClub, events]);
 
     return (
         <div className="animate-fade-in">
@@ -38,9 +38,8 @@ export default function EventsList() {
 
             {filteredEvents.length === 0 && (
                 <div className="text-center py-20">
-                    <div className="text-6xl mb-4">🔍</div>
                     <h3 className="text-2xl font-bold text-white mb-2">No Events Found</h3>
-                    <p className="text-slate-400">Try selecting a different club or category</p>
+                    <p className="text-slate-400 font-mono">Try selecting a different club or category</p>
                 </div>
             )}
         </div>

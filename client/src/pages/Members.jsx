@@ -59,7 +59,7 @@ export default function Members() {
         {particles.map((particle) => (
           <div
             key={particle.id}
-            className="absolute rounded-full bg-cyan-400/20 blur-sm animate-float"
+            className="absolute rounded-full blur-sm animate-float"
             style={{
               left: `${particle.x}%`,
               top: `${particle.y}%`,
@@ -74,9 +74,13 @@ export default function Members() {
       {/* Hero Header */}
       <section className="relative py-24 px-4 overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10 text-center">
-          <h1 className="text-6xl md:text-7xl font-black mb-4 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent animate-gradient">
-            Our Members
-          </h1>
+          <div className="mb-6 flex items-center justify-center gap-3">
+            <span className="font-mono text-cyan-400">&lt;</span>
+            <h1 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent animate-gradient font-mono">
+              members
+            </h1>
+            <span className="font-mono text-cyan-400">&gt;</span>
+          </div>
           <p className="text-xl text-cyan-100/80 max-w-3xl mx-auto font-light">
             Meet the brilliant minds behind the code. Developers, designers, and innovators shaping the future.
           </p>
@@ -88,10 +92,10 @@ export default function Members() {
         <div className="max-w-7xl mx-auto">
 
           {/* Search & Filters */}
-          <div className="mb-12 backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div className="mb-12 backdrop-blur-xl bg-slate-900/40 border border-slate-800/60 rounded-2xl p-8">
             <div className="flex flex-col md:flex-row gap-4 items-end mb-6">
               <div className="flex-1 w-full">
-                <label className="block text-cyan-300 font-semibold mb-3 text-sm uppercase tracking-wider">🔍 Search Members</label>
+                <label className="flex text-cyan-300 font-semibold mb-3 text-sm uppercase tracking-wider gap-2"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>Search Members</label>
                 <SearchBar
                   placeholder="Search by name, role, or skills..."
                   onSearch={setSearchQuery}
@@ -112,15 +116,15 @@ export default function Members() {
             </div>
 
             {filtersOpen && (
-              <div className="backdrop-blur-lg bg-slate-800/40 border border-cyan-500/20 p-6 rounded-xl shadow-xl space-y-6 animate-slide-down">
+              <div className="backdrop-blur-lg bg-slate-900/60 border border-slate-800/60 p-6 rounded-xl shadow-xl space-y-6 animate-slide-down">
                 <div>
-                  <h3 className="text-sm font-bold text-cyan-300 mb-4 uppercase tracking-wider">💼 Role</h3>
+                  <h3 className="text-sm font-bold text-cyan-300 mb-4 uppercase tracking-wider flex items-center gap-2"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>Role</h3>
                   <div className="flex flex-wrap gap-2">
-                    <button onClick={() => setRoleFilter('')} className={`px-4 py-2 rounded-lg ${roleFilter === '' ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' : 'bg-slate-700/50 text-cyan-100'}`}>
+                    <button onClick={() => setRoleFilter('')} className={`px-4 py-2 rounded-lg ${roleFilter === '' ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' : 'bg-slate-800/60 text-cyan-100 border border-slate-700/50 hover:border-slate-600/80'}`}>
                       All Roles
                     </button>
                     {roles.map(role => (
-                      <button key={role} onClick={() => setRoleFilter(role)} className={`px-4 py-2 rounded-lg text-sm ${roleFilter === role ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' : 'bg-slate-700/50 text-cyan-100'}`}>
+                      <button key={role} onClick={() => setRoleFilter(role)} className={`px-4 py-2 rounded-lg text-sm transition-all ${roleFilter === role ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg' : 'bg-slate-800/60 text-cyan-100 border border-slate-700/50 hover:border-slate-600/80'}`}>
                         {role}
                       </button>
                     ))}
@@ -128,13 +132,13 @@ export default function Members() {
                 </div>
 
                 <div>
-                  <h3 className="text-sm font-bold text-cyan-300 mb-4 uppercase tracking-wider">🎓 Branch</h3>
+                  <h3 className="text-sm font-bold text-cyan-300 mb-4 uppercase tracking-wider flex items-center gap-2"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C6.5 6.253 2 10.998 2 17s4.5 10.747 10 10.747c5.5 0 10-4.998 10-10.747S17.5 6.253 12 6.253z" /></svg>Branch</h3>
                   <div className="flex flex-wrap gap-2">
-                    <button onClick={() => setBranchFilter('')} className={`px-4 py-2 rounded-lg ${branchFilter === '' ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' : 'bg-slate-700/50 text-cyan-100'}`}>
+                    <button onClick={() => setBranchFilter('')} className={`px-4 py-2 rounded-lg ${branchFilter === '' ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' : 'bg-slate-800/60 text-cyan-100 border border-slate-700/50 hover:border-slate-600/80'}`}>
                       All Branches
                     </button>
                     {branches.map(branch => (
-                      <button key={branch} onClick={() => setBranchFilter(branch)} className={`px-4 py-2 rounded-lg text-sm ${branchFilter === branch ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' : 'bg-slate-700/50 text-cyan-100'}`}>
+                      <button key={branch} onClick={() => setBranchFilter(branch)} className={`px-4 py-2 rounded-lg text-sm transition-all ${branchFilter === branch ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg' : 'bg-slate-800/60 text-cyan-100 border border-slate-700/50 hover:border-slate-600/80'}`}>
                         {branch}
                       </button>
                     ))}
@@ -142,26 +146,26 @@ export default function Members() {
                 </div>
 
                 <div>
-                  <h3 className="text-sm font-bold text-cyan-300 mb-4 uppercase tracking-wider">📅 Year</h3>
+                  <h3 className="text-sm font-bold text-cyan-300 mb-4 uppercase tracking-wider flex items-center gap-2"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>Year</h3>
                   <div className="flex flex-wrap gap-2">
-                    <button onClick={() => setYearFilter('')} className={`px-4 py-2 rounded-lg ${yearFilter === '' ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' : 'bg-slate-700/50 text-cyan-100'}`}>
+                    <button onClick={() => setYearFilter('')} className={`px-4 py-2 rounded-lg ${yearFilter === '' ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' : 'bg-slate-800/60 text-cyan-100 border border-slate-700/50 hover:border-slate-600/80'}`}>
                       All Years
                     </button>
                     {years.map(year => (
-                      <button key={year} onClick={() => setYearFilter(String(year))} className={`px-4 py-2 rounded-lg text-sm ${yearFilter === String(year) ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' : 'bg-slate-700/50 text-cyan-100'}`}>
+                      <button key={year} onClick={() => setYearFilter(String(year))} className={`px-4 py-2 rounded-lg text-sm transition-all ${yearFilter === String(year) ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg' : 'bg-slate-800/60 text-cyan-100 border border-slate-700/50 hover:border-slate-600/80'}`}>
                         Year {year}
                       </button>
                     ))}
                   </div>
                 </div>
 
-                <div className="flex justify-between items-center flex-wrap gap-4 pt-4 border-t border-cyan-500/20">
+                <div className="flex justify-between items-center flex-wrap gap-4 pt-4 border-t border-slate-800/60">
                   <div className="flex items-center gap-3">
                     <span className="text-sm font-medium text-cyan-300">View:</span>
-                    <button onClick={() => setViewMode('grid')} className={`p-3 rounded-lg ${viewMode === 'grid' ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' : 'bg-slate-700/50 text-cyan-100'}`}>
+                    <button onClick={() => setViewMode('grid')} className={`p-3 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg' : 'bg-slate-800/60 text-cyan-100 border border-slate-700/50 hover:border-slate-600/80'}`}>
                       Grid
                     </button>
-                    <button onClick={() => setViewMode('list')} className={`p-3 rounded-lg ${viewMode === 'list' ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' : 'bg-slate-700/50 text-cyan-100'}`}>
+                    <button onClick={() => setViewMode('list')} className={`p-3 rounded-lg transition-all ${viewMode === 'list' ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg' : 'bg-slate-800/60 text-cyan-100 border border-slate-700/50 hover:border-slate-600/80'}`}>
                       List
                     </button>
                   </div>
@@ -176,7 +180,7 @@ export default function Members() {
 
           {/* RESULTS */}
           <div className="mb-8">
-            <div className="inline-flex items-center gap-3 backdrop-blur-lg bg-white/5 border border-cyan-500/20 px-6 py-3 rounded-full">
+            <div className="inline-flex items-center gap-3 backdrop-blur-lg bg-slate-900/40 border border-slate-800/60 px-6 py-3 rounded-full">
               <span className="text-cyan-100/80 font-medium">Showing</span>
               <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">{filteredMembers.length}</span>
               <span className="text-cyan-100/80 font-medium">member{filteredMembers.length !== 1 && 's'}</span>
@@ -204,8 +208,10 @@ export default function Members() {
               </div>
             </div>
           ) : (
-            <div className="text-center py-20 backdrop-blur-lg bg-white/5 border border-cyan-500/20 rounded-2xl">
-              <div className="text-7xl mb-6 animate-bounce">🔍</div>
+            <div className="text-center py-20 backdrop-blur-lg bg-slate-900/40 border border-slate-800/60 rounded-2xl">
+              <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-slate-800/60">
+                <svg className="w-8 h-8 text-cyan-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+              </div>
               <h3 className="text-3xl font-bold text-cyan-300 mb-4">No Members Found</h3>
               <p className="text-cyan-100/60 max-w-md mx-auto mb-8 text-lg">No members match your filters. Try adjusting them.</p>
               <button onClick={handleClearFilters} className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl">Clear Filters</button>

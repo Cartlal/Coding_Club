@@ -76,10 +76,10 @@ export default function MemberCard({
       <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-75 blur transition-all duration-500" />
 
       {/* Card */}
-      <div className="relative h-full backdrop-blur-xl bg-gradient-to-br from-slate-800/90 to-slate-900/90 border border-cyan-500/20 rounded-2xl overflow-hidden transition-all duration-500 group-hover:border-cyan-400/50 group-hover:shadow-2xl group-hover:shadow-cyan-500/20 group-hover:-translate-y-2 flex flex-col">
+      <div className="relative h-full backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-950/90 border border-slate-800/60 rounded-2xl overflow-hidden transition-all duration-500 group-hover:border-cyan-400/50 group-hover:shadow-2xl group-hover:shadow-cyan-500/20 group-hover:-translate-y-2 flex flex-col">
 
         {/* Avatar Section with Circular Profile */}
-        <div className="h-32 flex items-center justify-center relative bg-gradient-to-br from-slate-800/50 to-slate-900/50">
+        <div className="h-32 flex items-center justify-center relative bg-gradient-to-br from-slate-900/60 to-slate-950/70">
           {/* Circular Avatar Container */}
           <div className={`relative w-20 h-20 rounded-full bg-gradient-to-br ${getRoleColor(role)} p-1 shadow-2xl transform group-hover:scale-110 transition-all duration-500`}>
             {/* Animated gradient overlay */}
@@ -100,12 +100,14 @@ export default function MemberCard({
               className="w-full h-full rounded-full bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center"
               style={{display: image ? 'none' : 'flex'}}
             >
-              <span className="text-3xl relative z-10 transform group-hover:scale-110 transition-transform duration-500">👤</span>
+              <svg className="w-8 h-8 text-slate-300" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+              </svg>
             </div>
           </div>
 
           {/* Year Badge */}
-          <div className="absolute top-2 right-2 backdrop-blur-md bg-white/20 border border-white/30 text-white font-bold px-3 py-1 rounded-full text-xs shadow-lg">
+          <div className="absolute top-2 right-2 backdrop-blur-md bg-slate-900/80 border border-slate-700/60 text-white font-bold px-3 py-1 rounded-full text-xs shadow-lg">
             {yearLabel}
           </div>
         </div>
@@ -119,12 +121,11 @@ export default function MemberCard({
 
           {/* Role Badge */}
           <div className={`inline-flex items-center gap-1.5 w-fit mb-3 px-3 py-1.5 rounded-lg bg-gradient-to-r ${getRoleColor(role)} text-white font-semibold text-xs shadow-lg`}>
-            <span className="text-sm">💻</span>
             {role}
           </div>
 
           {/* Branch Info - Shaped Box */}
-          <div className="relative mb-3 p-2.5 bg-gradient-to-br from-slate-700/40 to-slate-800/40 border border-cyan-500/20 shadow-lg overflow-hidden" style={{ clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%)' }}>
+          <div className="relative mb-3 p-2.5 bg-gradient-to-br from-slate-800/70 to-slate-900/70 border border-slate-700/50 shadow-lg overflow-hidden" style={{ clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%)' }}>
             {/* Decorative corner accent */}
             <div className="absolute bottom-0 right-0 w-8 h-8 bg-gradient-to-tl from-cyan-500/20 to-transparent" style={{ clipPath: 'polygon(100% 0, 100% 100%, 0 100%)' }} />
 
@@ -150,20 +151,20 @@ export default function MemberCard({
           {/* Skills */}
           {skills.length > 0 && (
             <div className="mb-3">
-              <p className="text-xs font-bold text-cyan-300 mb-2 uppercase tracking-wider flex items-center gap-2">
-                <span>⚡</span> Skills
+              <p className="text-xs font-bold text-cyan-300 mb-2 uppercase tracking-wider">
+                Skills
               </p>
               <div className="flex flex-wrap gap-2">
                 {skills.slice(0, 3).map((skill, index) => (
                   <span
                     key={index}
-                    className="px-2.5 py-1 bg-slate-700/50 border border-cyan-500/30 text-cyan-200 rounded-lg text-xs font-medium hover:bg-cyan-500/20 hover:border-cyan-400/50 transition-all duration-300"
+                    className="px-2.5 py-1 bg-slate-800/60 border border-slate-700/50 text-cyan-200 rounded-lg text-xs font-medium hover:bg-slate-700/70 hover:border-slate-600/60 transition-all duration-300"
                   >
                     {skill}
                   </span>
                 ))}
                 {skills.length > 3 && (
-                  <span className="px-2.5 py-1 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-400/30 text-cyan-300 rounded-lg text-xs font-bold">
+                  <span className="px-2.5 py-1 bg-slate-800/80 border border-slate-700/60 text-cyan-300 rounded-lg text-xs font-bold">
                     +{skills.length - 3} more
                   </span>
                 )}
@@ -179,7 +180,7 @@ export default function MemberCard({
                   href={linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-400/50 transition-all duration-300"
+                  className="p-2 rounded-lg bg-slate-800/60 border border-slate-700/50 text-cyan-400 hover:bg-slate-700/70 hover:border-slate-600/60 transition-all duration-300"
                   title="LinkedIn"
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -192,7 +193,7 @@ export default function MemberCard({
                   href={github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-400/50 transition-all duration-300"
+                  className="p-2 rounded-lg bg-slate-800/60 border border-slate-700/50 text-cyan-400 hover:bg-slate-700/70 hover:border-slate-600/60 transition-all duration-300"
                   title="GitHub"
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -205,7 +206,7 @@ export default function MemberCard({
                   href={instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-400/50 transition-all duration-300"
+                  className="p-2 rounded-lg bg-slate-800/60 border border-slate-700/50 text-cyan-400 hover:bg-slate-700/70 hover:border-slate-600/60 transition-all duration-300"
                   title="Instagram"
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -219,7 +220,7 @@ export default function MemberCard({
           {/* Email with icon */}
           <a
             href={`mailto:${email}`}
-            className="group/email flex items-center gap-2 text-cyan-400 text-xs font-medium hover:text-cyan-300 mt-auto transition-all duration-300 p-2 rounded-lg hover:bg-cyan-500/10 border border-transparent hover:border-cyan-500/30"
+            className="group/email flex items-center gap-2 text-cyan-400 text-xs font-medium hover:text-cyan-300 mt-auto transition-all duration-300 p-2 rounded-lg hover:bg-slate-800/60 border border-transparent hover:border-slate-700/50"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />

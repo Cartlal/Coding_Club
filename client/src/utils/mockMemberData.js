@@ -65,7 +65,7 @@ export const mockMembers = [
     skills: ['Coordination', 'React', 'Backend'],
     joinDate: '2023-08-15',
     bio: 'As Deputy General Secretary, I assist in overall club management and coordinate technical initiatives across teams. I have hands-on experience with backend development and React, allowing me to bridge administrative and technical operations. I am committed to ensuring smooth communication between different clusters and helping members execute ambitious projects.',
-    image: '/test-profile.svg',
+    image: '/images/members/',
   },
   {
     id: 5,
@@ -249,7 +249,7 @@ export const mockMembers = [
     email: 'jaydeepnadkarni123@gmail.com',
     skills: ['C', 'Python', 'Competitive Programming', 'DSA'],
     joinDate: '2024-08-15',
-    bio: 'Competitive programming enthusiast | Contact: 9481740517',
+    bio: 'Web Developer',
     image: '/images/members/jaydeep-nadkarni.jpg',
     linkedin: 'https://www.linkedin.com/in/jaydeep-nadkarni',
     github: 'https://github.com/Jaydeep-Nadkarni',
