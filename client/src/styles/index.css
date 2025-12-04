@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap');
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -13,13 +15,17 @@
     background-color: #000000;
   }
 
-  h1,
+  h1 {
+    @apply font-bold;
+  }
+
   h2,
   h3,
   h4,
   h5,
   h6 {
     @apply font-bold;
+    font-family: 'Rajdhani', sans-serif;
   }
 
   a {

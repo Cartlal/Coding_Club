@@ -51,9 +51,16 @@ export default function Navbar() {
                     <div className="flex items-center gap-3">
                         <Link
                             to="/login"
-                            className="hidden md:inline-block px-5 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 text-sm shadow-md"
+                            className="group hidden md:inline-block relative px-6 py-2 bg-gradient-to-br from-slate-800/10 to-slate-900/50 border border-cyan-500/30 rounded-lg font-medium text-slate-100 overflow-hidden transition-all duration-300 hover:border-cyan-400/60 hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/10 text-sm"
                         >
-                            Login
+                            {/* Button Glow */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            
+                            {/* Button Content */}
+                            <span className="relative z-10 flex items-center justify-center">Login</span>
+                            
+                            {/* Bottom Accent Line */}
+                            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </Link>
 
                         {/* Mobile menu button */}
@@ -76,8 +83,8 @@ export default function Navbar() {
 
                 {/* Mobile menu */}
                 <div className={`mt-3 md:hidden ${isOpen ? 'block' : 'hidden'}`}>
-                    <div className="rounded-2xl shadow-md overflow-hidden bg-gradient-to-r from-primary/25 to-secondary/25 backdrop-blur-md border border-white/10 text-white">
-                        <div className="flex flex-col p-3">
+                    <div className="rounded-2xl shadow-lg overflow-hidden bg-gradient-to-br from-slate-900/40 to-slate-800/40 backdrop-blur-md border border-cyan-500/20 text-white">
+                        <div className="flex flex-col p-4">
                             {navLinks.map((link) => (
                                 <NavLink
                                     key={link.path}
@@ -97,9 +104,16 @@ export default function Navbar() {
                             <Link
                                 to="/login"
                                 onClick={() => setIsOpen(false)}
-                                className="mt-2 px-4 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl text-center shadow-lg"
+                                className="group relative mt-3 px-4 py-3 bg-gradient-to-br from-slate-800/10 to-slate-900/50 border border-cyan-500/30 rounded-xl font-medium text-slate-100 overflow-hidden transition-all duration-300 hover:border-cyan-400/60 hover:shadow-lg hover:shadow-cyan-500/10 text-center block"
                             >
-                                Login
+                                {/* Button Glow */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                
+                                {/* Button Content */}
+                                <span className="relative z-10">Login</span>
+                                
+                                {/* Bottom Accent Line */}
+                                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             </Link>
                         </div>
                     </div>
