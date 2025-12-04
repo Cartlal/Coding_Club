@@ -66,11 +66,16 @@ export const mockMembers = [
     phone: '7019864016',
     skills: ['Public Relations', 'Deep Learning', 'Machine Learning', 'Java', 'Python', 'DSA', 'Coordination', 'React', 'Backend'],
     joinDate: '2023-08-15',
+<<<<<<< HEAD
+    bio: 'As Deputy General Secretary, I assist in overall club management and coordinate technical initiatives across teams. I have hands-on experience with backend development and React, allowing me to bridge administrative and technical operations. I am committed to ensuring smooth communication between different clusters and helping members execute ambitious projects.',
+    image: '/images/members/',
+=======
     bio: 'A passionate learning enthusiast with a knack for organizing, planning, and managing workflows. I enjoy understanding new concepts, simplifying complexity, and ensuring smooth execution in any environment.',
     image: '/images/members/shreyas-savant.jpg',
     linkedin: 'https://www.linkedin.com/in/shreyas-savant-82a98531a?utm_source=share_via&utm_content=profile&utm_medium=member_android',
     github: 'https://github.com/Shreyasshreyas10',
     instagram: 'https://www.instagram.com/shreyas_savant10?igsh=MTNoZ213and1bWxq',
+>>>>>>> 839737eecfb573d0a8a5d9a78e419d8f36811307
   },
   {
     id: 5,
@@ -254,7 +259,7 @@ export const mockMembers = [
     email: 'jaydeepnadkarni123@gmail.com',
     skills: ['C', 'Python', 'Competitive Programming', 'DSA'],
     joinDate: '2024-08-15',
-    bio: 'Competitive programming enthusiast | Contact: 9481740517',
+    bio: 'Web Developer',
     image: '/images/members/jaydeep-nadkarni.jpg',
     linkedin: 'https://www.linkedin.com/in/jaydeep-nadkarni',
     github: 'https://github.com/Jaydeep-Nadkarni',
