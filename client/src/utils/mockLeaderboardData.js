@@ -9,7 +9,7 @@ export const mockLeaderboard = [
     division: 'A',
     cluster: 'Development',
     events: ['HackTheFuture 2025', 'Web Dev Bootcamp'],
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Aditya',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Aditya&mouth=smile&eyes=default',
     badges: ['🏆', '⚡', '💻'],
   },
   {
@@ -22,7 +22,7 @@ export const mockLeaderboard = [
     division: 'B',
     cluster: 'AI',
     events: ['AI & ML Symposium', 'HackTheFuture 2025'],
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Riya',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Riya&mouth=smile&eyes=default',
     badges: ['🥈', '🧠'],
   },
   {
@@ -35,7 +35,7 @@ export const mockLeaderboard = [
     division: 'A',
     cluster: 'Programming',
     events: ['Competitive Programming 101'],
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Karthik',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Karthik&mouth=smile&eyes=default',
     badges: ['🥉', '🚀'],
   },
   {
@@ -48,7 +48,7 @@ export const mockLeaderboard = [
     division: 'C',
     cluster: 'Emerging Tech',
     events: ['Intro to Cloud Computing', 'Tech Talk'],
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sneha',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sneha&mouth=smile&eyes=default',
     badges: ['☁️'],
   },
   {
@@ -61,7 +61,7 @@ export const mockLeaderboard = [
     division: 'A',
     cluster: 'Development',
     events: ['Web Dev Bootcamp'],
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Rahul',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Rahul&mouth=smile&eyes=default',
     badges: ['👨‍💻'],
   },
   {
@@ -74,7 +74,7 @@ export const mockLeaderboard = [
     division: 'B',
     cluster: 'Media & Design',
     events: ['UI/UX Design Workshop'],
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Priya',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Priya&mouth=smile&eyes=default',
     badges: ['🎨'],
   },
   {
@@ -87,7 +87,7 @@ export const mockLeaderboard = [
     division: 'D',
     cluster: 'Programming',
     events: ['Competitive Programming 101'],
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Amit',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Amit&mouth=smile&eyes=default',
     badges: ['⚡'],
   },
   {
@@ -100,7 +100,7 @@ export const mockLeaderboard = [
     division: 'B',
     cluster: 'PR',
     events: ['HackTheFuture 2025'],
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Neha',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Neha&mouth=smile&eyes=default',
     badges: ['📢'],
   },
   {
@@ -113,7 +113,7 @@ export const mockLeaderboard = [
     division: 'A',
     cluster: 'Competition',
     events: ['HackTheFuture 2025'],
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Vikram',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Vikram&mouth=smile&eyes=default',
     badges: ['🎯'],
   },
   {
@@ -126,7 +126,7 @@ export const mockLeaderboard = [
     division: 'A',
     cluster: 'AI',
     events: ['AI & ML Symposium'],
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anjali',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anjali&mouth=smile&eyes=default',
     badges: ['🤖'],
   },
 ];
