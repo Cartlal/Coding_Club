@@ -37,7 +37,7 @@ export default function Leaderboard() {
       grouped[className].points += player.points;
       grouped[className].members.push(player);
     });
-    
+
     return Object.values(grouped).sort((a, b) => b.points - a.points).map((cls, idx) => ({
       ...cls,
       rank: idx + 1,
@@ -70,11 +70,11 @@ export default function Leaderboard() {
   const displayData = leaderboardType === 'participant' ? filteredData : filteredClassWiseData;
 
   // Re-calculate ranks based on filtered data (for participant leaderboard)
-  const rankedData = leaderboardType === 'participant' 
+  const rankedData = leaderboardType === 'participant'
     ? filteredData.map((player, index) => ({
-        ...player,
-        rank: index + 1
-      }))
+      ...player,
+      rank: index + 1
+    }))
     : filteredClassWiseData;
 
   const top3 = rankedData.slice(0, 3);
@@ -97,26 +97,24 @@ export default function Leaderboard() {
           <p className="text-xl text-slate-400 mb-6">
             Celebrating our top performers and contributors
           </p>
-          
+
           {/* Leaderboard Type Toggle */}
           <div className="flex justify-center gap-4">
             <button
               onClick={() => setLeaderboardType('participant')}
-              className={`px-6 py-2 rounded-lg font-bold transition-all ${
-                leaderboardType === 'participant'
+              className={`px-6 py-2 rounded-lg font-bold transition-all ${leaderboardType === 'participant'
                   ? 'bg-orange-500 text-white shadow-lg'
                   : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50'
-              }`}
+                }`}
             >
               Participant Leaderboard
             </button>
             <button
               onClick={() => setLeaderboardType('class')}
-              className={`px-6 py-2 rounded-lg font-bold transition-all ${
-                leaderboardType === 'class'
+              className={`px-6 py-2 rounded-lg font-bold transition-all ${leaderboardType === 'class'
                   ? 'bg-orange-500 text-white shadow-lg'
                   : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50'
-              }`}
+                }`}
             >
               Class-wise Leaderboard
             </button>
@@ -209,35 +207,6 @@ export default function Leaderboard() {
             )}
           </div>
         )}
-
-        {/* Filters */}
-        <div className="mb-12 p-6 rounded-2xl bg-slate-800/50 backdrop-blur-xl border border-white/10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {[
-              { label: 'Year', key: 'year', options: uniqueYears },
-              { label: 'Department', key: 'department', options: uniqueDepartments },
-              { label: 'Division', key: 'division', options: uniqueDivisions },
-              { label: 'Cluster', key: 'cluster', options: uniqueClusters },
-              { label: 'Event', key: 'event', options: uniqueEvents },
-            ].map((filter) => (
-              <div key={filter.key} className="space-y-2">
-                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                  {filter.label}
-                </label>
-                <select
-                  value={filters[filter.key]}
-                  onChange={(e) => setFilters(prev => ({ ...prev, [filter.key]: e.target.value }))}
-                  className="w-full px-4 py-2 rounded-lg bg-slate-900/80 border border-slate-700 text-white focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none transition-all"
-                >
-                  {filter.options.map(opt => (
-                    <option key={opt} value={opt}>{opt}</option>
-                  ))}
-                </select>
-              </div>
-            ))}
-          </div>
-        </div>
-
 
         {/* Leaderboard Table */}
         <div className="bg-slate-800/30 backdrop-blur-xl rounded-2xl border border-white/5 overflow-hidden">
