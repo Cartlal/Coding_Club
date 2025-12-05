@@ -84,7 +84,7 @@ export const mockMembers = [
     skills: ['Finance', 'Management', 'Web Development'],
     joinDate: '2022-08-15',
     bio: 'I am Samarth Kattimani, a Computer Science Engineering student with a strong interest in Cloud, Artificial Intelligence, Machine Learning, and IoT. I enjoy exploring new technologies, building meaningful solutions, and continuously improving my skills. With a CGPA of 8.25, I am proud to be the first student placed from the 2026 batch. I’m a fast learner, focused, and passionate about growing in the tech field with confidence and consistency.',
-    image: '/test-profile.svg',
+    image: '/images/members/Samarth-Kattimani.jpg',
   },
   {
     id: 6,
@@ -96,7 +96,7 @@ export const mockMembers = [
     skills: ['Finance', 'Accounting', 'Python'],
     joinDate: '2023-08-15',
     bio: 'As co-Treasurer, I partner with Samarth to manage all financial operations and maintain accurate accounting records. I bring attention to detail and financial acumen to ensure all club funds are utilized effectively. My background in Python helps me build tools for financial tracking and reporting within the club.',
-    image: '/test-profile.svg',
+    image: '/images/members/Aniket-Patil.jpg',
   },
   {
     id: 7,
@@ -193,7 +193,7 @@ export const mockMembers = [
     skills: ['Public Relations', 'Communication', 'Marketing'],
     joinDate: '2023-08-15',
     bio: 'PR and communication enthusiast with a strong learning mindset and a growing interest in technology. I enjoy crafting clear, meaningful messages and building connections that create real impact. Always exploring new skills and staying curious.',
-    image: '/test-profile.svg',
+    image: '/images/members/Bhumika-N.jpg',
   },
   {
     id: 14,
@@ -205,7 +205,7 @@ export const mockMembers = [
     skills: ['Social Media', 'Content Creation', 'Marketing'],
     joinDate: '2024-08-15',
     bio: 'I\’m Aryan Sunil Patil, a Computer Science Engineering undergraduate at KLE Technological University and the Co-Lead of the PR Cluster at ArcStack. I\’m passionate about blending technology, design, and communication to create meaningful impact.With skills in C, C++, UI/UX, design, social media management, media marketing, public relations, content creation, leadership, and communication, I enjoy taking on roles that challenge me to think creatively and collaborate effectively.I strive to build strong connections, craft compelling narratives, and contribute to communities where innovation and growth go hand in hand.',
-    image: '/test-profile.svg',
+    image: '/images/members/Aryan-Patil.jpg',
   },
   {
     id: 15,
@@ -217,7 +217,7 @@ export const mockMembers = [
     skills: ['C++', 'Python', 'Algorithms', 'Problem Solving'],
     joinDate: '2023-08-15',
     bio: 'I believe in change is the only constant.',
-    image: '/test-profile.svg',
+    image: '/images/members/Adarsh-Kakatkar.jpeg',
   },
   {
     id: 16,
@@ -634,6 +634,7 @@ export const mockMembers = [
     skills: ['Problem Solving', 'Algorithms'],
     joinDate: '2024-08-15',
     bio: 'I\’m Shreya S Pai, a 2nd-year CS and AI student who enjoys figuring out how things work in code. I’m building a solid base in programming and problem-solving, especially through DSA and algorithmic thinking. I’ve recently started getting into Java and exploring its concepts to understand structure and logic better. I’m also learning SQL because I like understanding how data is stored and accessed behind the scenes. Outside academics, I love dancing and anything creative that helps me reset.',
+    image: '/images/members/shreya-pai.jpg',
   },
   {
     id: 44,
@@ -660,7 +661,7 @@ export const mockMembers = [
     skills: ['Communication', 'Social Media', 'Marketing'],
     joinDate: '2024-08-15',
     bio: 'Im a 19 year old pursuing her Bachelors in Engineering, CS. I am passionate about public speaking, elocution, debate and so on. On the other hand, my hobbies include singing, playing instruments and so on.',
-    image: '/test-profile.svg',
+    image: '/images/members/Pavitra-H.jpg',
   },
   {
     id: 46,
@@ -672,7 +673,7 @@ export const mockMembers = [
     skills: ['Public Relations', 'Content Creation'],
     joinDate: '2024-08-15',
     bio: 'I am a dedicated tech learner with strong interest in programming and emerging technologies. I enjoy solving problems through coding and adapting to new tools quickly. I communicate well, work responsibly in teams, and stay committed to completing my tasks. I aim to build a strong career in the technology field through continuous learning and practical experience.',
-    image: '/test-profile.svg',
+    image: '/images/members/Sneha-Hundekar.jpeg',
   },
   {
     id: 47,
@@ -714,7 +715,7 @@ export const mockMembers = [
     skills: ['C'],
     joinDate: '2023-08-15',
     bio: 'I am currently Pursuing Engineering in Computer Science in KLE technological University MSS Sheshgiri Belagavi, I am very Enthusiastic about learning new things.',
-    image: '/test-profile.svg',
+    image: '/images/members/Pranjali-Mutagekar.jpg',
   },
   {
     id: 50,
@@ -770,7 +771,7 @@ export const mockMembers = [
     skills: ['C++', 'Algorithms', 'Competitive Programming'],
     joinDate: '2023-08-15',
     bio: 'Algorithm design specialist',
-    image: '/test-profile.svg',
+    image: '/images/members/Samarth-Narvekar.jpg',
   },
   {
     id: 54,
@@ -967,7 +968,7 @@ export const mockMembers = [
     skills: ['UI/UX', 'Figma', 'Design'],
     joinDate: '2023-08-15',
     bio: 'Interested in Python,java,design,design video editing and completing Engineering.',
-    image: '/test-profile.svg',
+    image: '/images/members/Ayush-Shetty.jpeg',
   },
   {
     id: 68,
