@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useEffect } from 'react-router-dom';
 import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import Home from '@/pages/Home';
@@ -15,6 +15,11 @@ import ComingSoon from '@/pages/ComingSoon';
 function Layout() {
   const location = useLocation();
   const hideHeaderFooter = ['/login', '/signup'].includes(location.pathname);
+
+  // Auto scroll to top when route changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div className={`flex flex-col min-h-screen transition-colors duration-300 bg-pitch-dark ${!hideHeaderFooter ? 'pt-16' : ''}`}>
