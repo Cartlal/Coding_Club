@@ -1,11 +1,11 @@
 export const mockEvents = [
     {
         id: 1,
-        title: 'Chai और Code',
+        title: 'Chai और Code - 1',
         description: 'Chai और Code is a bi-weekly workshop by Programming Cluster, designed to teach what truly matters in programming — through fun, caffeine-filled, hands-on coding. No pressure, just pure learning.\n\n🎁 Benefits:\n✔ Prepares you for Algo-Rush\n✔ Peer-to-peer debugging\n✔ Tech interview prep\n✔ Networking & collaboration\n✔ Energetic environment with your choice of caffeine ☕\n\n💻 Topics:\n✔ Basics of C++ & Java\n✔ STL & Utility Libraries\n✔ Arrays (Basics)\n✔ LeetCode-style problems\n\n🛠 Bring: Laptop + Charger\n(Optional: Bring a friend who may get a back in DS/DAA 😉)\n\n👨‍🏫 Instructors:\n✔ Adarsh Kakatkar (Lead)\n✔ Vaibhav Deopa (Co-Lead)\n\n📞 For any queries contact:\nLomesh Jangde (Core Member): +91 7723839235\n\n📢 Important: Attendance will be given to only the people who attend the workshop!',
         date: '2025-11-29',
         time: '1:00 PM - 5:00 PM',
-        location: 'Code-कट्टा: Step Hall',
+        location: 'Step Hall',
         category: 'Workshop',
         club: 'Programming',
         status: 'completed',
@@ -29,11 +29,11 @@ export const mockEvents = [
     },
     {
         id: 3,
-        title: 'Chai और Code',
+        title: 'Chai और Code - 2',
         description: 'Chai और Code is a bi-weekly workshop by Programming Cluster, designed to teach what truly matters in programming — through fun, caffeine-filled, hands-on coding. No pressure, just pure learning.\n\n🎁 Benefits:\n✔ Prepares you for Algo-Rush\n✔ Peer-to-peer debugging\n✔ Tech interview prep\n✔ Networking & collaboration\n✔ Energetic environment with your choice of caffeine ☕\n\n💻 Topics:\n✔ Basics of C++ & Java\n✔ STL & Utility Libraries\n✔ Arrays (Basics)\n✔ LeetCode-style problems\n\n⚠ Attention:\n• Separate class for C++ and Java\n• Seats filling FAST, register now!!!\n• Students across any branch can join\n\n👨‍🏫 Instructors:\n• Adarsh Kakatkar (Lead)\n• Vaibhav Deopa (Co-Lead)\n\n📞 For any queries contact:\nLomesh Jangde (Core Member) at +91 7723839235',
         date: '2025-12-06',
         time: '2:00 PM - 5:00 PM',
-        location: 'Code-कट्टा: Step Hall & MB 208',
+        location: 'Step Hall & MB 208',
         category: 'Workshop',
         club: 'Programming',
         status: 'upcoming',
