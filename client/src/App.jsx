@@ -11,6 +11,7 @@ import Signup from '@/pages/Signup';
 import Members from '@/pages/Members';
 import NotFound from '@/pages/NotFound';
 import ComingSoon from '@/pages/ComingSoon';
+import ScrollToTop from '@/pages/ScrollToTop';
 
 function Layout() {
   const location = useLocation();
@@ -18,6 +19,7 @@ function Layout() {
 
   return (
     <div className={`flex flex-col min-h-screen transition-colors duration-300 bg-pitch-dark ${!hideHeaderFooter ? 'pt-16' : ''}`}>
+      <ScrollToTop />
       {!hideHeaderFooter && <Navbar />}
 
       {/* Main Content */}
