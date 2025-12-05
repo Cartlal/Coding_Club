@@ -981,6 +981,21 @@ export const mockMembers = [
     bio: 'Brand and graphic designer',
     image: '/test-profile.svg',
   },
+  {
+    id: 69,
+    name: 'Sarvadnya Patil',
+    role: 'Member (Development Team)',
+    branch: 'CSE',
+    year: 1,
+    email: 'sarvadnyapatil04@gmail.com',
+    skills: ['Html',' CSS', 'JavaScript', 'Node.js', 'React'],
+    joinDate: '2025-11-25',
+    bio: 'My name is Sarvadnya Patil, and I am a first-year Computer Science and Engineering student at KLE Technological University with a strong interest in full-stack web development. I have mastered C and C++ and enjoy creating clean, user-friendly frontend designs along with efficient backend logic. I am known for strong analytical thinking, logical reasoning, and clear problem-solving ability, and I am focused on building practical projects that help me grow as a developer.',
+    image: '/test-profile.svg',
+    linkedin:'https://www.linkedin.com/in/sarvadnya-patil-946440393/',
+    github:'https://github.com/sarvadnyapatil04',
+    instagram:'https://www.instagram.com/sarvadnyapatil_004',
+  }
 ];
 
 export function getAllRoles() {

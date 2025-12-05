@@ -121,7 +121,7 @@ export default function About() {
                                 {/* Stats Grid */}
                                 <div className="grid grid-cols-2 gap-4 pt-6">
                                     <div className="p-5 rounded-xl bg-gradient-to-br from-cyan-500/10 to-cyan-500/5 border border-cyan-500/30 hover:border-cyan-500/50 transition-all">
-                                        <div className="text-3xl font-black text-cyan-400 mb-2 font-mono">75+</div>
+                                        <div className="text-3xl font-black text-cyan-400 mb-2 font-mono">45+</div>
                                         <div className="text-xs text-slate-400 font-mono">Years of Excellence</div>
                                     </div>
                                     <div className="p-5 rounded-xl bg-gradient-to-br from-purple-500/10 to-purple-500/5 border border-purple-500/30 hover:border-purple-500/50 transition-all">
@@ -129,11 +129,11 @@ export default function About() {
                                         <div className="text-xs text-slate-400 font-mono">NAAC Rating</div>
                                     </div>
                                     <div className="p-5 rounded-xl bg-gradient-to-br from-blue-500/10 to-blue-500/5 border border-blue-500/30 hover:border-blue-500/50 transition-all">
-                                        <div className="text-3xl font-black text-blue-400 mb-2 font-mono">10k+</div>
+                                        <div className="text-3xl font-black text-blue-400 mb-2 font-mono">3k+</div>
                                         <div className="text-xs text-slate-400 font-mono">Students</div>
                                     </div>
                                     <div className="p-5 rounded-xl bg-gradient-to-br from-green-500/10 to-green-500/5 border border-green-500/30 hover:border-green-500/50 transition-all">
-                                        <div className="text-3xl font-black text-green-400 mb-2 font-mono">500+</div>
+                                        <div className="text-3xl font-black text-green-400 mb-2 font-mono">200+</div>
                                         <div className="text-xs text-slate-400 font-mono">Faculty</div>
                                     </div>
                                 </div>
