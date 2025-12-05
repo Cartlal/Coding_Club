@@ -50,11 +50,11 @@ export default function HeroSection() {
             <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
             <div className="w-3 h-3 rounded-full bg-green-500"></div>
           </div>
-          <span className="font-mono text-cyan-400 text-sm">terminal: ~/kle/innovation</span>
+          <span className="font-mono text-cyan-400 text-sm">KLE Technological University</span>
         </div>
 
         {/* Main Heading with typewriter effect */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-bold mb-6 leading-tight font-mono">
+        <h1 className="text-7xl sm:text-7xl md:text-7xl lg:text-9xl font-bold mb-6 leading-tight font-mono">
           ArcStack
         </h1>
 
