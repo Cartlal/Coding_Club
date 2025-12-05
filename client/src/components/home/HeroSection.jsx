@@ -59,7 +59,7 @@ export default function HeroSection() {
         </h1>
 
         {/* Subheading */}
-        <p className="text-lg md:text-xl text-slate-400 mb-12 max-w-3xl mx-auto font-light tracking-wide">
+        <p className="text-lg md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto font-light tracking-wide">
           First to Begin, Never to give up
         </p>
 

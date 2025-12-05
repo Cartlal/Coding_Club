@@ -205,13 +205,6 @@ export default function Members() {
             </div>
           </div>
 
-          {/* Divider */}
-          <div className="flex items-center gap-4 py-8">
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
-            <span className="text-cyan-400 font-mono text-sm">Team Members</span>
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
-          </div>
-
           {filteredMembers.length > 0 ? (
             <div className="space-y-16">
               {/* Core & Other Members Section */}
