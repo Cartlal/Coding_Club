@@ -1,0 +1,62 @@
+/**
+ * Mock Faculty Members Data
+ * ArcStack - KLE Tech Belagavi Campus
+ * Faculty Advisors & Mentors
+ */
+
+export const mockFacultyMembers = [
+  {
+    id: 101,
+    name: 'Dr. Rajashree Khanai',
+    role: 'Faculty Advisor',
+    branch: 'Computer Science',
+    email: 'rajashree.khanai@kletech.ac.in',
+    phone: '+91-9876543210',
+    contactNumber: '+91-9876543210',
+    skills: [],
+    joinDate: '2020-01-01',
+    bio: 'Dr. Rajashree Khanai is a dedicated faculty member at KLE Technological University with extensive experience in Computer Science and emerging technologies. She serves as a faculty advisor for the ArcStack Coding Club, mentoring students in research, innovation, and professional development.',
+    image: '/images/members/dr-rajashree-khanai.jpg',
+    linkedin: 'https://www.linkedin.com/in/rajashree-khanai',
+    github: '#',
+    instagram: '#',
+    portfolio: '#',
+    isFaculty: true,
+  },
+  {
+    id: 102,
+    name: 'Dr. Manisha Tapale',
+    role: 'Faculty Advisor',
+    branch: 'Computer Science',
+    email: 'manisha.tapale@kletech.ac.in',
+    phone: '+91-9876543211',
+    contactNumber: '+91-9876543211',
+    skills: [],
+    joinDate: '2020-01-01',
+    bio: 'Dr. Manisha Tapale is a passionate educator and mentor at KLE Technological University. With a strong background in software engineering and modern development practices, she guides students in building scalable applications and understanding industry best practices.',
+    image: '/images/members/dr-manisha-tapale.jpg',
+    linkedin: 'https://www.linkedin.com/in/manisha-tapale',
+    github: '#',
+    instagram: '#',
+    portfolio: '#',
+    isFaculty: true,
+  },
+  {
+    id: 103,
+    name: 'Dr. Santosh Pattar',
+    role: 'Faculty Advisor',
+    branch: 'Computer Science',
+    email: 'santosh.pattar@kletech.ac.in',
+    phone: '+91-9876543212',
+    contactNumber: '+91-9876543212',
+    skills: [],
+    joinDate: '2020-01-01',
+    bio: 'Dr. Santosh Pattar is an expert in cybersecurity and information systems at KLE Technological University. His research interests include network security, cryptography, and secure software development. He actively mentors students in building secure applications and understanding modern threat landscapes.',
+    image: '/images/members/dr-santosh-pattar.jpg',
+    linkedin: 'https://www.linkedin.com/in/santosh-pattar',
+    github: '#',
+    instagram: '#',
+    portfolio: '#',
+    isFaculty: true,
+  },
+];

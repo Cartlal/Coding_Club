@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { mockMembers } from '@/utils/mockMemberData';
+import { mockFacultyMembers } from '@/utils/mockFacultyData';
 import MemberCardFlip from '@/components/member/MemberCardFlip';
 import { FaCode, FaRocket, FaUsers, FaLightbulb, FaTrophy, FaHandshake } from 'react-icons/fa6';
 
@@ -255,25 +256,6 @@ export default function About() {
                                 })}
                             </div>
                         </div>
-
-                        {/* Key Stats */}
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 pt-8">
-                            {[
-                                { stat: '500+', label: 'Active Members', icon: FaUsers },
-                                { stat: '50+', label: 'Events Annually', icon: FaTrophy },
-                                { stat: '15+', label: 'Collaborations', icon: FaHandshake },
-                                { stat: '100%', label: 'Student Led', icon: FaRocket }
-                            ].map((item, idx) => {
-                                const Icon = item.icon;
-                                return (
-                                    <div key={idx} className="p-6 rounded-xl bg-slate-900/50 border border-slate-700/50 hover:border-slate-600/70 transition-all text-center group">
-                                        <Icon className="w-8 h-8 text-cyan-400 mx-auto mb-3 group-hover:scale-125 transition-transform" />
-                                        <div className="text-3xl font-black text-white font-mono mb-2">{item.stat}</div>
-                                        <div className="text-xs text-slate-500 font-mono">{item.label}</div>
-                                    </div>
-                                );
-                            })}
-                        </div>
                     </div>
                 )}
 
@@ -292,6 +274,46 @@ export default function About() {
                             </p>
                         </div>
 
+                        {/* Faculty Advisors Section */}
+                        <div className="relative">
+                            {/* Faculty Header */}
+                            <div className="flex items-center gap-4 mb-12">
+                                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+                                <div className="text-center">
+                                    <h2 className="text-3xl md:text-4xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent uppercase tracking-wider font-mono">
+                                        Faculty Advisors
+                                    </h2>
+                                    <p className="text-xs text-slate-500 font-mono mt-2">{mockFacultyMembers.length} member{mockFacultyMembers.length > 1 ? 's' : ''}</p>
+                                </div>
+                                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+                            </div>
+
+                            {/* Faculty Members Grid */}
+                            <div className="flex flex-wrap justify-center gap-8 mb-16">
+                                {mockFacultyMembers.map((member, idx) => (
+                                    <div 
+                                        key={member.id} 
+                                        className="w-full max-w-sm sm:w-72 lg:w-80"
+                                        style={{
+                                            animation: `slide-up 0.6s ease-out forwards`,
+                                            animationDelay: `${idx * 0.1}s`,
+                                            opacity: 0
+                                        }}
+                                    >
+                                        <MemberCardFlip {...member} contactNumber={member.contactNumber} />
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Divider */}
+                            <div className="flex items-center gap-4 py-8 my-8">
+                                <div className="flex-1 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+                                <span className="text-cyan-400 font-mono text-sm">Core Team</span>
+                                <div className="flex-1 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+                            </div>
+                        </div>
+
+                        {/* Cluster Members Section */}
                         {Object.entries(clusters).map(([clusterName, members]) => (
                             members.length > 0 && (
                                 <div key={clusterName} className="relative">

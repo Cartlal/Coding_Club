@@ -9,6 +9,7 @@ import {
   getAllYears,
   filterMembers,
 } from '@/utils/mockMemberData';
+import { mockFacultyMembers } from '@/utils/mockFacultyData';
 
 export default function Members() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -182,22 +183,45 @@ export default function Members() {
           <div className="mb-8">
             <div className="inline-flex items-center gap-3 backdrop-blur-lg bg-slate-900/40 border border-slate-800/60 px-6 py-3 rounded-full">
               <span className="text-cyan-100/80 font-medium">Showing</span>
-              <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">{filteredMembers.length}</span>
-              <span className="text-cyan-100/80 font-medium">member{filteredMembers.length !== 1 && 's'}</span>
+              <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">{filteredMembers.length + mockFacultyMembers.length}</span>
+              <span className="text-cyan-100/80 font-medium">member{filteredMembers.length + mockFacultyMembers.length !== 1 && 's'}</span>
             </div>
           </div>
 
-          {filteredMembers.length > 0 ? (
-            <div className="space-y-12">
-              {filteredMembers.filter(m => m.role === 'Chairperson').map((member) => (
-                <div key={member.id} className="flex justify-center">
-                  <div className="w-full max-w-md animate-slide-up">
-                    <MemberCard {...member} />
-                  </div>
+          {/* Faculty Members Section - Always Display */}
+          <div className="mb-16">
+            <div className="mb-8">
+              <h2 className="text-4xl font-bold font-rajdhani bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
+                Faculty Advisors
+              </h2>
+              <p className="text-cyan-100/60">Meet our dedicated mentors and advisors</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {mockFacultyMembers.map((member) => (
+                <div key={member.id} className="animate-slide-up">
+                  <MemberCardFlip {...member} />
                 </div>
               ))}
+            </div>
+          </div>
 
-              {/* For brevity: other grouped sections render similarly using MemberCardFlip */}
+          {/* Divider */}
+          <div className="flex items-center gap-4 py-8">
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+            <span className="text-cyan-400 font-mono text-sm">Team Members</span>
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+          </div>
+
+          {filteredMembers.length > 0 ? (
+            <div className="space-y-16">
+              {/* Core & Other Members Section */}
+              <div>
+                <div className="mb-8">
+                  <h2 className="text-4xl font-bold font-rajdhani bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
+                    Team Members
+                  </h2>
+                  <p className="text-cyan-100/60">Talented developers and contributors</p>
+                </div>
 
               <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4' : 'space-y-4'}>
                 {filteredMembers.map((member, index) => (
@@ -205,6 +229,7 @@ export default function Members() {
                     <MemberCardFlip {...member} />
                   </div>
                 ))}
+              </div>
               </div>
             </div>
           ) : (

@@ -60,7 +60,7 @@ export default function HeroSection() {
 
         {/* Subheading */}
         <p className="text-lg md:text-xl text-slate-400 mb-12 max-w-3xl mx-auto font-light tracking-wide">
-          Empowering coders to innovate, collaborate, and build the future—one line at a time.
+          First to Begin, Never to give up
         </p>
 
 
