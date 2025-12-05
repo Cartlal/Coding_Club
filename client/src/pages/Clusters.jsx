@@ -280,32 +280,6 @@ export default function Clusters() {
                                                     </p>
                                                 </div>
                                             </div>
-
-                                            {/* Technologies */}
-                                            <div>
-                                                <div className="flex items-center gap-3 mb-6">
-                                                    <div className="w-1 h-6 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full" />
-                                                    <h3 className="text-xl font-semibold text-slate-200">
-                                                        Tech Stack & Tools
-                                                    </h3>
-                                                    <div className="ml-auto text-xs font-mono text-slate-500">
-                                                        {cluster.technologies.length} technologies
-                                                    </div>
-                                                </div>
-                                                <div className="flex flex-wrap gap-3">
-                                                    {cluster.technologies.map((tech, idx) => (
-                                                        <span
-                                                            key={idx}
-                                                            className={`px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-slate-200 font-medium hover:border-${activeColors.accent}-400/30 hover:bg-${activeColors.accent}-500/10 hover:text-${activeColors.accent}-300 transition-all duration-300 cursor-default group/tech`}
-                                                        >
-                                                            <div className="flex items-center gap-2">
-                                                                <span>{tech}</span>
-                                                                <span className="opacity-0 group-hover/tech:opacity-100 text-xs">→</span>
-                                                            </div>
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
