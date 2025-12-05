@@ -48,7 +48,7 @@ export default function Footer() {
     <footer className="bg-black-900 text-gray-300 mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand Section */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-3 mb-6">
@@ -96,8 +96,8 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="md:col-span-2">
-            <div className="grid grid-cols-2 gap-8">
+          <div className="md:col-span-1">
+            <div className="grid grid-cols-1 gap-8">
               {Object.entries(footerLinks).map(([category, links]) => (
                 <div key={category}>
                   <h3 className="text-white font-bold text-lg mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
@@ -118,6 +118,20 @@ export default function Footer() {
                   </ul>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Campus Logo Section */}
+          <div className="md:col-span-1 flex items-center justify-end pl-[100px]">
+            <div className="flex flex-col items-center gap-4">
+              <div className="relative" style={{ height: '320px', width: '520px' }}>
+                <img 
+                  src="/SHESHAGIRI%20CAMPUS%20LOGO%20PDF%20white.png" 
+                  alt="Sheshagiri Campus Logo" 
+                  className="h-full w-full object-contain filter brightness-100 hover:brightness-110 transition-all duration-300" 
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </div>

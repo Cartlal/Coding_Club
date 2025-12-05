@@ -306,36 +306,6 @@ export default function Clusters() {
                                                     ))}
                                                 </div>
                                             </div>
-
-                                            {/* Footer Stats */}
-                                            <div className="mt-10 pt-6 border-t border-slate-700/50">
-                                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                                    <div className="text-center p-3 rounded-lg bg-slate-900/50 border border-slate-700/50">
-                                                        <div className="text-2xl font-bold text-cyan-400 mb-1">
-                                                            {Math.floor(Math.random() * 50) + 20}
-                                                        </div>
-                                                        <div className="text-xs text-slate-400">Active Members</div>
-                                                    </div>
-                                                    <div className="text-center p-3 rounded-lg bg-slate-900/50 border border-slate-700/50">
-                                                        <div className="text-2xl font-bold text-emerald-400 mb-1">
-                                                            {Math.floor(Math.random() * 30) + 10}
-                                                        </div>
-                                                        <div className="text-xs text-slate-400">Projects</div>
-                                                    </div>
-                                                    <div className="text-center p-3 rounded-lg bg-slate-900/50 border border-slate-700/50">
-                                                        <div className="text-2xl font-bold text-purple-400 mb-1">
-                                                            {Math.floor(Math.random() * 20) + 5}
-                                                        </div>
-                                                        <div className="text-xs text-slate-400">Workshops</div>
-                                                    </div>
-                                                    <div className="text-center p-3 rounded-lg bg-slate-900/50 border border-slate-700/50">
-                                                        <div className="text-2xl font-bold text-amber-400 mb-1">
-                                                            24/7
-                                                        </div>
-                                                        <div className="text-xs text-slate-400">Support</div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
