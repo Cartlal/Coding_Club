@@ -13,75 +13,71 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-pitch-dark text-white flex items-center justify-center pt-32 pb-4 px-4 overflow-hidden">
-      {/* Background Particles */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-      </div>
+    <div className="min-h-screen bg-pitch-dark text-white flex items-center justify-center px-4 relative overflow-hidden">
+      {/* Subtle Background Ambience - Professional & Static */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-pitch-dark to-slate-900" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-900/40 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-900/40 to-transparent" />
 
-      {/* Auth Card */}
-      <div className="relative w-full max-w-md perspective-1000">
-        <div className="relative transform transition-all duration-500 hover:rotate-y-2">
-          {/* Glow */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl blur-xl opacity-30" />
+      {/* Auth Card - Clean Glassmorphism */}
+      <div className="relative w-full max-w-md bg-slate-900/50 backdrop-blur-xl border border-white/5 rounded-2xl p-8 shadow-2xl">
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-rajdhani font-bold text-white mb-2 tracking-wide">
+            Welcome Back
+          </h1>
+          <p className="text-slate-400 text-sm">Sign in to access your dashboard</p>
+        </div>
 
-          <div className="relative backdrop-blur-xl bg-gradient-to-br from-slate-800/90 to-slate-900/90 border border-white/10 rounded-3xl p-8 shadow-2xl">
-            <div className="text-center mb-8">
-              <h1 className="text-3xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
-                Welcome Back
-              </h1>
-              <p className="text-slate-400">Sign in to continue your journey</p>
-            </div>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-2">
+            <label className="text-xs font-semibold text-slate-400 uppercase tracking-widest ml-1">Email Address</label>
+            <input
+              type="email"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-white placeholder-slate-600 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 outline-none transition-all duration-200"
+              placeholder="name@example.com"
+              required
+            />
+          </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-300 uppercase tracking-wider">Email</label>
-                <input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-950/50 border border-slate-700 text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all shadow-inner"
-                  placeholder="Enter your email"
-                  required
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-300 uppercase tracking-wider">Password</label>
-                <input
-                  type="password"
-                  value={formData.password}
-                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-950/50 border border-slate-700 text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all shadow-inner"
-                  placeholder="Enter your password"
-                  required
-                />
-              </div>
-
-              <div className="flex items-center justify-between text-sm">
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" className="rounded bg-slate-800 border-slate-700 text-cyan-500 focus:ring-cyan-500" />
-                  <span className="text-slate-400">Remember me</span>
-                </label>
-                <Link to="/coming-soon" className="text-cyan-400 hover:text-cyan-300 transition-colors">Forgot Password?</Link>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-lg shadow-lg hover:shadow-cyan-500/25 transform transition-all duration-300 hover:scale-[1.02]"
-              >
-                Sign In
-              </button>
-            </form>
-
-            <div className="mt-8 text-center text-slate-400">
-              Don't have an account?{' '}
-              <Link to="/signup" className="text-cyan-400 hover:text-cyan-300 font-bold transition-colors">
-                Sign Up
+          <div className="space-y-2">
+            <div className="flex justify-between items-center ml-1">
+              <label className="text-xs font-semibold text-slate-400 uppercase tracking-widest">Password</label>
+              <Link to="/coming-soon" className="text-xs text-cyan-500 hover:text-cyan-400 transition-colors">
+                Forgot Password?
               </Link>
             </div>
+            <input
+              type="password"
+              value={formData.password}
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              className="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-white placeholder-slate-600 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 outline-none transition-all duration-200"
+              placeholder="••••••••"
+              required
+            />
           </div>
+
+          <div className="flex items-center gap-2 ml-1">
+            <input type="checkbox" id="remember" className="rounded bg-slate-900 border-slate-700 text-cyan-500 focus:ring-offset-0 focus:ring-cyan-500/30 w-4 h-4" />
+            <label htmlFor="remember" className="text-xs text-slate-400 cursor-pointer select-none">Remember for 30 days</label>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full py-3.5 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold shadow-lg shadow-cyan-900/20 transform transition-all duration-200 active:scale-[0.98]"
+          >
+            Sign In
+          </button>
+        </form>
+
+        <div className="mt-8 text-center pt-6 border-t border-white/5">
+          <p className="text-slate-500 text-sm">
+            Don't have an account?{' '}
+            <Link to="/signup" className="text-cyan-500 hover:text-cyan-400 font-medium transition-colors">
+              Create an account
+            </Link>
+          </p>
         </div>
       </div>
     </div>
