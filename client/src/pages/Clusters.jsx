@@ -145,20 +145,7 @@ export default function Clusters() {
                                                         {iconMap[cluster.id]}
                                                     </div>
                                                     
-                                                    {/* Active Indicator */}
-                                                    {isActive && (
-                                                        <div className="absolute -top-1 -right-1">
-                                                            <div className="flex gap-0.5">
-                                                                {[1, 2, 3].map(dot => (
-                                                                    <div
-                                                                        key={dot}
-                                                                        className={`w-1.5 h-1.5 bg-${colors.accent}-400 rounded-full animate-pulse`}
-                                                                        style={{ animationDelay: `${dot * 0.1}s` }}
-                                                                    />
-                                                                ))}
-                                                            </div>
-                                                        </div>
-                                                    )}
+                                                    
                                                 </div>
                                                 
                                                 {/* Cluster Info */}
@@ -169,17 +156,6 @@ export default function Clusters() {
                                                         {cluster.name}
                                                     </h3>
                                                     <div className="flex items-center gap-2 mt-1">
-                                                        <div className="flex -space-x-1">
-                                                            {[1, 2, 3].map((i) => (
-                                                                <div
-                                                                    key={i}
-                                                                    className={`w-4 h-4 rounded-full border border-slate-800 bg-gradient-to-br from-${colors.accent}-500/20 to-${colors.accent}-600/20`}
-                                                                />
-                                                            ))}
-                                                        </div>
-                                                        <span className="text-xs font-mono text-slate-500">
-                                                            {cluster.focusAreas.length} focus areas
-                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>

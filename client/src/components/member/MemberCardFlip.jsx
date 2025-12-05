@@ -140,11 +140,13 @@ export default function MemberCardFlip({
                     <div className="absolute bottom-3 left-3 w-2 h-2 border-b border-l border-slate-600/50" />
                     <div className="absolute bottom-3 right-3 w-2 h-2 border-b border-r border-slate-600/50" />
                     
-                    {/* Year Badge */}
-                    <div className="absolute top-3 right-3 z-20 backdrop-blur-sm bg-slate-900/80 border border-slate-700/50 text-slate-300 font-medium px-3 py-1 rounded-lg text-xs flex items-center gap-1">
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                        Year {year}
-                    </div>
+                    {/* Year Badge - Only show for non-faculty */}
+                    {!contactNumber && (
+                        <div className="absolute top-3 right-3 z-20 backdrop-blur-sm bg-slate-900/80 border border-slate-700/50 text-slate-300 font-medium px-3 py-1 rounded-lg text-xs flex items-center gap-1">
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                            Year {year}
+                        </div>
+                    )}
                     
                     {/* Avatar Section */}
                     <div className="h-48 flex items-center justify-center relative">
@@ -214,10 +216,12 @@ export default function MemberCardFlip({
                                     {name}
                                 </h3>
                             </div>
-                            <div className="px-3 py-1 text-xs font-semibold bg-slate-800/60 text-slate-300 rounded-lg border border-slate-700/60 flex items-center gap-1">
-                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                                Year {year}
-                            </div>
+                            {!contactNumber && (
+                                <div className="px-3 py-1 text-xs font-semibold bg-slate-800/60 text-slate-300 rounded-lg border border-slate-700/60 flex items-center gap-1">
+                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                                    Year {year}
+                                </div>
+                            )}
                         </div>
 
                         {/* Role Badge */}
