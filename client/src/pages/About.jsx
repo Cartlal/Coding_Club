@@ -145,7 +145,7 @@ export default function About() {
                                 <div className="relative h-[400px] rounded-3xl overflow-hidden shadow-2xl border border-slate-700/50">
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-10" />
                                     <img
-                                        src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                                        src="kle-building.jpg"
                                         alt="KLE Tech Campus"
                                         className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                                     />
@@ -303,13 +303,6 @@ export default function About() {
                                         <MemberCardFlip {...member} contactNumber={member.contactNumber} />
                                     </div>
                                 ))}
-                            </div>
-
-                            {/* Divider */}
-                            <div className="flex items-center gap-4 py-8 my-8">
-                                <div className="flex-1 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
-                                <span className="text-cyan-400 font-mono text-sm">Core Team</span>
-                                <div className="flex-1 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
                             </div>
                         </div>
 
