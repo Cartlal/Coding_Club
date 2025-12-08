@@ -874,7 +874,6 @@ export const mockMembers = [
     bio: 'Programming enthusiast',
     image: '/test-profile.svg',
   },
-
   {
     id: 61,
     name: 'Omganesh Matiwade',

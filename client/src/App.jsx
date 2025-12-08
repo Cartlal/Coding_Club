@@ -9,6 +9,7 @@ import Clusters from '@/pages/Clusters';
 import Leaderboard from '@/pages/Leaderboard';
 import Login from '@/pages/Login';
 import Signup from '@/pages/Signup';
+import ForgotPassword from '@/pages/ForgotPassword';
 import Members from '@/pages/Members';
 import NotFound from '@/pages/NotFound';
 import ComingSoon from '@/pages/ComingSoon';
@@ -16,7 +17,7 @@ import ScrollToTop from '@/pages/ScrollToTop';
 
 function Layout() {
   const location = useLocation();
-  const hideHeaderFooter = ['/login', '/signup'].includes(location.pathname);
+  const hideHeaderFooter = ['/login', '/signup', '/forgot-password'].includes(location.pathname);
 
   // Auto scroll to top when route changes
   useEffect(() => {
@@ -40,6 +41,7 @@ function Layout() {
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/coming-soon" element={<ComingSoon />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
