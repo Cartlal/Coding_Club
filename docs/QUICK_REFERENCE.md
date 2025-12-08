@@ -1,367 +1,180 @@
-# 🚀 Quick Reference - Mongoose Models
+# User APIs - Quick Reference
 
-## Import All Models
+## All 8 Endpoints at a Glance
 
-```javascript
-import { User, Admin, Event, Notice, Cluster } from './models';
+| # | Method | Endpoint | Purpose | Protected |
+|---|--------|----------|---------|-----------|
+| 1 | GET | `/user/profile` | User profile + QR code + stats + progress | ✅ Yes |
+| 2 | GET | `/user/stats` | Stats: wins, participation, clusterPoints | ✅ Yes |
+| 3 | GET | `/user/badges` | All 25 badges with earned status + auto-assign | ✅ Yes |
+| 4 | GET | `/user/leaderboard` | Global ranking sorted by points | ✅ Yes |
+| 5 | GET | `/user/class-leaderboard` | Class-wise ranking | ✅ Yes |
+| 6 | POST | `/user/event/:eventId/register` | Register for event | ✅ Yes |
+| 7 | GET | `/user/events` | List registered events | ✅ Yes |
+| 8 | DELETE | `/user/event/:eventId/register` | Unregister from event | ✅ Yes |
 
-// Or individual imports
-import User from './models/User.js';
-import Admin from './models/Admin.js';
-import Event from './models/Event.js';
-import Notice from './models/Notice.js';
-import Cluster from './models/Cluster.js';
+---
+
+## Badge Assignment Rules (Quick Table)
+
+| Badge | Emoji | Condition | Points |
+|-------|-------|-----------|--------|
+| Achiever | 🏅 | participation >= 5 | Tier 1 |
+| Bullseye | 🎯 | participation >= 5 | Tier 1 |
+| Team Player | 🤝 | participation >= 10 | Tier 2 |
+| Scholar | 🎓 | participation >= 12 | Tier 2 |
+| Rising Star | 🌟 | participation >= 15 && wins >= 1 | Tier 2 |
+| Security Expert | 🔐 | participation >= 8 | Tier 1 |
+| Event Master | 🎪 | participation >= 25 | Tier 3 |
+| Brain Power | 🧠 | clusterPoints >= 50 | Tier 1 |
+| Data Analyst | 📊 | clusterPoints >= 75 | Tier 1 |
+| Code Master | 💻 | clusterPoints >= 100 | Tier 2 |
+| Researcher | 🔬 | clusterPoints >= 120 | Tier 2 |
+| Rocket Launcher | 🚀 | clusterPoints >= 250 | Tier 3 |
+| Lightning Fast | ⚡ | wins >= 1 | Tier 1 |
+| Innovator | 💡 | wins >= 2 | Tier 2 |
+| Third Place | 🥉 | wins >= 1 | Tier 1 |
+| Second Place | 🥈 | wins >= 2 | Tier 2 |
+| First Place | 🥇 | wins >= 3 | Tier 2 |
+| Champion | 🏆 | wins >= 5 | Tier 3 |
+| On Fire | 🔥 | participation >= 10 && wins >= 2 | Tier 2 |
+| Star Performer | ⭐ | wins >= 3 && clusterPoints >= 150 | Tier 2 |
+| Creative Designer | 🎨 | badges.length >= 5 | Tier 2 |
+| Growth Mindset | 📈 | participation >= 8 && wins >= 1 | Tier 1 |
+| Brilliant | ✨ | wins >= 4 && participation >= 10 | Tier 3 |
+| Crowned | 👑 | wins >= 5 && clusterPoints >= 200 | Tier 3 |
+| Multi-talented | 🎭 | badges.length >= 8 | Tier 3 |
+
+---
+
+## cURL Quick Commands
+
+### Login First
+```bash
+TOKEN=$(curl -s -X POST http://localhost:5000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"user@example.com","password":"password"}' | jq -r '.data.token')
+```
+
+### Profile
+```bash
+curl -H "Authorization: Bearer $TOKEN" \
+  http://localhost:5000/api/users/profile | jq
+```
+
+### Stats
+```bash
+curl -H "Authorization: Bearer $TOKEN" \
+  http://localhost:5000/api/users/stats | jq
+```
+
+### Badges
+```bash
+curl -H "Authorization: Bearer $TOKEN" \
+  http://localhost:5000/api/users/badges | jq
+```
+
+### Global Leaderboard (Top 10)
+```bash
+curl -H "Authorization: Bearer $TOKEN" \
+  "http://localhost:5000/api/users/leaderboard?limit=10" | jq
+```
+
+### Class Leaderboard
+```bash
+curl -H "Authorization: Bearer $TOKEN" \
+  http://localhost:5000/api/users/class-leaderboard | jq
+```
+
+### User Events (Upcoming)
+```bash
+curl -H "Authorization: Bearer $TOKEN" \
+  "http://localhost:5000/api/users/events?status=upcoming" | jq
+```
+
+### Register for Event
+```bash
+curl -X POST -H "Authorization: Bearer $TOKEN" \
+  http://localhost:5000/api/users/event/EVENT_ID/register | jq
+```
+
+### Unregister
+```bash
+curl -X DELETE -H "Authorization: Bearer $TOKEN" \
+  http://localhost:5000/api/users/event/EVENT_ID/register | jq
 ```
 
 ---
 
-## User Model Quick Reference
+## Query Parameters
 
-### Create User
-```javascript
-const user = new User({
-  fullName: 'John Doe',
-  email: 'john@example.com',
-  password: 'password123',
-  srn: 'ARK001',
-  class: { year: '3rd Year', branch: 'CSE', division: 'A' }
-});
-await user.save();
+### Leaderboard
+- `limit=100` - Items per page (default 100)
+- `page=1` - Page number (default 1)
+- `sortBy=clusterPoints` - Sort field (clusterPoints|wins|participation|name)
+
+### Class Leaderboard
+- `limit=50` - Items per page (default 50)
+- `page=1` - Page number (default 1)
+
+### User Events
+- `status=all` - Filter (all|upcoming|past, default all)
+
+---
+
+## Response Status Codes
+
+| Code | Meaning | Example |
+|------|---------|---------|
+| 200 | OK - Success | GET /profile |
+| 201 | Created - Resource created | POST /register |
+| 400 | Bad Request | Event capacity full |
+| 401 | Unauthorized | Missing/invalid token |
+| 403 | Forbidden | Wrong role (not user) |
+| 404 | Not Found | Event/user doesn't exist |
+| 409 | Conflict | Already registered |
+| 500 | Server Error | DB connection error |
+
+---
+
+## Authentication
+
+**Header Format:**
+```
+Authorization: Bearer eyJhbGciOiJIUzI1NiIs...
 ```
 
-### Login
+**Get Token:**
 ```javascript
-const user = await User.findOne({ email }).select('+password');
-const valid = await user.matchPassword(password);
-```
-
-### Add Badge
-```javascript
-const user = await User.findById(userId);
-user.addBadge('🏆'); // Validates against 25-badge system
-await user.save();
-```
-
-### Get Leaderboard
-```javascript
-const top100 = await User.getLeaderboard(100);
-```
-
-### Get by Branch/Year
-```javascript
-const cseUsers = await User.getByBranch('CSE');
-const thirdYearUsers = await User.getByYear('3rd Year');
+POST /auth/login
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+// Returns: { data: { token: "jwt..." } }
 ```
 
 ---
 
-## Admin Model Quick Reference
+## Error Response Format
 
-### Create Admin
-```javascript
-const admin = new Admin({
-  fullName: 'Admin Name',
-  username: 'adminname',
-  email: 'admin@example.com',
-  password: 'admin123',
-  cluster: clusterId,
-  createdBy: masterAdminId // null for master
-});
-await admin.save();
-```
-
-### Log Activity
-```javascript
-const admin = await Admin.findById(adminId);
-admin.logActivity('event_created', { eventId: eventId });
-await admin.save();
-```
-
-### Check Permission
-```javascript
-const admin = await Admin.findById(adminId);
-if (admin.hasPermission('manageEvents')) {
-  // Allow event management
+```json
+{
+  "success": false,
+  "error": "User is already registered for this event",
+  "statusCode": 409
 }
 ```
 
-### Get Active Admins
-```javascript
-const admins = await Admin.getActiveAdmins();
-```
-
 ---
 
-## Event Model Quick Reference
+## Success Response Format
 
-### Create Event
-```javascript
-const event = new Event({
-  title: 'Hackathon 2025',
-  description: 'Description here',
-  cluster: clusterId,
-  eventType: 'upcoming',
-  date: new Date('2025-12-20'),
-  createdBy: adminId
-});
-await event.save();
-```
-
-### Register User
-```javascript
-const event = await Event.findById(eventId);
-event.addParticipant(userId);
-await event.save();
-```
-
-### Mark Winner (Rank 1-10)
-```javascript
-const event = await Event.findById(eventId);
-event.addWinner(userId, 1, '₹5000 Prize', 100); // rank, prize, points
-await event.save();
-```
-
-### Get Upcoming Events
-```javascript
-const upcoming = await Event.getUpcomingEvents(10);
-```
-
-### Get by Category
-```javascript
-const workshops = await Event.getByCategory('Workshop', 15);
-```
-
-### Search Events
-```javascript
-const results = await Event.searchEvents('hackathon', 20);
-```
-
----
-
-## Notice Model Quick Reference
-
-### Create Notice
-```javascript
-const notice = new Notice({
-  title: 'Registration Deadline',
-  message: 'Please register by Dec 15',
-  postedBy: adminId,
-  category: 'deadline',
-  priority: 'high',
-  isPinned: true
-});
-await notice.save();
-```
-
-### Record View
-```javascript
-const notice = await Notice.findById(noticeId);
-notice.recordView(userId);
-await notice.save();
-```
-
-### Get Active Notices
-```javascript
-const notices = await Notice.getActiveNotices(20); // Non-expired, sorted by pinned
-```
-
-### Get Pinned Notices
-```javascript
-const pinned = await Notice.getPinnedNotices();
-```
-
-### Get Urgent
-```javascript
-const urgent = await Notice.getUrgentNotices(10);
-```
-
-### Archive Notice
-```javascript
-const notice = await Notice.findById(noticeId);
-notice.archive(); // Soft delete
-await notice.save();
-```
-
----
-
-## Cluster Model Quick Reference
-
-### Create Cluster
-```javascript
-const cluster = new Cluster({
-  name: 'Development',
-  description: 'Build amazing applications',
-  icon: '💻',
-  lead: adminId
-});
-await cluster.save();
-```
-
-### Add Member
-```javascript
-const cluster = await Cluster.findById(clusterId);
-cluster.addMember(userId);
-await cluster.save();
-```
-
-### Add Admin
-```javascript
-const cluster = await Cluster.findById(clusterId);
-cluster.addAdmin(adminId);
-await cluster.save();
-```
-
-### Get by Slug
-```javascript
-const cluster = await Cluster.getBySlug('development');
-```
-
-### Get Leaderboard
-```javascript
-const ranked = await Cluster.getLeaderboard(10);
-```
-
-### Get Active Clusters
-```javascript
-const clusters = await Cluster.getActiveClusters();
-```
-
-### Search Clusters
-```javascript
-const results = await Cluster.searchClusters('web development', 20);
-```
-
----
-
-## Common Patterns
-
-### Get User with Cluster
-```javascript
-const user = await User.findById(userId).populate('cluster', 'name icon');
-```
-
-### Get Event with Participants
-```javascript
-const event = await Event.findById(eventId)
-  .populate('participants', 'fullName email')
-  .populate('cluster', 'name icon');
-```
-
-### Get Notice Views
-```javascript
-const notice = await Notice.findById(noticeId)
-  .populate('viewedBy.user', 'fullName email');
-console.log(`Viewed by ${notice.viewedBy.length} users`);
-```
-
-### Get Cluster Members Count
-```javascript
-const cluster = await Cluster.findById(clusterId);
-console.log(`Members: ${cluster.totalMembers}`);
-```
-
----
-
-## Validation & Errors
-
-### Password Requirements
-- Minimum 6 characters
-- Auto-hashed with bcryptjs (10 rounds)
-
-### Email Validation
-- Valid email format required
-- Unique across system
-- Stored as lowercase
-
-### Badge System
-- 25 predefined badges only
-- Maximum 25 badges per user
-- Usage: `user.addBadge('🏆')`
-
-### Event Winners
-- Maximum 10 winners per event
-- Ranks 1-10 only
-- Auto-removed from participants
-
-### SRN Validation
-- Must be 5+ characters
-- Uppercase only
-- Unique per user
-
----
-
-## Status Fields
-
-### User Role
-- `'user'` - Regular member (default)
-- `'admin'` - Can manage events/notices
-- `'moderator'` - Limited admin access
-
-### Admin Role
-- `'admin'` - Manages cluster
-- `'superadmin'` - Full access
-
-### Event Type
-- `'upcoming'` - Future events
-- `'past'` - Completed events
-- `'ongoing'` - Currently happening
-
-### Notice Priority
-- `'low'` - Green
-- `'medium'` - Yellow (default)
-- `'high'` - Orange
-- `'urgent'` - Red
-
-### Notice Category
-- `'announcement'` - General announcement
-- `'alert'` - Important alert
-- `'update'` - System update
-- `'event'` - Event-related
-- `'deadline'` - Important deadline
-- `'other'` - Other notices
-
----
-
-## Key Virtual Fields
-
-### User
-- `user.classString` → "3rd Year CSE-A"
-
-### Event
-- `event.isFull` → true/false
-- `event.registrationOpen` → true/false
-- `event.daysUntil` → 5
-- `event.isUpcoming` → true/false
-
-### Notice
-- `notice.isValid` → true/false (active & not expired)
-- `notice.postedSince` → "2 days ago"
-
-### Cluster
-- `cluster.isSetup` → true/false
-- `cluster.engagementScore` → 75 (percentage)
-- `cluster.healthStatus` → "excellent"/"good"/"fair"/"needs-improvement"
-
----
-
-## Indexes Created (35 Total)
-
-### Performance-Critical
-- User.email, User.srn, User.stats.clusterPoints
-- Event.date, Event.eventType
-- Notice.isPinned, Notice.expiresAt
-- Cluster.slug, Cluster.totalPoints
-
-All commonly queried fields are indexed.
-
----
-
-## Timestamp Fields (Auto-Managed)
-
-```javascript
+```json
 {
-  createdAt: Date,  // Set on creation
-  updatedAt: Date   // Updated on each save
+  "success": true,
+  "data": { /* endpoint-specific data */ },
+  "message": "User profile retrieved successfully"
 }
 ```
 
@@ -369,42 +182,98 @@ All commonly queried fields are indexed.
 
 ## File Locations
 
+- **Controller:** `/server/controllers/userController.js`
+- **Routes:** `/server/routes/userRoutes.js`
+- **Full Docs:** `/server/docs/USER_APIS.md`
+- **Testing Guide:** `/server/docs/USER_APIS_TESTING.md`
+- **Summary:** `/server/docs/USER_APIS_SUMMARY.md`
+
+---
+
+## Implementation Highlights
+
+✅ **8 User Endpoints** - Profile, stats, badges, leaderboards, events
+✅ **25-Badge System** - Auto-assigned achievement badges
+✅ **QR Code Generation** - On-the-fly from user info
+✅ **Global Leaderboard** - Sortable, paginated, user-highlighted
+✅ **Class Leaderboard** - Filtered by class
+✅ **Event Management** - Registration with validation
+✅ **Full Security** - JWT + role-based access control
+✅ **Comprehensive Docs** - 3 documentation files + inline comments
+
+---
+
+## Common Workflows
+
+### 1. View My Profile
+```bash
+GET /user/profile → See QR, stats, badges, progress
 ```
-server/models/
-├── User.js              (User model)
-├── Admin.js             (Admin model)
-├── Event.js             (Event model)
-├── Notice.js            (Notice model)
-├── Cluster.js           (Cluster model)
-├── index.js             (Exports)
-├── README.md            (Full documentation)
-└── USAGE_EXAMPLES.js    (Code examples)
+
+### 2. Check My Stats
+```bash
+GET /user/stats → See wins, participation, points
+```
+
+### 3. See My Badges
+```bash
+GET /user/badges → All 25 badges, earned status, auto-assign
+```
+
+### 4. Check Global Ranking
+```bash
+GET /user/leaderboard → See where I rank globally
+```
+
+### 5. Check Class Ranking
+```bash
+GET /user/class-leaderboard → See where I rank in my class
+```
+
+### 6. Register for Event
+```bash
+POST /user/event/{id}/register → Register
+GET /user/events?status=upcoming → See my upcoming events
+```
+
+### 7. Unregister from Event
+```bash
+DELETE /user/event/{id}/register → Unregister
 ```
 
 ---
 
-## Next Steps
+## Key Numbers
 
-1. Import models in controllers
-2. Create CRUD endpoints
-3. Add route handlers
-4. Implement authentication middleware
-5. Create API documentation
-6. Add error handling
-7. Write tests
-8. Deploy to production
+- **25 Badges Total** - All unlockable with progression
+- **8 API Endpoints** - For complete user features
+- **3 Documentation Files** - Complete reference
+- **1,200+ Lines** - Controller implementation
+- **100 Results Default** - Leaderboard pagination
+- **50 Results Default** - Class leaderboard pagination
 
 ---
 
-## Documentation Files
+## Integration Checklist
 
-- `README.md` - Complete model documentation
-- `USAGE_EXAMPLES.js` - Practical code examples
-- `DATABASE_SCHEMA.md` - ERD and relationships
-- `MODELS_SUMMARY.md` - Feature overview
-- `VERIFICATION_CHECKLIST.md` - Completeness checklist
+- [ ] Test all 8 endpoints with token
+- [ ] Verify role-based access (non-users get 403)
+- [ ] Test badge auto-assignment
+- [ ] Verify QR code generation
+- [ ] Test event registration validation
+- [ ] Test leaderboard sorting
+- [ ] Check class leaderboard filtering
+- [ ] Verify stats calculations
+- [ ] Test pagination
+- [ ] Frontend integration
 
 ---
 
-**Last Updated:** December 8, 2025
-**Status:** ✅ Production Ready
+## Notes
+
+- All timestamps in ISO 8601 format
+- Pagination is 1-based (page 1 = first page)
+- QR code contains: id, name, email, SRN, class, points, badges
+- Badges auto-assigned on each GET /badges request
+- Leaderboard real-time (not cached)
+- Event registration updates user stats automatically
