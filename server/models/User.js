@@ -98,6 +98,41 @@ const userSchema = new mongoose.Schema(
       default: '',
     },
 
+    links: {
+      github: {
+        type: String,
+        default: '',
+        match: [/^(https?:\/\/)?(www\.)?github\.com\//, 'Invalid GitHub URL'],
+      },
+      portfolio: {
+        type: String,
+        default: '',
+        match: [/^(https?:\/\/)?.+\..+/, 'Invalid URL'],
+      },
+      linkedin: {
+        type: String,
+        default: '',
+        match: [/^(https?:\/\/)?(www\.)?linkedin\.com\//, 'Invalid LinkedIn URL'],
+      },
+      instagram: {
+        type: String,
+        default: '',
+        match: [/^(https?:\/\/)?(www\.)?instagram\.com\//, 'Invalid Instagram URL'],
+      },
+      custom: [
+        {
+          label: {
+            type: String,
+            maxlength: [50, 'Label cannot exceed 50 characters'],
+          },
+          url: {
+            type: String,
+            match: [/^(https?:\/\/).+/, 'URL must start with http:// or https://'],
+          },
+        },
+      ],
+    },
+
     // Club Information
     cluster: {
       type: mongoose.Schema.Types.ObjectId,

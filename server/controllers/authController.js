@@ -192,7 +192,7 @@ export const getCurrentUser = async (req, res, next) => {
  */
 export const updateProfile = async (req, res, next) => {
   try {
-    const { fullName, bio, profilePic } = req.body;
+    const { fullName, bio, profilePic, links } = req.body;
     const { userId, role } = req.user;
 
     // Only users can update profile (not admins or master)
@@ -202,8 +202,17 @@ export const updateProfile = async (req, res, next) => {
 
     const updateData = {};
     if (fullName) updateData.fullName = fullName;
-    if (bio) updateData.bio = bio;
+    if (bio !== undefined) updateData.bio = bio;
     if (profilePic) updateData.profilePic = profilePic;
+    if (links) {
+      updateData.links = {
+        github: links.github || '',
+        portfolio: links.portfolio || '',
+        linkedin: links.linkedin || '',
+        instagram: links.instagram || '',
+        custom: links.custom || [],
+      };
+    }
 
     const user = await User.findByIdAndUpdate(
       userId,

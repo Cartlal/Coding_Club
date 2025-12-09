@@ -1,8 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
+import { useAuth } from '@/context/AuthContext';
+import AuthService from '@/services/AuthService';
 
 export default function Signup() {
+    const navigate = useNavigate();
+    const { login } = useAuth();
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -19,18 +23,53 @@ export default function Signup() {
     const [passwordMatch, setPasswordMatch] = useState(true);
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
 
     const branches = ['CSE', 'ECE', 'Mechanical', 'Civil', 'EEE','BME','Chemical','BCA'];
     const years = ['1st Year', '2nd Year', '3rd Year', '4th Year'];
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (formData.password !== formData.confirmPassword) {
             setPasswordMatch(false);
             return;
         }
         setPasswordMatch(true);
-        console.log('Signup attempt:', formData);
+        setError('');
+
+        try {
+            setLoading(true);
+            const signupData = {
+                fullName: formData.fullName,
+                email: formData.email,
+                srn: formData.srn.toUpperCase(),
+                year: formData.year,
+                branch: formData.branch,
+                division: formData.division.toUpperCase(),
+                password: formData.password,
+                profilePic: formData.profilePicPreview || null,
+            };
+
+            const response = await AuthService.registerUser(signupData);
+            const { token, userId } = response.data.data;
+
+            // Auto-login after signup
+            login(token, 'user', userId, {
+                fullName: formData.fullName,
+                email: formData.email,
+                srn: formData.srn,
+                year: formData.year,
+                branch: formData.branch,
+                division: formData.division,
+            });
+
+            navigate('/user/profile');
+        } catch (err) {
+            setError(err.response?.data?.message || 'Signup failed. Please try again.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     const handleChange = (e) => {
@@ -73,6 +112,13 @@ export default function Signup() {
                     <p className="text-slate-400 text-sm">Join the community of innovators</p>
                 </div>
 
+                {/* Error Message */}
+                {error && (
+                    <div className="md:col-span-2 bg-red-900/20 border border-red-700/50 text-red-400 p-4 rounded-lg text-sm">
+                        {error}
+                    </div>
+                )}
+
                 <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Full Name */}
                     <div className="space-y-2">
@@ -82,7 +128,8 @@ export default function Signup() {
                             name="fullName"
                             value={formData.fullName}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-white placeholder-slate-600 focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 outline-none transition-all duration-200"
+                            disabled={loading}
+                            className="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-white placeholder-slate-600 focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 outline-none transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                             placeholder="Name Surname"
                             required
                         />
@@ -96,7 +143,8 @@ export default function Signup() {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-white placeholder-slate-600 focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 outline-none transition-all duration-200"
+                            disabled={loading}
+                            className="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-white placeholder-slate-600 focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 outline-none transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                             placeholder="xyz@example.com"
                             required
                         />
@@ -110,7 +158,8 @@ export default function Signup() {
                             name="srn"
                             value={formData.srn}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-white placeholder-slate-600 focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 outline-none transition-all duration-200 uppercase"
+                            disabled={loading}
+                            className="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-white placeholder-slate-600 focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 outline-none transition-all duration-200 uppercase disabled:opacity-50 disabled:cursor-not-allowed"
                             placeholder="02FE23BCS112"
                             required
                         />
@@ -123,7 +172,8 @@ export default function Signup() {
                             name="year"
                             value={formData.year}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-white focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 outline-none transition-all duration-200 appearance-none cursor-pointer"
+                            disabled={loading}
+                            className="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-white focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 outline-none transition-all duration-200 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                             style={{ backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgb(100,116,139)' stroke-width='2'%3e%3cpath d='M6 9l6 6 6-6'%3e%3c/path%3e%3c/svg%3e")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 0.5rem center', backgroundSize: '1.5em 1.5em', paddingRight: '2.5rem' }}
                             required
                         >
@@ -143,7 +193,8 @@ export default function Signup() {
                             name="branch"
                             value={formData.branch}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-white focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 outline-none transition-all duration-200 appearance-none cursor-pointer"
+                            disabled={loading}
+                            className="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-white focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 outline-none transition-all duration-200 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                             style={{ backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgb(100,116,139)' stroke-width='2'%3e%3cpath d='M6 9l6 6 6-6'%3e%3c/path%3e%3c/svg%3e")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 0.5rem center', backgroundSize: '1.5em 1.5em', paddingRight: '2.5rem' }}
                             required
                         >
@@ -164,8 +215,9 @@ export default function Signup() {
                             name="division"
                             value={formData.division}
                             onChange={handleChange}
+                            disabled={loading}
                             maxLength="1"
-                            className="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-white placeholder-slate-600 focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 outline-none transition-all duration-200 uppercase"
+                            className="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-white placeholder-slate-600 focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 outline-none transition-all duration-200 uppercase disabled:opacity-50 disabled:cursor-not-allowed"
                             placeholder="A"
                             required
                         />
@@ -180,14 +232,16 @@ export default function Signup() {
                                 name="password"
                                 value={formData.password}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-white placeholder-slate-600 focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 outline-none transition-all duration-200 pr-10"
+                                disabled={loading}
+                                className="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-white placeholder-slate-600 focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 outline-none transition-all duration-200 pr-10 disabled:opacity-50 disabled:cursor-not-allowed"
                                 placeholder="••••••••"
                                 required
                             />
                             <button
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors"
+                                disabled={loading}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors disabled:opacity-50"
                             >
                                 {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
                             </button>
@@ -203,14 +257,16 @@ export default function Signup() {
                                 name="confirmPassword"
                                 value={formData.confirmPassword}
                                 onChange={handleChange}
-                                className={`w-full px-4 py-3 rounded-lg bg-slate-950/50 border ${!passwordMatch ? 'border-red-500/50 focus:border-red-500/50 focus:ring-red-500/50' : 'border-slate-700/50 focus:border-purple-500/50 focus:ring-purple-500/50'} text-white placeholder-slate-600 outline-none transition-all duration-200 focus:ring-1 pr-10`}
+                                disabled={loading}
+                                className={`w-full px-4 py-3 rounded-lg bg-slate-950/50 border ${!passwordMatch ? 'border-red-500/50 focus:border-red-500/50 focus:ring-red-500/50' : 'border-slate-700/50 focus:border-purple-500/50 focus:ring-purple-500/50'} text-white placeholder-slate-600 outline-none transition-all duration-200 focus:ring-1 pr-10 disabled:opacity-50 disabled:cursor-not-allowed`}
                                 placeholder="••••••••"
                                 required
                             />
                             <button
                                 type="button"
                                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors"
+                                disabled={loading}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors disabled:opacity-50"
                             >
                                 {showConfirmPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
                             </button>
@@ -234,7 +290,8 @@ export default function Signup() {
                                     <button
                                         type="button"
                                         onClick={() => setFormData({ ...formData, profilePic: null, profilePicPreview: null })}
-                                        className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold hover:bg-red-600"
+                                        disabled={loading}
+                                        className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold hover:bg-red-600 disabled:opacity-50"
                                     >
                                         ×
                                     </button>
@@ -251,12 +308,13 @@ export default function Signup() {
                                     type="file"
                                     accept="image/*"
                                     onChange={handleProfilePicChange}
+                                    disabled={loading}
                                     className="hidden"
                                     id="profilePicInput"
                                 />
                                 <label
                                     htmlFor="profilePicInput"
-                                    className="block px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-slate-400 hover:text-white hover:border-purple-500/50 cursor-pointer transition-all duration-200 text-center text-sm"
+                                    className="block px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-slate-400 hover:text-white hover:border-purple-500/50 cursor-pointer transition-all duration-200 text-center text-sm disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     {formData.profilePic ? 'Change Photo' : 'Choose Photo'}
                                 </label>
@@ -269,9 +327,17 @@ export default function Signup() {
                     <div className="md:col-span-2 pt-6">
                         <button
                             type="submit"
-                            className="w-full py-3.5 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold shadow-lg shadow-purple-900/20 transform transition-all duration-200 active:scale-[0.98]"
+                            disabled={loading}
+                            className="w-full py-3.5 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold shadow-lg shadow-purple-900/20 transform transition-all duration-200 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                         >
-                            Create Account
+                            {loading ? (
+                                <>
+                                    <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-white"></div>
+                                    Creating Account...
+                                </>
+                            ) : (
+                                'Create Account'
+                            )}
                         </button>
                     </div>
                 </form>

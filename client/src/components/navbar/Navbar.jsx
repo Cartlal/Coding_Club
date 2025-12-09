@@ -3,7 +3,14 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const location = useLocation();
+
+    // Check if user is authenticated
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setIsAuthenticated(!!token);
+    }, [location]); // Re-check on route change
 
     const navLinks = [
         { name: 'Home', path: '/' },
@@ -50,14 +57,14 @@ export default function Navbar() {
 
                     <div className="flex items-center gap-3">
                         <Link
-                            to="/login"
+                            to={isAuthenticated ? "/user/profile" : "/login"}
                             className="group hidden md:inline-block relative px-6 py-2 bg-gradient-to-br from-slate-800/10 to-slate-900/50 border border-cyan-500/30 rounded-lg font-medium text-slate-100 overflow-hidden transition-all duration-300 hover:border-cyan-400/60 hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/10 text-sm"
                         >
                             {/* Button Glow */}
                             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             
                             {/* Button Content */}
-                            <span className="relative z-10 flex items-center justify-center">Login</span>
+                            <span className="relative z-10 flex items-center justify-center">{isAuthenticated ? 'Profile' : 'Login'}</span>
                             
                             {/* Bottom Accent Line */}
                             <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -102,7 +109,7 @@ export default function Navbar() {
                             ))}
 
                             <Link
-                                to="/login"
+                                to={isAuthenticated ? "/user/profile" : "/login"}
                                 onClick={() => setIsOpen(false)}
                                 className="group relative mt-3 px-4 py-3 bg-gradient-to-br from-slate-800/10 to-slate-900/50 border border-cyan-500/30 rounded-xl font-medium text-slate-100 overflow-hidden transition-all duration-300 hover:border-cyan-400/60 hover:shadow-lg hover:shadow-cyan-500/10 text-center block"
                             >
@@ -110,7 +117,7 @@ export default function Navbar() {
                                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 
                                 {/* Button Content */}
-                                <span className="relative z-10">Login</span>
+                                <span className="relative z-10">{isAuthenticated ? 'Profile' : 'Login'}</span>
                                 
                                 {/* Bottom Accent Line */}
                                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

@@ -82,6 +82,24 @@ export const createAdmin = async (req, res, next) => {
 };
 
 /**
+ * Get all admins
+ * @route GET /master/admins
+ */
+export const getAdmins = async (req, res, next) => {
+  try {
+    const admins = await Admin.find({ isActive: true })
+      .populate('cluster', 'name icon color')
+      .populate('createdBy', 'fullName username')
+      .select('-password')
+      .sort({ createdAt: -1 });
+
+    return sendSuccess(res, admins, 'Admins retrieved successfully');
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
  * Remove admin account
  * @route DELETE /master/remove-admin/:id
  */
