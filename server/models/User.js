@@ -6,31 +6,20 @@ import bcryptjs from 'bcryptjs';
  * Achievements and recognition badges
  */
 const BADGE_SYSTEM = {
-  '🏆': 'Champion',
-  '🥇': 'First Place',
-  '🥈': 'Second Place',
-  '🥉': 'Third Place',
-  '⚡': 'Lightning Fast',
-  '💻': 'Code Master',
-  '🧠': 'Brain Power',
-  '🚀': 'Rocket Launcher',
-  '🎯': 'Bullseye',
-  '🔥': 'On Fire',
-  '⭐': 'Star Performer',
-  '👑': 'Crowned',
-  '🎨': 'Creative Designer',
-  '🔐': 'Security Expert',
-  '📊': 'Data Analyst',
-  '🌟': 'Rising Star',
-  '💡': 'Innovator',
-  '🎓': 'Scholar',
-  '🏅': 'Achiever',
-  '✨': 'Brilliant',
-  '🎪': 'Event Master',
-  '🤝': 'Team Player',
-  '📈': 'Growth Mindset',
-  '🔬': 'Researcher',
-  '🎭': 'Multi-talented',
+  '🛠️': 'Workshop Wanderer',
+  '🎫': 'Event Explorer',
+  '💻': 'Development Challenger',
+  '🤖': 'AI/ML Challenger',
+  '🔮': 'Emerging Tech Explorer',
+  '⚔️': 'Compete Commander',
+  '⌨️': 'Programming Prodigy',
+  '🎨': 'Creative Visionary',
+  '📢': 'PR Ambassador',
+  '🎮': 'Game Master',
+  '🔟': 'Top 10 Performer',
+  '🥉': 'Top 3 Elite',
+  '🏆': 'Consistency Champion',
+  '👑': 'ArcStack Legendary',
 };
 
 const userSchema = new mongoose.Schema(
@@ -155,13 +144,12 @@ const userSchema = new mongoose.Schema(
 
     badges: {
       type: [String],
-      enum: Object.keys(BADGE_SYSTEM),
       default: [],
       validate: {
         validator: function (badges) {
-          return badges.length <= 25;
+          return badges.length <= 14;
         },
-        message: 'Maximum 25 badges allowed',
+        message: 'Maximum 14 badges allowed',
       },
     },
 
@@ -216,6 +204,17 @@ userSchema.index({ 'stats.clusterPoints': -1 }); // For leaderboard sorting
 userSchema.index({ createdAt: -1 });
 
 // ===== PRE-SAVE MIDDLEWARE =====
+/**
+ * Filter out invalid badges before saving
+ */
+userSchema.pre('save', function (next) {
+  if (this.isModified('badges') || this.isNew) {
+    const validBadges = Object.keys(BADGE_SYSTEM);
+    this.badges = this.badges.filter(badge => validBadges.includes(badge));
+  }
+  next();
+});
+
 userSchema.pre('save', async function (next) {
   // Only hash password if it's new or modified
   if (!this.isModified('password')) {

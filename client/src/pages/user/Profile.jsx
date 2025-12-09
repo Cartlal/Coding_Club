@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import UserService from '@/services/UserService';
 import { QRCodeSVG as QRCode } from 'qrcode.react';
+import BadgeMap from '@/components/ui/BadgeIcons';
 import {
   Trophy,
   Activity,
@@ -25,7 +26,12 @@ import {
   GitBranch,
   X,
   Upload,
-  Instagram
+  Instagram,
+  LayoutGrid,
+  MessageCircle,
+  Sparkles,
+  ExternalLink,
+  Lightbulb
 } from 'lucide-react';
 
 export default function Profile() {
@@ -42,6 +48,7 @@ export default function Profile() {
   const [editSuccess, setEditSuccess] = useState('');
   const [showImageModal, setShowImageModal] = useState(false);
   const [previewImage, setPreviewImage] = useState(null);
+  const [showBadgesModal, setShowBadgesModal] = useState(false);
   
   // Form state for edit modal
   const [formData, setFormData] = useState({
@@ -79,11 +86,10 @@ export default function Profile() {
       
       // Ensure badges is always an array
       const badgesData = badgesRes.data.data;
-      if (Array.isArray(badgesData)) {
+      if (badgesData?.badges?.all && Array.isArray(badgesData.badges.all)) {
+        setBadges(badgesData.badges.all);
+      } else if (Array.isArray(badgesData)) {
         setBadges(badgesData);
-      } else if (badgesData && typeof badgesData === 'object') {
-        // If it's an object, convert it to an array
-        setBadges(Object.values(badgesData));
       } else {
         setBadges([]);
       }
@@ -211,10 +217,103 @@ export default function Profile() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0d1117] flex items-center justify-center">
-        <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-[2px] border-[#2ea043] border-t-transparent"></div>
-          <p className="mt-3 text-[#c9d1d9]">Loading profile...</p>
+      <div className="min-h-screen bg-[#0d1117]">
+        <div className="container mx-auto px-4 py-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Left Sidebar Skeleton */}
+            <div className="md:col-span-1">
+              <div className="bg-[#161b22] border border-[#30363d] rounded-2xl p-6 sticky top-24">
+                {/* Profile Picture Skeleton */}
+                <div className="mb-6 flex justify-center">
+                  <div className="w-40 h-40 rounded-full bg-[#0d1117] border border-[#30363d] animate-pulse"></div>
+                </div>
+
+                {/* Name Skeleton */}
+                <div className="mb-4">
+                  <div className="h-7 bg-[#0d1117] rounded-lg animate-pulse mb-2"></div>
+                  <div className="h-4 bg-[#0d1117] rounded-lg animate-pulse w-3/4"></div>
+                </div>
+
+                {/* Email Skeleton */}
+                <div className="mb-4 pb-4 border-b border-[#30363d]">
+                  <div className="h-4 bg-[#0d1117] rounded-lg animate-pulse"></div>
+                </div>
+
+                {/* Info Lines Skeleton */}
+                <div className="mb-6 pb-6 border-b border-[#30363d] space-y-2">
+                  <div className="h-4 bg-[#0d1117] rounded-lg animate-pulse"></div>
+                  <div className="h-4 bg-[#0d1117] rounded-lg animate-pulse"></div>
+                  <div className="h-4 bg-[#0d1117] rounded-lg animate-pulse"></div>
+                </div>
+
+                {/* QR Code Skeleton */}
+                <div className="mb-6 pb-6 border-b border-[#30363d]">
+                  <div className="h-3 bg-[#0d1117] rounded-lg animate-pulse mb-3"></div>
+                  <div className="w-48 h-48 mx-auto bg-[#0d1117] rounded-lg animate-pulse"></div>
+                </div>
+
+                {/* Buttons Skeleton */}
+                <div className="space-y-2">
+                  <div className="h-10 bg-[#0d1117] rounded-lg animate-pulse"></div>
+                  <div className="h-10 bg-[#0d1117] rounded-lg animate-pulse"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Content Skeleton */}
+            <div className="md:col-span-2 space-y-6">
+              {/* Stats Grid Skeleton */}
+              <div className="grid grid-cols-4 gap-4">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="bg-[#161b22] border border-[#30363d] rounded-lg p-4">
+                    <div className="h-5 bg-[#0d1117] rounded animate-pulse mb-2"></div>
+                    <div className="h-8 bg-[#0d1117] rounded animate-pulse"></div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Performance Metrics Skeleton */}
+              <div className="bg-[#161b22] border border-[#30363d] rounded-2xl p-6">
+                <div className="h-6 bg-[#0d1117] rounded animate-pulse mb-6"></div>
+                <div className="grid grid-cols-2 gap-6">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div key={i} className="space-y-2">
+                      <div className="h-4 bg-[#0d1117] rounded animate-pulse"></div>
+                      <div className="h-6 bg-[#0d1117] rounded animate-pulse w-2/3"></div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Achievements Skeleton */}
+              <div className="bg-[#161b22] border border-[#30363d] rounded-2xl p-6">
+                <div className="h-6 bg-[#0d1117] rounded animate-pulse mb-6"></div>
+                <div className="grid grid-cols-3 md:grid-cols-4 gap-4">
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+                    <div key={i} className="bg-[#0d1117] rounded-lg p-4 h-24 animate-pulse"></div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Recent Events Skeleton */}
+              <div className="bg-[#161b22] border border-[#30363d] rounded-2xl p-6">
+                <div className="h-6 bg-[#0d1117] rounded animate-pulse mb-6"></div>
+                <div className="space-y-3">
+                  {[1, 2, 3, 4, 5, 6].map((i) => (
+                    <div key={i} className="flex items-center justify-between p-4 rounded-lg border border-[#30363d] bg-[#0d1117]">
+                      <div className="flex items-center gap-3 flex-1">
+                        <div className="w-10 h-10 rounded-lg bg-[#0d1117] animate-pulse flex-shrink-0"></div>
+                        <div className="flex-1 space-y-1">
+                          <div className="h-4 bg-[#0d1117] rounded animate-pulse w-1/2"></div>
+                          <div className="h-3 bg-[#0d1117] rounded animate-pulse w-1/3"></div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -246,7 +345,7 @@ export default function Profile() {
         <div className="flex flex-col md:flex-row gap-8 mb-8">
           {/* Left Column - Profile Card */}
           <div className="md:w-1/4">
-            <div className="bg-[#161b22] border border-[#30363d] rounded-2xl p-6 sticky top-24">
+            <div className=" border border-[#30363d] rounded-2xl p-6 sticky top-24">
               {/* Profile Picture */}
               <div className="mb-6 flex justify-center">
                 {profile?.profilePic ? (
@@ -399,7 +498,7 @@ export default function Profile() {
           {/* Right Column - Main Content */}
           <div className="md:w-3/4 space-y-8">
             {/* Stats Grid */}
-            <div className="bg-[#161b22] border border-[#30363d] rounded-xl p-6">
+            <div className=" border border-[#30363d] rounded-xl p-6">
               <h2 className="text-xl font-bold text-white mb-6">Activity Overview</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="bg-[#0d1117] border border-[#30363d] rounded-lg p-4 hover:border-[#2ea043] transition-colors group">
@@ -439,32 +538,44 @@ export default function Profile() {
             </div>
 
             {/* Badges Section */}
-            <div className="bg-[#161b22] border border-[#30363d] rounded-xl p-6">
+            <div className="border border-[#30363d] rounded-xl p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-bold text-white">Achievements & Badges</h2>
-                <span className="text-sm text-[#8b949e]">{Array.isArray(badges) ? badges.filter(b => b.earned).length : 0} earned</span>
+                <div className="flex items-center gap-4">
+                  <span className="text-sm text-[#8b949e]">{Array.isArray(badges) ? badges.filter(b => b.earned).length : 0} earned</span>
+                  <button 
+                    onClick={() => setShowBadgesModal(true)}
+                    className="text-sm text-[#58a6ff] hover:text-[#79b8ff] flex items-center gap-1"
+                  >
+                    <LayoutGrid className="w-4 h-4" />
+                    View All
+                  </button>
+                </div>
               </div>
               
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                {Array.isArray(badges) && badges.length > 0 ? (
-                  badges.map((badge, idx) => (
-                    <div
-                      key={idx}
-                      className={`relative group ${
-                        badge.earned ? 'opacity-100' : 'opacity-50'
-                      }`}
-                    >
-                      <div className={`p-4 rounded-lg border transition-all duration-300 ${
-                        badge.earned 
-                          ? 'bg-gradient-to-br from-[#161b22] to-[#0d1117] border-[#2ea043]/30 hover:border-[#2ea043] hover:scale-[1.02]' 
-                          : 'bg-[#0d1117] border-[#30363d]'
-                      }`}>
-                        <div className="text-3xl mb-3 text-center">{badge.icon || '🏆'}</div>
-                        <div className="text-center">
-                          <p className="font-semibold text-sm text-white mb-1">{badge.name}</p>
-                          <p className="text-xs text-[#8b949e] line-clamp-2">{badge.description}</p>
-                        </div>
-                        {badge.earned && (
+                {Array.isArray(badges) && badges.filter(b => b.earned).length > 0 ? (
+                  badges.filter(b => b.earned).map((badge, idx) => {
+                    const BadgeComponent = BadgeMap[badge.name];
+                    return (
+                      <div
+                        key={idx}
+                        className="relative group"
+                      >
+                        <div className="p-4 rounded-lg border transition-all duration-300 h-full flex flex-col items-center bg-gradient-to-br from-[#161b22] to-[#0d1117] border-[#2ea043]/30 hover:border-[#2ea043] hover:scale-[1.02]">
+                          <div className="w-20 h-20 mb-4">
+                            {BadgeComponent ? (
+                              <BadgeComponent />
+                            ) : (
+                              <div className="w-full h-full flex items-center justify-center text-4xl">
+                                {badge.icon || '🏆'}
+                              </div>
+                            )}
+                          </div>
+                          <div className="text-center">
+                            <p className="font-semibold text-sm text-white mb-1">{badge.name}</p>
+                            <p className="text-xs text-[#8b949e] line-clamp-2">{badge.description}</p>
+                          </div>
                           <div className="absolute top-2 right-2">
                             <div className="w-6 h-6 rounded-full bg-[#2ea043] flex items-center justify-center">
                               <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -472,10 +583,10 @@ export default function Profile() {
                               </svg>
                             </div>
                           </div>
-                        )}
+                        </div>
                       </div>
-                    </div>
-                  ))
+                    );
+                  })
                 ) : (
                   <div className="col-span-full text-center py-12">
                     <p className="text-[#8b949e]">No badges earned yet. Start participating in events!</p>
@@ -485,7 +596,7 @@ export default function Profile() {
             </div>
 
             {/* Recent Events */}
-            <div className="bg-[#161b22] border border-[#30363d] rounded-xl p-6">
+            <div className=" border border-[#30363d] rounded-xl p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-bold text-white">Recent Participation</h2>
                 <button className="text-sm text-[#58a6ff] hover:text-[#79b8ff] flex items-center">
@@ -539,54 +650,56 @@ export default function Profile() {
               </div>
             </div>
 
-            {/* Additional Stats */}
-            <div className="bg-[#161b22] border border-[#30363d] rounded-xl p-6">
-              <h2 className="text-xl font-bold text-white mb-6">Performance Metrics</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <div className="w-10 h-10 rounded-lg bg-blue-900/30 border border-blue-500/30 flex items-center justify-center mr-3">
-                        <Target className="w-5 h-5 text-blue-400" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-[#8b949e]">Win Rate</p>
-                        <p className="text-xl font-bold text-white">
-                          {stats?.participation ? 
-                            `${Math.round((stats.wins / stats.participation) * 100)}%` : '0%'
-                          }
-                        </p>
-                      </div>
+            {/* ArcStack Special */}
+            <div className="border border-[#30363d] rounded-xl p-6">
+              <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-yellow-400" />
+                ArcStack Special
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* WhatsApp Community */}
+                <a 
+                  href="https://chat.whatsapp.com/YOUR_LINK_HERE" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group relative overflow-hidden rounded-xl bg-[#0d1117] border border-[#30363d] p-6 hover:border-[#25D366] transition-all duration-300"
+                >
+                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <MessageCircle className="w-24 h-24 text-[#25D366]" />
+                  </div>
+                  <div className="relative z-10">
+                    <div className="w-12 h-12 rounded-lg bg-[#25D366]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <MessageCircle className="w-6 h-6 text-[#25D366]" />
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#25D366] transition-colors">
+                      Join WhatsApp Community
+                    </h3>
+                    <p className="text-sm text-[#8b949e] mb-4">
+                      Connect with other members, get instant updates, and discuss tech!
+                    </p>
+                    <div className="flex items-center text-xs text-[#25D366] font-medium">
+                      Join Now <ExternalLink className="w-3 h-3 ml-1" />
                     </div>
                   </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <div className="w-10 h-10 rounded-lg bg-green-900/30 border border-green-500/30 flex items-center justify-center mr-3">
-                        <Users className="w-5 h-5 text-green-400" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-[#8b949e]">Badges Earned</p>
-                        <p className="text-xl font-bold text-white">
-                          {stats?.badgesEarned || 0}
-                        </p>
-                      </div>
-                    </div>
+                </a>
+
+                {/* Cool Thing 2: Tech Fact / Daily Tip */}
+                <div className="group relative overflow-hidden rounded-xl bg-[#0d1117] border border-[#30363d] p-6 hover:border-[#a371f7] transition-all duration-300">
+                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <Lightbulb className="w-24 h-24 text-[#a371f7]" />
                   </div>
-                </div>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <div className="w-10 h-10 rounded-lg bg-purple-900/30 border border-purple-500/30 flex items-center justify-center mr-3">
-                        <Clock className="w-5 h-5 text-purple-400" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-[#8b949e]">Last Active</p>
-                        <p className="text-xl font-bold text-white">
-                          {stats?.lastActive || 'N/A'}
-                        </p>
-                      </div>
+                  <div className="relative z-10">
+                    <div className="w-12 h-12 rounded-lg bg-[#a371f7]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <Lightbulb className="w-6 h-6 text-[#a371f7]" />
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#a371f7] transition-colors">
+                      Did You Know?
+                    </h3>
+                    <p className="text-sm text-[#8b949e] mb-4">
+                      "The first computer bug was an actual moth found in the Harvard Mark II computer in 1947."
+                    </p>
+                    <div className="flex items-center text-xs text-[#a371f7] font-medium cursor-pointer">
+                      See More Facts <ChevronRight className="w-3 h-3 ml-1" />
                     </div>
                   </div>
                 </div>
@@ -596,9 +709,77 @@ export default function Profile() {
         </div>
       </div>
 
+      {/* All Badges Modal */}
+      {showBadgesModal && (
+        <div 
+          className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+          onClick={() => setShowBadgesModal(false)}
+        >
+          <div 
+            className="bg-[#161b22] border border-[#30363d] rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="sticky top-0 bg-[#161b22] border-b border-[#30363d] p-6 flex items-center justify-between z-10">
+              <div>
+                <h2 className="text-xl font-bold text-white">Badge Collection</h2>
+                <p className="text-sm text-[#8b949e] mt-1">
+                  {badges.filter(b => b.earned).length} of {badges.length} badges earned
+                </p>
+              </div>
+              <button
+                onClick={() => setShowBadgesModal(false)}
+                className="text-[#8b949e] hover:text-white transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              {badges.map((badge, idx) => {
+                const BadgeComponent = BadgeMap[badge.name];
+                return (
+                  <div
+                    key={idx}
+                    className={`relative group p-4 rounded-lg border transition-all duration-300 flex flex-col items-center text-center ${
+                      badge.earned 
+                        ? 'bg-gradient-to-br from-[#161b22] to-[#0d1117] border-[#2ea043]/30 hover:border-[#2ea043]' 
+                        : 'bg-[#0d1117] border-[#30363d] opacity-60 grayscale hover:opacity-100 hover:grayscale-0'
+                    }`}
+                  >
+                    <div className="w-16 h-16 mb-3">
+                      {BadgeComponent ? (
+                        <BadgeComponent />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-3xl">
+                          {badge.icon || '🏆'}
+                        </div>
+                      )}
+                    </div>
+                    <p className="font-semibold text-xs text-white mb-1">{badge.name}</p>
+                    <p className="text-[10px] text-[#8b949e] line-clamp-2">{badge.description}</p>
+                    
+                    {badge.earned && (
+                      <div className="absolute top-2 right-2">
+                        <div className="w-5 h-5 rounded-full bg-[#2ea043] flex items-center justify-center">
+                          <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Edit Profile Modal */}
       {showEditModal && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center z-50 p-4 overflow-auto [&::-webkit-scrollbar]:w-1">
           <div className="bg-[#161b22] border border-[#30363d] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             {/* Modal Header */}
             <div className="sticky top-0 bg-[#161b22] border-b border-[#30363d] p-6 flex items-center justify-between">

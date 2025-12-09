@@ -2,154 +2,7 @@ import User from '../models/User.js';
 import Event from '../models/Event.js';
 import { sendSuccess, sendError, sendPaginated } from '../utils/response.js';
 import QRCode from 'qrcode';
-
-/**
- * Badge System Configuration (25 Badges)
- */
-const BADGE_SYSTEM = {
-  '🏆': 'Champion',
-  '🥇': 'First Place',
-  '🥈': 'Second Place',
-  '🥉': 'Third Place',
-  '⚡': 'Lightning Fast',
-  '💻': 'Code Master',
-  '🧠': 'Brain Power',
-  '🚀': 'Rocket Launcher',
-  '🎯': 'Bullseye',
-  '🔥': 'On Fire',
-  '⭐': 'Star Performer',
-  '👑': 'Crowned',
-  '🎨': 'Creative Designer',
-  '🔐': 'Security Expert',
-  '📊': 'Data Analyst',
-  '🌟': 'Rising Star',
-  '💡': 'Innovator',
-  '🎓': 'Scholar',
-  '🏅': 'Achiever',
-  '✨': 'Brilliant',
-  '🎪': 'Event Master',
-  '🤝': 'Team Player',
-  '📈': 'Growth Mindset',
-  '🔬': 'Researcher',
-  '🎭': 'Multi-talented',
-};
-
-/**
- * Badge Assignment Rules
- */
-const BADGE_RULES = {
-  // Participation badges
-  'Bullseye': {
-    condition: (user) => user.stats.participation >= 5,
-    description: 'Participated in 5+ events',
-  },
-  'Team Player': {
-    condition: (user) => user.stats.participation >= 10,
-    description: 'Participated in 10+ events',
-  },
-  'Event Master': {
-    condition: (user) => user.stats.participation >= 25,
-    description: 'Participated in 25+ events',
-  },
-
-  // Win badges
-  'Third Place': {
-    condition: (user) => user.stats.wins >= 1,
-    description: 'Won 1 event (3rd place or better)',
-  },
-  'Second Place': {
-    condition: (user) => user.stats.wins >= 2,
-    description: 'Won 2+ events (2nd place or better)',
-  },
-  'First Place': {
-    condition: (user) => user.stats.wins >= 3,
-    description: 'Won 3+ events (1st place)',
-  },
-  'Champion': {
-    condition: (user) => user.stats.wins >= 5,
-    description: 'Won 5+ events (1st place)',
-  },
-
-  // Cluster-specific badges
-  'Code Master': {
-    condition: (user) => user.stats.clusterPoints >= 100,
-    description: 'Earned 100+ cluster points',
-  },
-  'Rocket Launcher': {
-    condition: (user) => user.stats.clusterPoints >= 250,
-    description: 'Earned 250+ cluster points',
-  },
-
-  // Streak badges
-  'On Fire': {
-    condition: (user) => user.stats.participation >= 10 && user.stats.wins >= 2,
-    description: 'Active participant with multiple wins',
-  },
-  'Rising Star': {
-    condition: (user) => user.stats.participation >= 15 && user.stats.wins >= 1,
-    description: 'Consistent participation and performance',
-  },
-
-  // Achievement badges
-  'Star Performer': {
-    condition: (user) => user.stats.wins >= 3 && user.stats.clusterPoints >= 150,
-    description: 'Excellent overall performance',
-  },
-  'Achiever': {
-    condition: (user) => user.stats.participation >= 5,
-    description: 'Took the first step towards success',
-  },
-
-  // Bonus badges
-  'Lightning Fast': {
-    condition: (user) => user.stats.wins >= 1,
-    description: 'Quick learner and achiever',
-  },
-  'Brain Power': {
-    condition: (user) => user.stats.clusterPoints >= 50,
-    description: 'Intellectual contribution',
-  },
-  'Crowned': {
-    condition: (user) => user.stats.wins >= 5 && user.stats.clusterPoints >= 200,
-    description: 'Ultimate champion',
-  },
-  'Creative Designer': {
-    condition: (user) => user.badges.length >= 5,
-    description: 'Diverse skill set',
-  },
-  'Security Expert': {
-    condition: (user) => user.stats.participation >= 8,
-    description: 'Security-focused contributor',
-  },
-  'Data Analyst': {
-    condition: (user) => user.stats.clusterPoints >= 75,
-    description: 'Data-driven approach',
-  },
-  'Innovator': {
-    condition: (user) => user.stats.wins >= 2,
-    description: 'Creative problem solver',
-  },
-  'Scholar': {
-    condition: (user) => user.stats.participation >= 12,
-    description: 'Dedicated learner',
-  },
-  'Brilliant': {
-    condition: (user) => user.stats.wins >= 4 && user.stats.participation >= 10,
-    description: 'Exceptional overall achievement',
-  },
-  'Growth Mindset': {
-    condition: (user) => user.stats.participation >= 8 && user.stats.wins >= 1,
-    description: 'Continuously improving',
-  },
-  'Researcher': {
-    condition: (user) => user.stats.clusterPoints >= 120,
-    description: 'Research-oriented mindset',
-  },
-  'Multi-talented': {
-    condition: (user) => user.badges.length >= 8,
-    description: 'Master of multiple skills',
-  },
-};
+import { validateAndAssignBadges, getAllBadgesWithStatus, BADGE_SYSTEM } from '../services/badgeValidator.js';
 
 /**
  * Get all members (with pagination)
@@ -379,52 +232,23 @@ export const getUserBadges = async (req, res, next) => {
   try {
     const userId = req.user.userId;
 
-    const user = await User.findById(userId).select('stats badges fullName');
+    const user = await User.findById(userId)
+      .select('stats badges fullName eventsParticipated')
+      .populate({
+        path: 'eventsParticipated',
+        select: 'title category cluster winners',
+        populate: { path: 'cluster', select: 'name' }
+      });
 
     if (!user) {
       return sendError(res, 'User not found', 404);
     }
 
-    // Auto-assign badges based on rules
-    const newBadges = [];
-    for (const [badgeName, badgeEmoji] of Object.entries(BADGE_SYSTEM)) {
-      // Find rule for this badge
-      const rule = Object.entries(BADGE_RULES).find(
-        ([name]) => name === badgeName
-      );
+    // Validate and auto-assign badges based on user's current data
+    const newlyEarned = await validateAndAssignBadges(user);
 
-      if (rule && rule[1].condition(user)) {
-        const emoji = Object.keys(BADGE_SYSTEM).find(
-          (key) => BADGE_SYSTEM[key] === badgeName
-        );
-        if (emoji && !user.badges.includes(emoji)) {
-          newBadges.push(emoji);
-        }
-      }
-    }
-
-    // Save newly earned badges
-    if (newBadges.length > 0) {
-      user.badges = [...new Set([...user.badges, ...newBadges])].slice(0, 25);
-      await user.save();
-    }
-
-    // Build badge response
-    const allBadges = [];
-    for (const [emoji, name] of Object.entries(BADGE_SYSTEM)) {
-      const rule = BADGE_RULES[name];
-      const isEarned = user.badges.includes(emoji);
-      const ruleConditionMet = rule ? rule.condition(user) : false;
-
-      allBadges.push({
-        emoji,
-        name,
-        earned: isEarned,
-        description: rule ? rule.description : '',
-        conditionMet: ruleConditionMet,
-        earnedAt: isEarned ? user.badges.indexOf(emoji) : null,
-      });
-    }
+    // Get all badges with status
+    const allBadges = getAllBadgesWithStatus(user);
 
     const badgesData = {
       user: {
@@ -433,9 +257,9 @@ export const getUserBadges = async (req, res, next) => {
       },
       summary: {
         totalEarned: user.badges.length,
-        totalAvailable: Object.keys(BADGE_SYSTEM).length,
-        percentage: Math.round((user.badges.length / Object.keys(BADGE_SYSTEM).length) * 100),
-        newlyEarned: newBadges.length,
+        totalAvailable: allBadges.length,
+        percentage: Math.round((user.badges.length / allBadges.length) * 100),
+        newlyEarned: newlyEarned.length,
       },
       badges: {
         earned: allBadges.filter((b) => b.earned),

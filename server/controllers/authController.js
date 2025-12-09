@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 import Admin from '../models/Admin.js';
 import { sendSuccess, sendError } from '../utils/response.js';
+import { validateAndAssignBadges } from '../services/badgeValidator.js';
 
 /**
  * Generate JWT Token with role support
