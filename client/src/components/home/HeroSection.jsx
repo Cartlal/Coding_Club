@@ -4,9 +4,9 @@ import Threads from './Threads';
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center px-4 py-10 overflow-hidden pt-0">
       {/* Threads Background - Simulating data flow */}
-      <div className="absolute inset-0 z-0 -top-32">
+      <div className="absolute inset-0 z-0 -top-64">
         <Threads
           color={[0.2, 0.6, 1]}
           amplitude={1.2}
@@ -42,7 +42,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content Overlay */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 py-20 text-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 py-20 text-center -translate-y-20">
         {/* Terminal-style heading */}
         <div className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-black/40 backdrop-blur-sm border border-cyan-900/50">
           <div className="flex gap-2">

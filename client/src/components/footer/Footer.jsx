@@ -58,7 +58,7 @@ export default function Footer() {
         {/* Animated Top Border Line */}
         <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent w-full animate-pulse" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
 
             {/* Brand Section */}
@@ -131,7 +131,7 @@ export default function Footer() {
               {/* Decorative Glow behind layout */}
               <div className="absolute right-10 top-1/2 -translate-y-1/2 w-64 h-64 bg-blue-500/10 blur-[80px] rounded-full pointer-events-none" />
 
-              <div className="relative translate-y-10 translate-x-19 transition-transform hover:scale-105 duration-700 ease-out" style={{ height: '320px', width: '480px' }}>
+              <div className="relative transition-transform hover:scale-105 duration-700 ease-out">
                 <img
                   src="/SHESHAGIRI%20CAMPUS%20LOGO%20PDF%20white.png"
                   alt="Sheshagiri Campus Logo"
