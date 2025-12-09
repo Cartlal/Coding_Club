@@ -85,6 +85,10 @@ export const mockMembers = [
     joinDate: '2022-08-15',
     bio: 'I am Samarth Kattimani, a Computer Science Engineering student with a strong interest in Cloud, Artificial Intelligence, Machine Learning, and IoT. I enjoy exploring new technologies, building meaningful solutions, and continuously improving my skills. With a CGPA of 8.25, I am proud to be the first student placed from the 2026 batch. I’m a fast learner, focused, and passionate about growing in the tech field with confidence and consistency.',
     image: '/images/members/Samarth-Kattimani.jpg',
+    linkedin: 'https://www.linkedin.com/in/samarth-shivanand-kattimani-927536260/',
+    github: 'https://github.com/Samarthsk15',
+    instagram: 'https://www.instagram.com/samarth_kattimani_?igsh=dGZndWJpNG9xYzJr&utm_source=qr',
+    portfolio: 'https://github.com/Samarthsk15/Alzheimer-s-Classification',
   },
   {
     id: 6,
@@ -97,6 +101,9 @@ export const mockMembers = [
     joinDate: '2023-08-15',
     bio: 'As co-Treasurer, I partner with Samarth to manage all financial operations and maintain accurate accounting records. I bring attention to detail and financial acumen to ensure all club funds are utilized effectively. My background in Python helps me build tools for financial tracking and reporting within the club.',
     image: '/images/members/Aniket-Patil.jpg',
+    linkedin: 'https://www.linkedin.com/in/aniket0804',
+    github: 'https://github.com/githubaniket08',
+    instagram: 'https://www.instagram.com/aniiiket08',
   },
   {
     id: 7,
@@ -111,7 +118,7 @@ export const mockMembers = [
     image: '/images/members/harshit-baliyan.jpeg',
     linkedin: 'https://www.linkedin.com/in/harshit-baliyan-7455942a9/',
     github: 'https://github.com/Harsh7817',
-    instagram: 'https://www.instagram.com/_harshitbaliyan.__011?igsh=MW02b3k0NnB4a2J4ZA==',
+    instagram: 'https://www.instagram.com/_harshitbaliyan.__011',
   },
   {
     id: 8,
@@ -127,6 +134,7 @@ export const mockMembers = [
     bio: 'I\'m Neil Rego, a CSE (AI) student interested in building practical tech solutions. I work with Java, Spring Boot, and Python, with experience in ML and deep learning. I\'m always looking to grow and connect.',
     image: '/images/members/neil-rego.jpg',
     linkedin: 'www.linkedin.com/in/neil-rego',
+    instagram: 'https://www.instagram.com/neil_rego_04',
   },
   {
     id: 9,
@@ -194,6 +202,9 @@ export const mockMembers = [
     joinDate: '2023-08-15',
     bio: 'PR and communication enthusiast with a strong learning mindset and a growing interest in technology. I enjoy crafting clear, meaningful messages and building connections that create real impact. Always exploring new skills and staying curious.',
     image: '/images/members/Bhumika-N.jpg',
+    linkedin: 'https://www.linkedin.com/in/bhumikanagarali',
+    github: 'https://share.google/pxMvj80wTWG0u5YxD',
+    instagram: 'https://www.instagram.com/bhumi_.xvii',
   },
   {
     id: 14,
@@ -206,6 +217,9 @@ export const mockMembers = [
     joinDate: '2024-08-15',
     bio: 'I\’m Aryan Sunil Patil, a Computer Science Engineering undergraduate at KLE Technological University and the Co-Lead of the PR Cluster at ArcStack. I\’m passionate about blending technology, design, and communication to create meaningful impact.With skills in C, C++, UI/UX, design, social media management, media marketing, public relations, content creation, leadership, and communication, I enjoy taking on roles that challenge me to think creatively and collaborate effectively.I strive to build strong connections, craft compelling narratives, and contribute to communities where innovation and growth go hand in hand.',
     image: '/images/members/Aryan-Patil.jpg',
+    linkedin: 'https://www.linkedin.com/in/aryan-patil-60b74b339',
+    github: 'https://github.com/Aryan-Patil01',
+    instagram: 'https://www.instagram.com/aryan.p01?igsh=cjFjdjFxd2c3ZzVp',
   },
   {
     id: 15,
@@ -218,6 +232,9 @@ export const mockMembers = [
     joinDate: '2023-08-15',
     bio: 'I believe in change is the only constant.',
     image: '/images/members/Adarsh-Kakatkar.jpeg',
+    linkedin: 'https://www.linkedin.com/in/adarsh-kakatkar?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
+    github: 'https://github.com/5Adarsh',
+    instagram: 'https://www.instagram.com/kakatkaradarsh?igsh=am81dGZmN3Z1N3o0&utm_source=qr',
   },
   {
     id: 16,
@@ -581,6 +598,7 @@ export const mockMembers = [
     joinDate: '2024-08-15',
     bio: 'I\'m a passionate problem-solving enthusiast with a strong interest in algorithms and competitive programming. I enjoy tackling complex algorithmic challenges and continuously improving my problem-solving skills. As a member of Competition Management, I aim to help organize coding contests and inspire peers to excel.',
     image: '/images/members/srushti-payannawar.jpg',
+    instagram: 'https://www.instagram.com/blue_rose_96',
   },
   {
     id: 40,
@@ -635,6 +653,8 @@ export const mockMembers = [
     joinDate: '2024-08-15',
     bio: 'I\’m Shreya S Pai, a 2nd-year CS and AI student who enjoys figuring out how things work in code. I’m building a solid base in programming and problem-solving, especially through DSA and algorithmic thinking. I’ve recently started getting into Java and exploring its concepts to understand structure and logic better. I’m also learning SQL because I like understanding how data is stored and accessed behind the scenes. Outside academics, I love dancing and anything creative that helps me reset.',
     image: '/images/members/shreya-pai.jpg',
+    linkedin: 'https://www.linkedin.com/in/shreya-pai-362b5a342?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+    instagram: 'https://www.instagram.com/shreyapaiii?igsh=MWRobGJvNW9nazduZw==',
   },
   {
     id: 44,
@@ -662,6 +682,7 @@ export const mockMembers = [
     joinDate: '2024-08-15',
     bio: 'Im a 19 year old pursuing her Bachelors in Engineering, CS. I am passionate about public speaking, elocution, debate and so on. On the other hand, my hobbies include singing, playing instruments and so on.',
     image: '/images/members/Pavitra-H.jpg',
+    instagram: 'https://www.instagram.com/pavitraahh'
   },
   {
     id: 46,
@@ -674,6 +695,8 @@ export const mockMembers = [
     joinDate: '2024-08-15',
     bio: 'I am a dedicated tech learner with strong interest in programming and emerging technologies. I enjoy solving problems through coding and adapting to new tools quickly. I communicate well, work responsibly in teams, and stay committed to completing my tasks. I aim to build a strong career in the technology field through continuous learning and practical experience.',
     image: '/images/members/Sneha-Hundekar.jpeg',
+    linkedin: 'https://www.linkedin.com/in/sneha-hundekar-760441342?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BruZp7zWqQPu21loiAmIp3A%3D%3D',
+    instagram: 'https://www.instagram.com/snehhha.12?igsh=MTFldWgwdGVtYzJuYw%3D%3D&utm_source=qr',
   },
   {
     id: 47,
@@ -716,6 +739,8 @@ export const mockMembers = [
     joinDate: '2023-08-15',
     bio: 'I am currently Pursuing Engineering in Computer Science in KLE technological University MSS Sheshgiri Belagavi, I am very Enthusiastic about learning new things.',
     image: '/images/members/Pranjali-Mutagekar.jpg',
+    linkedin: 'https://www.linkedin.com/in/pranjali-mutagekar-141804278?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+    instagram: 'https://www.instagram.com/pranjali_0104?igsh=a2MwcHlvM3ozNTcw',
   },
   {
     id: 50,
@@ -772,6 +797,9 @@ export const mockMembers = [
     joinDate: '2023-08-15',
     bio: 'Algorithm design specialist',
     image: '/images/members/Samarth-Narvekar.jpg',
+    linkedin: 'https://www.linkedin.com/in/samarth-narvekar-27433830b/',
+    github: 'https://github.com/Samarth044',
+    instagram: 'https://www.instagram.com/samarth__narvekar?igsh=MXhsMm4ybmdyM3UxOA==',
   },
   {
     id: 54,
@@ -863,16 +891,19 @@ export const mockMembers = [
     linkedin: 'https://www.linkedin.com/in/laxmi-patil-51526a392?utm_source=share_via&utm_content=profile&utm_medium=member_android',
   },
   {
-    id: 69,
-    name: 'Siddhi',
-    role: 'Member (Programming Team)',
+    id: 60,
+    name: 'Sarvadnya Patil',
+    role: 'Member (Development Team)',
     branch: 'CSE',
     year: 1,
-    email: 'siddhi@kle.edu',
-    skills: ['C++', 'Problem Solving'],
-    joinDate: '2024-08-15',
-    bio: 'Programming enthusiast',
-    image: '/test-profile.svg',
+    email: 'sarvadnyapatil04@gmail.com',
+    skills: ['Html', ' CSS', 'JavaScript', 'Node.js', 'React'],
+    joinDate: '2025-11-25',
+    bio: 'My name is Sarvadnya Patil, and I am a first-year Computer Science and Engineering student at KLE Technological University with a strong interest in full-stack web development. I have mastered C and C++ and enjoy creating clean, user-friendly frontend designs along with efficient backend logic. I am known for strong analytical thinking, logical reasoning, and clear problem-solving ability, and I am focused on building practical projects that help me grow as a developer.',
+    image: '/images/members/Sarvadnya-Patil.jpg',
+    linkedin: 'https://www.linkedin.com/in/sarvadnya-patil-946440393/',
+    github: 'https://github.com/Sarvadnya-Patil',
+    instagram: 'https://www.instagram.com/sarvadnyapatil_004',
   },
   {
     id: 61,
@@ -968,6 +999,9 @@ export const mockMembers = [
     joinDate: '2023-08-15',
     bio: 'Interested in Python,java,design,design video editing and completing Engineering.',
     image: '/images/members/Ayush-Shetty.jpeg',
+    linkedin: 'https://www.linkedin.com/in/ayush-m-shetty-5619b3389?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
+    github: 'https://github.com/ayushshetty007',
+    instagram: 'https://www.instagram.com/ayushshetty_2005?igsh=MXdvem1vbDAzcWpxZw%3D%3D&utm_source=qr',
   },
   {
     id: 68,
@@ -983,19 +1017,16 @@ export const mockMembers = [
   },
   {
     id: 69,
-    name: 'Sarvadnya Patil',
-    role: 'Member (Development Team)',
+    name: 'Siddhi',
+    role: 'Member (Programming Team)',
     branch: 'CSE',
     year: 1,
-    email: 'sarvadnyapatil04@gmail.com',
-    skills: ['Html',' CSS', 'JavaScript', 'Node.js', 'React'],
-    joinDate: '2025-11-25',
-    bio: 'My name is Sarvadnya Patil, and I am a first-year Computer Science and Engineering student at KLE Technological University with a strong interest in full-stack web development. I have mastered C and C++ and enjoy creating clean, user-friendly frontend designs along with efficient backend logic. I am known for strong analytical thinking, logical reasoning, and clear problem-solving ability, and I am focused on building practical projects that help me grow as a developer.',
-    image: '/images/members/Sarvadnya-Patil.jpg',
-    linkedin:'https://www.linkedin.com/in/sarvadnya-patil-946440393/',
-    github:'https://github.com/Sarvadnya-Patil',
-    instagram:'https://www.instagram.com/sarvadnyapatil_004',
-  }
+    email: 'siddhi@kle.edu',
+    skills: ['C++', 'Problem Solving'],
+    joinDate: '2024-08-15',
+    bio: 'Programming enthusiast',
+    image: '/test-profile.svg',
+  },
 ];
 
 export function getAllRoles() {
