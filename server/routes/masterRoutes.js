@@ -3,6 +3,7 @@ import { authenticate } from '../middleware/auth.js';
 import { roleMiddleware } from '../middleware/roleMiddleware.js';
 import {
   // Admin Management
+  getAdmins,
   createAdmin,
   removeAdmin,
   reactivateAdmin,
@@ -30,6 +31,9 @@ router.use(roleMiddleware(['master']));
 /**
  * ADMIN MANAGEMENT ROUTES
  */
+
+// Get all admins
+router.get('/admins', getAdmins);
 
 // Create new admin
 router.post('/create-admin', createAdmin);

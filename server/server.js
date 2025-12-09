@@ -9,6 +9,15 @@ import {
 } from './middleware/errorHandler.js';
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
+import masterRoutes from './routes/masterRoutes.js';
+
+// Import models to register them with Mongoose
+import User from './models/User.js';
+import Event from './models/Event.js';
+import Notice from './models/Notice.js';
+import Admin from './models/Admin.js';
+import Cluster from './models/Cluster.js';
 
 // Load environment variables
 dotenv.config();
@@ -53,6 +62,12 @@ app.use('/api/auth', authRoutes);
 
 // User routes
 app.use('/api/users', userRoutes);
+
+// Admin routes
+app.use('/api/admin', adminRoutes);
+
+// Master routes
+app.use('/api/master', masterRoutes);
 
 // ===== ERROR HANDLING =====
 

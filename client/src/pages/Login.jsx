@@ -1,13 +1,19 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '@/context/AuthContext';
+import AuthService from '@/services/AuthService';
 
 export default function Login() {
+  const navigate = useNavigate();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
 
   const [rememberPassword, setRememberPassword] = useState(false);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   // Load saved credentials on component mount
   useEffect(() => {
@@ -24,22 +30,38 @@ export default function Login() {
     }
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+    setLoading(true);
 
-    // Save credentials if "Remember Password" is checked
-    if (rememberPassword) {
-      localStorage.setItem('rememberedEmail', formData.email);
-      localStorage.setItem('rememberedPassword', formData.password);
-      localStorage.setItem('rememberPassword', 'true');
-    } else {
-      // Clear saved credentials if unchecked
-      localStorage.removeItem('rememberedEmail');
-      localStorage.removeItem('rememberedPassword');
-      localStorage.removeItem('rememberPassword');
+    try {
+      // Call login API
+      const response = await AuthService.loginUser(formData.email, formData.password);
+      const { token, user } = response.data.data;
+
+      // Save credentials if "Remember Password" is checked
+      if (rememberPassword) {
+        localStorage.setItem('rememberedEmail', formData.email);
+        localStorage.setItem('rememberedPassword', formData.password);
+        localStorage.setItem('rememberPassword', 'true');
+      } else {
+        // Clear saved credentials if unchecked
+        localStorage.removeItem('rememberedEmail');
+        localStorage.removeItem('rememberedPassword');
+        localStorage.removeItem('rememberPassword');
+      }
+
+      // Update auth context
+      login(token, 'user', user._id, user);
+
+      // Redirect to profile
+      navigate('/user/profile');
+    } catch (err) {
+      setError(err.response?.data?.message || 'Login failed. Please try again.');
+    } finally {
+      setLoading(false);
     }
-
-    console.log('Login attempt:', formData);
   };
 
   const handleRememberChange = (e) => {
@@ -72,6 +94,7 @@ export default function Login() {
               className="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-white placeholder-slate-600 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 outline-none transition-all duration-200"
               placeholder="name@example.com"
               required
+              disabled={loading}
             />
           </div>
 
@@ -89,8 +112,15 @@ export default function Login() {
               className="w-full px-4 py-3 rounded-lg bg-slate-950/50 border border-slate-700/50 text-white placeholder-slate-600 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 outline-none transition-all duration-200"
               placeholder="••••••••"
               required
+              disabled={loading}
             />
           </div>
+
+          {error && (
+            <div className="p-4 rounded-lg bg-red-900/20 border border-red-700/50 text-red-400 text-sm">
+              {error}
+            </div>
+          )}
 
           <div className="flex items-center gap-3 ml-1">
             {/* Creative Animated Checkbox */}
@@ -121,9 +151,10 @@ export default function Login() {
 
           <button
             type="submit"
-            className="w-full py-3.5 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold shadow-lg shadow-cyan-900/20 transform transition-all duration-200 active:scale-[0.98]"
+            disabled={loading}
+            className="w-full py-3.5 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold shadow-lg shadow-cyan-900/20 transform transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Sign In
+            {loading ? 'Signing In...' : 'Sign In'}
           </button>
         </form>
 
