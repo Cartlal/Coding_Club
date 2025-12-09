@@ -54,7 +54,7 @@ export default function StatsCards() {
   }, [hasStarted]);
 
   return (
-    <section className="relative py-20 px-4" ref={sectionRef}>
+    <section className="relative py-10 px-4" ref={sectionRef}>
       {/* Grid background effect */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
       
