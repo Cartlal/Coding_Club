@@ -34,7 +34,9 @@ export default function MemberCardFlip({
             border: 'border-cyan-400/30',
             glow: 'from-cyan-400 to-blue-500',
             text: 'text-cyan-300',
-            bg: 'from-cyan-500/5 to-blue-500/5'
+            bg: 'from-cyan-500/5 to-blue-500/5',
+            scroll: 'rgba(83, 234, 253, .5)',
+            scrollHover: 'rgba(83, 234, 253, .7)'
         };
 
         // AI Team - Purple/Indigo
@@ -44,7 +46,9 @@ export default function MemberCardFlip({
             border: 'border-purple-400/30',
             glow: 'from-purple-400 to-indigo-500',
             text: 'text-purple-300',
-            bg: 'from-purple-500/5 to-indigo-500/5'
+            bg: 'from-purple-500/5 to-indigo-500/5',
+            scroll: 'rgba(218, 178, 255, .5)',
+            scrollHover: 'rgba(218, 178, 255, .7)'
         };
 
         // Emerging Tech - Emerald/Teal
@@ -54,7 +58,9 @@ export default function MemberCardFlip({
             border: 'border-emerald-400/30',
             glow: 'from-emerald-400 to-teal-500',
             text: 'text-emerald-300',
-            bg: 'from-emerald-500/5 to-teal-500/5'
+            bg: 'from-emerald-500/5 to-teal-500/5',
+            scroll: 'rgba(94, 233, 181, .5)',
+            scrollHover: 'rgba(94, 233, 181, .7)'
         };
 
         // Competition Management - Amber/Orange
@@ -64,7 +70,9 @@ export default function MemberCardFlip({
             border: 'border-amber-400/30',
             glow: 'from-amber-400 to-orange-500',
             text: 'text-amber-300',
-            bg: 'from-amber-500/5 to-orange-500/5'
+            bg: 'from-amber-500/5 to-orange-500/5',
+            scroll: 'rgba(255, 210, 48, .5)',
+            scrollHover: 'rgba(255, 210, 48, .7)'
         };
 
         // PR Team - Yellow/Amber
@@ -74,7 +82,9 @@ export default function MemberCardFlip({
             border: 'border-yellow-400/30',
             glow: 'from-yellow-400 to-amber-500',
             text: 'text-yellow-300',
-            bg: 'from-yellow-500/5 to-amber-500/5'
+            bg: 'from-yellow-500/5 to-amber-500/5',
+            scroll: 'rgba(255, 222, 32, 0.5)',
+            scrollHover: 'rgba(255, 222, 32, 0.7)'
         };
 
         // Programming Team - Indigo/Violet
@@ -84,7 +94,9 @@ export default function MemberCardFlip({
             border: 'border-indigo-400/30',
             glow: 'from-indigo-400 to-violet-500',
             text: 'text-indigo-300',
-            bg: 'from-indigo-500/5 to-violet-500/5'
+            bg: 'from-indigo-500/5 to-violet-500/5',
+            scroll: 'rgba(163, 178, 255, 0.5)',
+            scrollHover: 'rgba(163, 178, 255, 0.7)'
         };
 
         // Media & Design - Rose/Pink
@@ -94,7 +106,9 @@ export default function MemberCardFlip({
             border: 'border-rose-400/30',
             glow: 'from-rose-400 to-pink-500',
             text: 'text-rose-300',
-            bg: 'from-rose-500/5 to-pink-500/5'
+            bg: 'from-rose-500/5 to-pink-500/5',
+            scroll: 'rgba(255, 161, 173, 0.5)',
+            scrollHover: 'rgba(255, 161, 173, 0.7)'
         };
 
         // Core Committee & Leads - Cyan/Blue (default)
@@ -104,7 +118,9 @@ export default function MemberCardFlip({
             border: 'border-cyan-400/30',
             glow: 'from-cyan-400 to-blue-500',
             text: 'text-cyan-300',
-            bg: 'from-cyan-500/5 to-blue-500/5'
+            bg: 'from-cyan-500/5 to-blue-500/5',
+            scroll: 'rgb(83, 234, 253, .5)',
+            scrollHover: 'rgb(83, 234, 253, .7)'
         };
     };
 
@@ -206,7 +222,7 @@ export default function MemberCardFlip({
 
                 {/* BACK SIDE - Full Information */}
                 <div className={`absolute inset-0 backface-hidden rotate-y-180 rounded-xl overflow-hidden bg-gradient-to-br from-slate-950 to-slate-900 border border-slate-800/60 backdrop-blur-sm`}>
-                    <div className="h-full flex flex-col p-5 overflow-y-auto custom-scrollbar">
+                    <div className="h-full flex flex-col p-5 overflow-y-auto custom-scrollbar" style={{"--scroll": colors.scroll, "--scrollHover": colors.scrollHover}}>
                         {/* Tech Header */}
                         <div className="flex items-start justify-between mb-4">
                             <div>
