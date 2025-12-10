@@ -246,11 +246,13 @@
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background: rgba(6, 182, 212, 0.5);
+    background: var(--scroll);
     border-radius: 10px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgba(6, 182, 212, 0.7);
+    background: var(--scrollHover);
   }
 }
 
